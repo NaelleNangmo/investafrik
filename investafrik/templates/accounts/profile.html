@@ -1,0 +1,486 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Mon Profil - InvestAfrik{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <div class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="py-6">
+                <h1 class="text-3xl font-bold text-gray-900">Mon Profil</h1>
+                <p class="text-gray-600">Gérez vos informations personnelles et préférences</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Profile Picture -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow p-6 text-center">
+                    <div class="mb-4">
+                        <img id="profile-picture" class="w-32 h-32 rounded-full mx-auto object-cover" 
+                             src="/static/images/default-avatar.png" alt="Photo de profil">
+                    </div>
+                    <h2 id="profile-name" class="text-xl font-semibold text-gray-900 mb-2">Chargement...</h2>
+                    <p id="profile-type" class="text-gray-600 mb-4">Type d'utilisateur</p>
+                    
+                    <input type="file" id="picture-input" accept="image/*" class="hidden">
+                    <button onclick="document.getElementById('picture-input').click()" class="btn-primary w-full mb-3">
+                        <i class="fas fa-camera mr-2"></i>Changer la photo
+                    </button>
+                    
+                    <div id="profile-stats" class="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-gray-200">
+                        <!-- Stats will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Form -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-lg shadow">
+                    <!-- Tabs -->
+                    <div class="border-b border-gray-200">
+                        <nav class="flex space-x-8 px-6" aria-label="Tabs">
+                            <button class="tab-button active" data-tab="personal">Informations personnelles</button>
+                            <button class="tab-button" data-tab="preferences">Préférences</button>
+                            <button class="tab-button" data-tab="security">Sécurité</button>
+                        </nav>
+                    </div>
+
+                    <div class="p-6">
+                        <!-- Personal Information Tab -->
+                        <div id="tab-personal" class="tab-content">
+                            <form id="personal-form">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="first_name" class="block text-sm font-medium text-gray-700 mb-2">Prénom *</label>
+                                        <input type="text" id="first_name" name="first_name" required
+                                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="last_name" class="block text-sm font-medium text-gray-700 mb-2">Nom *</label>
+                                        <input type="text" id="last_name" name="last_name" required
+                                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                                        <input type="email" id="email" name="email" required
+                                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="phone_number" class="block text-sm font-medium text-gray-700 mb-2">Téléphone</label>
+                                        <input type="tel" id="phone_number" name="phone_number"
+                                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="country" class="block text-sm font-medium text-gray-700 mb-2">Pays *</label>
+                                        <select id="country" name="country" required
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                            <option value="CM">Cameroun</option>
+                                            <option value="SN">Sénégal</option>
+                                            <option value="CI">Côte d'Ivoire</option>
+                                            <option value="BJ">Bénin</option>
+                                            <option value="TG">Togo</option>
+                                            <option value="BF">Burkina Faso</option>
+                                            <option value="ML">Mali</option>
+                                            <option value="NE">Niger</option>
+                                            <option value="GN">Guinée</option>
+                                            <option value="GH">Ghana</option>
+                                            <option value="NG">Nigeria</option>
+                                            <option value="KE">Kenya</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div id="budget-field" class="hidden">
+                                        <label for="available_budget" class="block text-sm font-medium text-gray-700 mb-2">Budget disponible (FCFA)</label>
+                                        <input type="number" id="available_budget" name="available_budget" min="0"
+                                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                    </div>
+                                    
+                                    <div class="md:col-span-2">
+                                        <label for="bio" class="block text-sm font-medium text-gray-700 mb-2">Biographie</label>
+                                        <textarea id="bio" name="bio" rows="4"
+                                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                                  placeholder="Parlez-nous de vous..."></textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-6 flex justify-end">
+                                    <button type="submit" class="btn-primary">
+                                        <i class="fas fa-save mr-2"></i>Sauvegarder
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Preferences Tab -->
+                        <div id="tab-preferences" class="tab-content hidden">
+                            <form id="preferences-form">
+                                <div class="space-y-6">
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-900 mb-4">Notifications Email</h3>
+                                        <div class="space-y-3">
+                                            <label class="flex items-center">
+                                                <input type="checkbox" id="email_notifications" name="email_notifications" class="mr-3">
+                                                <span>Recevoir les notifications par email</span>
+                                            </label>
+                                            <label class="flex items-center">
+                                                <input type="checkbox" id="email_new_investment" name="email_new_investment" class="mr-3">
+                                                <span>Nouveaux investissements</span>
+                                            </label>
+                                            <label class="flex items-center">
+                                                <input type="checkbox" id="email_project_updates" name="email_project_updates" class="mr-3">
+                                                <span>Mises à jour de projets</span>
+                                            </label>
+                                            <label class="flex items-center">
+                                                <input type="checkbox" id="email_new_messages" name="email_new_messages" class="mr-3">
+                                                <span>Nouveaux messages</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-900 mb-4">Notifications Push</h3>
+                                        <div class="space-y-3">
+                                            <label class="flex items-center">
+                                                <input type="checkbox" id="push_notifications" name="push_notifications" class="mr-3">
+                                                <span>Recevoir les notifications push</span>
+                                            </label>
+                                            <label class="flex items-center">
+                                                <input type="checkbox" id="push_new_investment" name="push_new_investment" class="mr-3">
+                                                <span>Nouveaux investissements</span>
+                                            </label>
+                                            <label class="flex items-center">
+                                                <input type="checkbox" id="push_new_messages" name="push_new_messages" class="mr-3">
+                                                <span>Nouveaux messages</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-900 mb-4">Confidentialité</h3>
+                                        <div>
+                                            <label for="profile_visibility" class="block text-sm font-medium text-gray-700 mb-2">Visibilité du profil</label>
+                                            <select id="profile_visibility" name="profile_visibility"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                                <option value="public">Public</option>
+                                                <option value="investors_only">Investisseurs seulement</option>
+                                                <option value="private">Privé</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-6 flex justify-end">
+                                    <button type="submit" class="btn-primary">
+                                        <i class="fas fa-save mr-2"></i>Sauvegarder
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Security Tab -->
+                        <div id="tab-security" class="tab-content hidden">
+                            <form id="security-form">
+                                <div class="space-y-6">
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-900 mb-4">Changer le mot de passe</h3>
+                                        <div class="space-y-4">
+                                            <div>
+                                                <label for="current_password" class="block text-sm font-medium text-gray-700 mb-2">Mot de passe actuel</label>
+                                                <input type="password" id="current_password" name="current_password"
+                                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                            </div>
+                                            <div>
+                                                <label for="new_password" class="block text-sm font-medium text-gray-700 mb-2">Nouveau mot de passe</label>
+                                                <input type="password" id="new_password" name="new_password"
+                                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                            </div>
+                                            <div>
+                                                <label for="confirm_password" class="block text-sm font-medium text-gray-700 mb-2">Confirmer le mot de passe</label>
+                                                <input type="password" id="confirm_password" name="confirm_password"
+                                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="border-t border-gray-200 pt-6">
+                                        <h3 class="text-lg font-medium text-gray-900 mb-4">Supprimer le compte</h3>
+                                        <p class="text-gray-600 mb-4">
+                                            Cette action est irréversible. Toutes vos données seront définitivement supprimées.
+                                        </p>
+                                        <button type="button" onclick="confirmDeleteAccount()" class="btn bg-red-600 text-white hover:bg-red-700">
+                                            <i class="fas fa-trash mr-2"></i>Supprimer mon compte
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-6 flex justify-end">
+                                    <button type="submit" class="btn-primary">
+                                        <i class="fas fa-save mr-2"></i>Changer le mot de passe
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentUser = null;
+
+// Load user profile
+async function loadProfile() {
+    try {
+        const response = await api.get('/api/auth/profile/');
+        if (response.ok) {
+            currentUser = await response.json();
+            populateProfile(currentUser);
+        }
+    } catch (error) {
+        console.error('Error loading profile:', error);
+        notifications.show('Erreur lors du chargement du profil', 'error');
+    }
+}
+
+function populateProfile(user) {
+    // Profile picture and basic info
+    document.getElementById('profile-picture').src = user.profile_picture || '/static/images/default-avatar.png';
+    document.getElementById('profile-name').textContent = `${user.first_name} ${user.last_name}`;
+    document.getElementById('profile-type').textContent = user.user_type === 'porteur' ? 'Porteur de projet' : 'Investisseur';
+    
+    // Personal information form
+    document.getElementById('first_name').value = user.first_name || '';
+    document.getElementById('last_name').value = user.last_name || '';
+    document.getElementById('email').value = user.email || '';
+    document.getElementById('phone_number').value = user.phone_number || '';
+    document.getElementById('country').value = user.country || '';
+    document.getElementById('bio').value = user.bio || '';
+    
+    // Show budget field for investors
+    if (user.user_type === 'investisseur') {
+        document.getElementById('budget-field').classList.remove('hidden');
+        document.getElementById('available_budget').value = user.available_budget || '';
+    }
+    
+    // Preferences
+    if (user.profile) {
+        document.getElementById('email_notifications').checked = user.profile.email_notifications || false;
+        document.getElementById('push_notifications').checked = user.profile.push_notifications || false;
+        document.getElementById('profile_visibility').value = user.profile.profile_visibility || 'public';
+    }
+    
+    // Stats
+    renderProfileStats(user);
+}
+
+function renderProfileStats(user) {
+    const statsContainer = document.getElementById('profile-stats');
+    
+    if (user.user_type === 'porteur') {
+        statsContainer.innerHTML = `
+            <div class="text-center">
+                <div class="text-2xl font-bold text-primary-600">${user.projects_count || 0}</div>
+                <div class="text-xs text-gray-600">Projets</div>
+            </div>
+            <div class="text-center">
+                <div class="text-2xl font-bold text-green-600">${utils.formatCurrency(user.total_raised || 0)}</div>
+                <div class="text-xs text-gray-600">Levés</div>
+            </div>
+        `;
+    } else {
+        statsContainer.innerHTML = `
+            <div class="text-center">
+                <div class="text-2xl font-bold text-blue-600">${user.investments_count || 0}</div>
+                <div class="text-xs text-gray-600">Investissements</div>
+            </div>
+            <div class="text-center">
+                <div class="text-2xl font-bold text-green-600">${utils.formatCurrency(user.total_invested || 0)}</div>
+                <div class="text-xs text-gray-600">Investis</div>
+            </div>
+        `;
+    }
+}
+
+// Tab navigation
+document.querySelectorAll('.tab-button').forEach(button => {
+    button.addEventListener('click', function() {
+        const tabName = this.dataset.tab;
+        
+        // Update active tab
+        document.querySelectorAll('.tab-button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        this.classList.add('active');
+        
+        // Show corresponding content
+        document.querySelectorAll('.tab-content').forEach(content => {
+            content.classList.add('hidden');
+        });
+        document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+    });
+});
+
+// Form submissions
+document.getElementById('personal-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries());
+    
+    try {
+        const response = await api.patch('/api/auth/profile/', data);
+        
+        if (response.ok) {
+            notifications.show('Profil mis à jour avec succès', 'success');
+            loadProfile(); // Reload to get updated data
+        } else {
+            const error = await response.json();
+            notifications.show('Erreur lors de la mise à jour', 'error');
+        }
+    } catch (error) {
+        notifications.show('Erreur de connexion', 'error');
+    }
+});
+
+document.getElementById('preferences-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const data = {};
+    
+    // Handle checkboxes
+    const checkboxes = this.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        data[checkbox.name] = checkbox.checked;
+    });
+    
+    // Handle select
+    data.profile_visibility = document.getElementById('profile_visibility').value;
+    
+    try {
+        const response = await api.request('/api/auth/profile/', {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ profile: data })
+        });
+        
+        if (response.ok) {
+            notifications.show('Préférences mises à jour', 'success');
+        } else {
+            notifications.show('Erreur lors de la mise à jour', 'error');
+        }
+    } catch (error) {
+        notifications.show('Erreur de connexion', 'error');
+    }
+});
+
+document.getElementById('security-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const currentPassword = document.getElementById('current_password').value;
+    const newPassword = document.getElementById('new_password').value;
+    const confirmPassword = document.getElementById('confirm_password').value;
+    
+    if (newPassword !== confirmPassword) {
+        notifications.show('Les mots de passe ne correspondent pas', 'error');
+        return;
+    }
+    
+    try {
+        const response = await api.request('/api/auth/change-password/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                current_password: currentPassword,
+                new_password: newPassword
+            })
+        });
+        
+        if (response.ok) {
+            notifications.show('Mot de passe changé avec succès', 'success');
+            this.reset();
+        } else {
+            const error = await response.json();
+            notifications.show(error.message || 'Erreur lors du changement', 'error');
+        }
+    } catch (error) {
+        notifications.show('Erreur de connexion', 'error');
+    }
+});
+
+// Profile picture upload
+document.getElementById('picture-input').addEventListener('change', async function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    const formData = new FormData();
+    formData.append('profile_picture', file);
+    
+    try {
+        const response = await api.request('/api/auth/profile/', {
+            method: 'PATCH',
+            body: formData
+        });
+        
+        if (response.ok) {
+            notifications.show('Photo de profil mise à jour', 'success');
+            loadProfile();
+        } else {
+            notifications.show('Erreur lors du téléchargement', 'error');
+        }
+    } catch (error) {
+        notifications.show('Erreur de connexion', 'error');
+    }
+});
+
+function confirmDeleteAccount() {
+    if (confirm('Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.')) {
+        if (confirm('Confirmez-vous la suppression définitive de votre compte ?')) {
+            deleteAccount();
+        }
+    }
+}
+
+async function deleteAccount() {
+    try {
+        const response = await api.request('/api/auth/profile/', {
+            method: 'DELETE'
+        });
+        
+        if (response.ok) {
+            notifications.show('Compte supprimé', 'success');
+            localStorage.clear();
+            window.location.href = '/';
+        } else {
+            notifications.show('Erreur lors de la suppression', 'error');
+        }
+    } catch (error) {
+        notifications.show('Erreur de connexion', 'error');
+    }
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', loadProfile);
+</script>
+
+<style>
+.tab-button {
+    @apply py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300 transition-colors;
+}
+
+.tab-button.active {
+    @apply border-primary-500 text-primary-600;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Projets - InvestAfrik{% endblock %}
+
+{% block content %}
+<!-- Header Section -->
+<section class="bg-gradient-to-r from-primary-500 to-secondary-500 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">
+                Découvrez les projets
+            </h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Explorez des centaines de projets innovants à travers l'Afrique et investissez dans ceux qui vous inspirent.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Filters Section -->
+<section class="py-8 bg-white border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap gap-4 items-center justify-between">
+            <!-- Search -->
+            <div class="flex-1 min-w-64">
+                <input type="text" placeholder="Rechercher un projet..." 
+                       class="input-field w-full">
+            </div>
+            
+            <!-- Category Filter -->
+            <select class="input-field">
+                <option value="">Toutes les catégories</option>
+                <option value="agriculture">Agriculture & Agrobusiness</option>
+                <option value="tech">Technologies & Innovation</option>
+                <option value="education">Éducation & Formation</option>
+                <option value="health">Santé & Bien-être</option>
+            </select>
+            
+            <!-- Country Filter -->
+            <select class="input-field">
+                <option value="">Tous les pays</option>
+                <option value="CM">Cameroun</option>
+                <option value="SN">Sénégal</option>
+                <option value="CI">Côte d'Ivoire</option>
+                <option value="BJ">Bénin</option>
+            </select>
+            
+            <!-- Sort -->
+            <select class="input-field">
+                <option value="-created_at">Plus récents</option>
+                <option value="goal_amount">Objectif croissant</option>
+                <option value="-goal_amount">Objectif décroissant</option>
+                <option value="end_date">Fin bientôt</option>
+            </select>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Grid -->
+<section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+            <!-- Project cards will be loaded here via JavaScript -->
+            <div class="text-center col-span-full py-12">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500 mx-auto mb-4"></div>
+                <p class="text-gray-600">Chargement des projets...</p>
+            </div>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="mt-12 flex justify-center">
+            <nav class="flex space-x-2">
+                <button class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+                    Précédent
+                </button>
+                <button class="px-4 py-2 bg-primary-500 text-white rounded-md">1</button>
+                <button class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">2</button>
+                <button class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">3</button>
+                <button class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+                    Suivant
+                </button>
+            </nav>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Load projects via API
+async function loadProjects() {
+    try {
+        const response = await api.get('/api/projects/');
+        
+        if (response.ok) {
+            const data = await response.json();
+            renderProjects(data.results || data);
+        } else {
+            console.error('Failed to load projects:', response.status);
+            showError('Erreur lors du chargement des projets. Veuillez réessayer.');
+        }
+    } catch (error) {
+        console.error('Error loading projects:', error);
+        showError('Impossible de charger les projets. Vérifiez votre connexion.');
+    }
+}
+
+function showError(message) {
+    document.getElementById('projects-grid').innerHTML = `
+        <div class="text-center col-span-full py-12">
+            <div class="max-w-md mx-auto">
+                <i class="fas fa-exclamation-triangle text-4xl text-red-500 mb-4"></i>
+                <p class="text-red-600 mb-4">${message}</p>
+                <button onclick="loadProjects()" class="btn-primary">
+                    <i class="fas fa-redo mr-2"></i>Réessayer
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+function renderProjects(projects) {
+    const grid = document.getElementById('projects-grid');
+    
+    if (!projects || projects.length === 0) {
+        grid.innerHTML = `
+            <div class="text-center col-span-full py-12">
+                <i class="fas fa-search text-4xl text-gray-400 mb-4"></i>
+                <p class="text-gray-600">Aucun projet trouvé.</p>
+            </div>
+        `;
+        return;
+    }
+    
+    grid.innerHTML = projects.map(project => {
+        // Valeurs par défaut pour éviter les erreurs
+        const title = project.title || 'Projet sans titre';
+        const description = project.short_description || 'Aucune description disponible';
+        const categoryName = project.category?.name || 'Non catégorisé';
+        const ownerName = `${project.owner?.first_name || ''} ${project.owner?.last_name || ''}`.trim() || 'Anonyme';
+        const currentAmount = project.current_amount || 0;
+        const goalAmount = project.goal_amount || 1;
+        const fundingPercentage = project.funding_percentage || 0;
+        const daysRemaining = project.days_remaining || 0;
+        const slug = project.slug || project.id;
+        
+        // Image par défaut
+        const featuredImage = project.featured_image || 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=400&h=200&fit=crop&crop=center';
+        const ownerAvatar = project.owner?.profile_picture || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face';
+        
+        return `
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div class="relative">
+                    <img src="${featuredImage}" 
+                         alt="${title}" 
+                         class="w-full h-48 object-cover"
+                         onerror="this.src='https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=400&h=200&fit=crop&crop=center'">
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-primary-600 text-white px-2 py-1 rounded-full text-xs font-medium">
+                            ${categoryName}
+                        </span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-lg mb-2 line-clamp-2">${title}</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-3">${description}</p>
+                    
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="${ownerAvatar}" 
+                             alt="${ownerName}" 
+                             class="w-8 h-8 rounded-full object-cover"
+                             onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face'">
+                        <span class="text-sm text-gray-700">${ownerName}</span>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between text-sm text-gray-600 mb-1">
+                            <span>${utils.formatCurrency(currentAmount)}</span>
+                            <span>${fundingPercentage.toFixed(1)}%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-primary-500 h-2 rounded-full transition-all duration-300" 
+                                 style="width: ${Math.min(fundingPercentage, 100)}%"></div>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-600 mt-1">
+                            <span>Objectif: ${utils.formatCurrency(goalAmount)}</span>
+                            <span>${daysRemaining} jours restants</span>
+                        </div>
+                    </div>
+                    
+                    <a href="/projects/${slug}/" class="block w-full text-center bg-primary-600 text-white py-2 px-4 rounded-md hover:bg-primary-700 transition-colors duration-200">
+                        Voir le projet
+                    </a>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+// Load projects on page load
+document.addEventListener('DOMContentLoaded', loadProjects);
+</script>
+{% endblock %}

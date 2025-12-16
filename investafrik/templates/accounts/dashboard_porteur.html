@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard Porteur - InvestAfrik{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <div class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Dashboard Porteur</h1>
+                    <p class="text-gray-600">Gérez vos projets et suivez vos financements</p>
+                </div>
+                <a href="{% url 'projects:create' %}" class="btn-primary">
+                    <i class="fas fa-plus mr-2"></i>Nouveau Projet
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-primary-100">
+                        <i class="fas fa-project-diagram text-primary-600 text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Mes Projets</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="totalProjects">{{ total_projects }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-green-100">
+                        <i class="fas fa-chart-line text-green-600 text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Projets Actifs</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="activeProjects">{{ active_projects }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-yellow-100">
+                        <i class="fas fa-coins text-yellow-600 text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Fonds Levés</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="totalRaised">{{ total_raised|floatformat:0 }} FCFA</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-blue-100">
+                        <i class="fas fa-users text-blue-600 text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Investisseurs</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="totalInvestors">{{ total_investors }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-900">Actions Rapides</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a href="{% url 'projects:create' %}" class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                        <i class="fas fa-plus-circle text-primary-600 text-2xl mr-4"></i>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Créer un Projet</h3>
+                            <p class="text-sm text-gray-600">Lancez votre campagne de financement</p>
+                        </div>
+                    </a>
+
+                    <a href="{% url 'messaging:conversations' %}" class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                        <i class="fas fa-comments text-blue-600 text-2xl mr-4"></i>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Messages</h3>
+                            <p class="text-sm text-gray-600">Communiquez avec vos investisseurs</p>
+                        </div>
+                    </a>
+
+                    <a href="{% url 'accounts:profile' %}" class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                        <i class="fas fa-user-edit text-green-600 text-2xl mr-4"></i>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Mon Profil</h3>
+                            <p class="text-sm text-gray-600">Mettez à jour vos informations</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Projects -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                <h2 class="text-lg font-semibold text-gray-900">Mes Projets Récents</h2>
+                <a href="{% url 'projects:my_projects' %}" class="text-primary-600 hover:text-primary-700 text-sm font-medium">
+                    Voir tous
+                </a>
+            </div>
+            <div class="p-6">
+                <div id="recentProjects" class="space-y-4">
+                    {% if recent_projects %}
+                        {% for project in recent_projects %}
+                        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                            <div class="flex items-center space-x-4">
+                                <img src="{% if project.featured_image %}{{ project.featured_image.url }}{% else %}/static/images/default-project.jpg{% endif %}" 
+                                     alt="{{ project.title }}" class="w-16 h-16 rounded-lg object-cover">
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">{{ project.title }}</h3>
+                                    <p class="text-sm text-gray-600">{% if project.category %}{{ project.category.name }}{% else %}Sans catégorie{% endif %}</p>
+                                    <div class="flex items-center space-x-4 mt-1">
+                                        <span class="text-sm text-gray-500">{{ project.current_amount|default:0|floatformat:0 }} / {{ project.goal_amount|floatformat:0 }} FCFA</span>
+                                        <span class="px-2 py-1 text-xs rounded-full 
+                                            {% if project.status == 'active' %}bg-green-100 text-green-800
+                                            {% elif project.status == 'successful' %}bg-blue-100 text-blue-800
+                                            {% elif project.status == 'pending' %}bg-yellow-100 text-yellow-800
+                                            {% elif project.status == 'draft' %}bg-gray-100 text-gray-800
+                                            {% else %}bg-red-100 text-red-800{% endif %}">
+                                            {% if project.status == 'active' %}Actif
+                                            {% elif project.status == 'successful' %}Financé
+                                            {% elif project.status == 'pending' %}En attente
+                                            {% elif project.status == 'draft' %}Brouillon
+                                            {% else %}{{ project.status|capfirst }}{% endif %}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <a href="{% url 'projects:detail' project.slug %}" class="btn-secondary btn-sm">Voir</a>
+                                <a href="{% url 'projects:edit' project.slug %}" class="btn-primary btn-sm">Modifier</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="text-center py-8">
+                            <i class="fas fa-project-diagram text-gray-400 text-4xl mb-4"></i>
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">Aucun projet pour le moment</h3>
+                            <p class="text-gray-600 mb-4">Créez votre premier projet pour commencer à lever des fonds</p>
+                            <a href="{% url 'projects:create' %}" class="btn-primary">Créer un Projet</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Dashboard porteur - Les données sont maintenant chargées depuis le backend Django
+console.log('Dashboard porteur chargé avec les données de la base de données');
+
+// Optionnel : Ajouter des graphiques avec Chart.js
+document.addEventListener('DOMContentLoaded', function() {
+    // Vous pouvez ajouter ici des graphiques Chart.js si nécessaire
+    console.log('Dashboard porteur initialisé');
+});
+</script>
+{% endblock %}

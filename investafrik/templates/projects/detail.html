@@ -1,0 +1,516 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ project.title }} - InvestAfrik{% endblock %}
+
+{% block content %}
+<div class="bg-white">
+    <!-- Hero Section avec image -->
+    <div class="relative h-96 bg-gray-900">
+        <img id="heroImage" class="w-full h-full object-cover" src="" alt="">
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex items-center space-x-2 mb-2">
+                    <span id="categoryBadge" class="badge badge-primary"></span>
+                    <span id="statusBadge" class="badge"></span>
+                </div>
+                <h1 id="projectTitle" class="text-4xl font-display font-bold text-white mb-2"></h1>
+                <p id="projectDescription" class="text-xl text-gray-200 max-w-3xl"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Contenu principal -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Barre de progression et stats -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-3xl font-bold text-gray-900" id="currentAmount"></span>
+                            <span class="text-lg font-semibold text-primary-600" id="fundingPercentage"></span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3 mb-4">
+                            <div id="progressBar" class="bg-gradient-to-r from-primary-500 to-secondary-500 h-3 rounded-full transition-all duration-500"></div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <div class="text-2xl font-bold text-gray-900" id="goalAmount"></div>
+                                <div class="text-sm text-gray-600">Objectif</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-gray-900" id="investorCount"></div>
+                                <div class="text-sm text-gray-600">Investisseurs</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-gray-900" id="daysRemaining"></div>
+                                <div class="text-sm text-gray-600">Jours restants</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Principal -->
+                    <div class="flex space-x-4">
+                        <button id="investBtn" class="btn-primary flex-1 text-lg py-3">
+                            Investir maintenant
+                        </button>
+                        <button id="saveBtn" class="btn-outline px-6">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </button>
+                        <button id="shareBtn" class="btn-outline px-6">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Navigation par onglets -->
+                <div class="bg-white rounded-lg shadow-md">
+                    <div class="border-b border-gray-200">
+                        <nav class="flex space-x-8 px-6" aria-label="Tabs">
+                            <button class="tab-button active" data-tab="description">Description</button>
+                            <button class="tab-button" data-tab="budget">Budget</button>
+                            <button class="tab-button" data-tab="updates">Mises à jour</button>
+                            <button class="tab-button" data-tab="investors">Investisseurs</button>
+                            <button class="tab-button" data-tab="comments">Commentaires</button>
+                        </nav>
+                    </div>
+
+                    <div class="p-6">
+                        <!-- Onglet Description -->
+                        <div id="tab-description" class="tab-content">
+                            <div id="projectFullDescription" class="prose max-w-none"></div>
+                        </div>
+
+                        <!-- Onglet Budget -->
+                        <div id="tab-budget" class="tab-content hidden">
+                            <h3 class="text-lg font-semibold mb-4">Répartition du budget</h3>
+                            <div id="budgetBreakdown" class="space-y-3"></div>
+                        </div>
+
+                        <!-- Onglet Mises à jour -->
+                        <div id="tab-updates" class="tab-content hidden">
+                            <div class="flex justify-between items-center mb-6">
+                                <h3 class="text-lg font-semibold">Mises à jour du projet</h3>
+                                <button id="addUpdateBtn" class="btn-primary hidden">
+                                    Ajouter une mise à jour
+                                </button>
+                            </div>
+                            <div id="projectUpdates" class="space-y-6"></div>
+                        </div>
+
+                        <!-- Onglet Investisseurs -->
+                        <div id="tab-investors" class="tab-content hidden">
+                            <h3 class="text-lg font-semibold mb-4">Nos investisseurs</h3>
+                            <div id="investorsList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                        </div>
+
+                        <!-- Onglet Commentaires -->
+                        <div id="tab-comments" class="tab-content hidden">
+                            <div class="mb-6">
+                                <h3 class="text-lg font-semibold mb-4">Questions et commentaires</h3>
+                                <div class="bg-gray-50 rounded-lg p-4">
+                                    <textarea id="commentText" rows="3" class="input-field w-full" 
+                                              placeholder="Posez une question ou laissez un commentaire..."></textarea>
+                                    <div class="mt-3 flex justify-end">
+                                        <button id="submitComment" class="btn-primary">
+                                            Publier le commentaire
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="commentsList" class="space-y-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="space-y-6">
+                <!-- Carte du porteur -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold mb-4">Porteur du projet</h3>
+                    <div class="flex items-center space-x-4 mb-4">
+                        <img id="ownerAvatar" class="w-16 h-16 rounded-full" src="" alt="">
+                        <div>
+                            <h4 id="ownerName" class="font-semibold text-gray-900"></h4>
+                            <p id="ownerCountry" class="text-sm text-gray-600"></p>
+                        </div>
+                    </div>
+                    <p id="ownerBio" class="text-sm text-gray-600 mb-4"></p>
+                    <div class="space-y-2">
+                        <button id="contactOwnerBtn" class="btn-primary w-full">
+                            Contacter le porteur
+                        </button>
+                        <button id="viewOwnerProfileBtn" class="btn-outline w-full">
+                            Voir le profil
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Partage social -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold mb-4">Partager ce projet</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button class="btn-outline text-sm" onclick="shareOnWhatsApp()">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                            WhatsApp
+                        </button>
+                        <button class="btn-outline text-sm" onclick="shareOnFacebook()">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                            Facebook
+                        </button>
+                        <button class="btn-outline text-sm" onclick="shareOnTwitter()">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                            Twitter
+                        </button>
+                        <button class="btn-outline text-sm" onclick="copyLink()">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            Copier
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Projets similaires -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold mb-4">Projets similaires</h3>
+                    <div id="similarProjects" class="space-y-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal d'investissement -->
+<div id="investModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-lg max-w-md w-full p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">Investir dans ce projet</h3>
+                <button id="closeInvestModal" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <form id="investForm">
+                <div class="space-y-4">
+                    <div>
+                        <label for="investAmount" class="block text-sm font-medium text-gray-700">Montant (FCFA)</label>
+                        <input type="number" id="investAmount" name="amount" min="1000" step="1000" required
+                               class="input-field mt-1" placeholder="10 000">
+                        <p class="text-xs text-gray-500 mt-1">Montant minimum : 1 000 FCFA</p>
+                    </div>
+                    
+                    <div>
+                        <label for="paymentMethod" class="block text-sm font-medium text-gray-700">Méthode de paiement</label>
+                        <select id="paymentMethod" name="payment_method" required class="input-field mt-1">
+                            <option value="">Sélectionnez une méthode</option>
+                            <option value="mobile_money">Mobile Money</option>
+                            <option value="bank_transfer">Virement bancaire</option>
+                            <option value="card">Carte bancaire</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="investMessage" class="block text-sm font-medium text-gray-700">Message (optionnel)</label>
+                        <textarea id="investMessage" name="message" rows="3" 
+                                  class="input-field mt-1" placeholder="Un message d'encouragement pour le porteur..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="mt-6 flex space-x-3">
+                    <button type="button" id="cancelInvest" class="btn-outline flex-1">
+                        Annuler
+                    </button>
+                    <button type="submit" class="btn-primary flex-1">
+                        Confirmer l'investissement
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+let currentProject = null;
+const projectSlug = window.location.pathname.split('/')[2]; // Assuming URL like /projects/slug/
+
+// Load project data
+async function loadProject() {
+    try {
+        const response = await api.get(`/api/projects/${projectSlug}/`);
+        if (response.ok) {
+            currentProject = await response.json();
+            renderProject(currentProject);
+        } else {
+            notifications.show('Projet non trouvé', 'error');
+            window.location.href = '/projects/';
+        }
+    } catch (error) {
+        notifications.show('Erreur lors du chargement du projet', 'error');
+    }
+}
+
+function renderProject(project) {
+    // Hero section
+    document.getElementById('heroImage').src = project.featured_image || '/static/images/project-placeholder.jpg';
+    document.getElementById('projectTitle').textContent = project.title;
+    document.getElementById('projectDescription').textContent = project.short_description;
+    
+    // Category and status badges
+    const categoryBadge = document.getElementById('categoryBadge');
+    categoryBadge.textContent = project.category.name;
+    
+    const statusBadge = document.getElementById('statusBadge');
+    statusBadge.textContent = getStatusText(project.status);
+    statusBadge.className = `badge ${getStatusClass(project.status)}`;
+    
+    // Progress and stats
+    document.getElementById('currentAmount').textContent = utils.formatCurrency(project.current_amount);
+    document.getElementById('goalAmount').textContent = utils.formatCurrency(project.goal_amount);
+    document.getElementById('fundingPercentage').textContent = `${project.funding_percentage.toFixed(1)}%`;
+    document.getElementById('investorCount').textContent = project.investor_count;
+    document.getElementById('daysRemaining').textContent = project.days_remaining;
+    
+    // Progress bar
+    const progressBar = document.getElementById('progressBar');
+    progressBar.style.width = `${Math.min(project.funding_percentage, 100)}%`;
+    
+    // Description
+    document.getElementById('projectFullDescription').innerHTML = project.full_description;
+    
+    // Owner info
+    document.getElementById('ownerAvatar').src = project.owner.profile_picture || '/static/images/default-avatar.png';
+    document.getElementById('ownerName').textContent = `${project.owner.first_name} ${project.owner.last_name}`;
+    document.getElementById('ownerCountry').textContent = project.owner.country_display;
+    document.getElementById('ownerBio').textContent = project.owner.bio || 'Aucune bio disponible';
+    
+    // Budget breakdown
+    renderBudgetBreakdown(project.budget_breakdown);
+    
+    // Load additional data
+    loadProjectUpdates();
+    loadProjectComments();
+    loadSimilarProjects();
+}
+
+function renderBudgetBreakdown(budget) {
+    const container = document.getElementById('budgetBreakdown');
+    if (!budget || Object.keys(budget).length === 0) {
+        container.innerHTML = '<p class="text-gray-500">Aucun détail de budget disponible</p>';
+        return;
+    }
+    
+    const total = Object.values(budget).reduce((sum, amount) => sum + parseFloat(amount), 0);
+    
+    container.innerHTML = Object.entries(budget).map(([category, amount]) => {
+        const percentage = ((parseFloat(amount) / total) * 100).toFixed(1);
+        return `
+            <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                <span class="font-medium">${category}</span>
+                <div class="text-right">
+                    <div class="font-semibold">${utils.formatCurrency(amount)}</div>
+                    <div class="text-sm text-gray-500">${percentage}%</div>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+// Tab navigation
+document.querySelectorAll('.tab-button').forEach(button => {
+    button.addEventListener('click', function() {
+        const tabName = this.dataset.tab;
+        
+        // Update active tab
+        document.querySelectorAll('.tab-button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        this.classList.add('active');
+        
+        // Show corresponding content
+        document.querySelectorAll('.tab-content').forEach(content => {
+            content.classList.add('hidden');
+        });
+        document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+    });
+});
+
+// Investment modal
+document.getElementById('investBtn').addEventListener('click', function() {
+    if (!localStorage.getItem('access_token')) {
+        notifications.show('Veuillez vous connecter pour investir', 'warning');
+        window.location.href = '/auth/login/';
+        return;
+    }
+    document.getElementById('investModal').classList.remove('hidden');
+});
+
+document.getElementById('closeInvestModal').addEventListener('click', function() {
+    document.getElementById('investModal').classList.add('hidden');
+});
+
+document.getElementById('cancelInvest').addEventListener('click', function() {
+    document.getElementById('investModal').classList.add('hidden');
+});
+
+// Investment form submission
+document.getElementById('investForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const data = {
+        project: currentProject.id,
+        amount: formData.get('amount'),
+        payment_method: formData.get('payment_method'),
+        message: formData.get('message')
+    };
+    
+    try {
+        const response = await api.request('/investments/', {
+            method: 'POST',
+            body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+            notifications.show('Investissement créé avec succès !', 'success');
+            document.getElementById('investModal').classList.add('hidden');
+            // Reload project to update stats
+            loadProject();
+        } else {
+            const error = await response.json();
+            notifications.show(error.message || 'Erreur lors de l\'investissement', 'error');
+        }
+    } catch (error) {
+        notifications.show('Erreur de connexion', 'error');
+    }
+});
+
+// Utility functions
+function getStatusText(status) {
+    const statusMap = {
+        'draft': 'Brouillon',
+        'pending': 'En attente',
+        'active': 'Actif',
+        'successful': 'Financé',
+        'failed': 'Échec'
+    };
+    return statusMap[status] || status;
+}
+
+function getStatusClass(status) {
+    const classMap = {
+        'draft': 'bg-gray-100 text-gray-800',
+        'pending': 'bg-yellow-100 text-yellow-800',
+        'active': 'bg-green-100 text-green-800',
+        'successful': 'bg-blue-100 text-blue-800',
+        'failed': 'bg-red-100 text-red-800'
+    };
+    return classMap[status] || 'bg-gray-100 text-gray-800';
+}
+
+// Social sharing functions
+function shareOnWhatsApp() {
+    const text = `Découvrez ce projet sur InvestAfrik: ${currentProject.title}`;
+    const url = window.location.href;
+    window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`, '_blank');
+}
+
+function shareOnFacebook() {
+    const url = window.location.href;
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+}
+
+function shareOnTwitter() {
+    const text = `Découvrez ce projet sur InvestAfrik: ${currentProject.title}`;
+    const url = window.location.href;
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+}
+
+function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        notifications.show('Lien copié dans le presse-papiers', 'success');
+    });
+}
+
+// Load additional data functions (to be implemented)
+async function loadProjectUpdates() {
+    // TODO: Load project updates
+}
+
+async function loadProjectComments() {
+    // TODO: Load project comments
+}
+
+async function loadSimilarProjects() {
+    // TODO: Load similar projects
+}
+
+// Contact owner button
+document.getElementById('contactOwnerBtn').addEventListener('click', function() {
+    if (!localStorage.getItem('access_token')) {
+        notifications.show('Veuillez vous connecter pour contacter le porteur', 'warning');
+        window.location.href = '/auth/login/';
+        return;
+    }
+    
+    // Redirect to messaging with owner
+    const ownerId = currentProject.owner.id;
+    window.location.href = `/messaging/conversations/?user=${ownerId}`;
+});
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', loadProject);
+</script>
+
+<style>
+.tab-button {
+    @apply py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300 transition-colors;
+}
+
+.tab-button.active {
+    @apply border-primary-500 text-primary-600;
+}
+
+.prose {
+    @apply text-gray-700 leading-relaxed;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    @apply font-display font-semibold text-gray-900 mt-6 mb-4;
+}
+
+.prose p {
+    @apply mb-4;
+}
+
+.prose ul, .prose ol {
+    @apply mb-4 pl-6;
+}
+
+.prose li {
+    @apply mb-2;
+}
+
+.prose img {
+    @apply rounded-lg shadow-md my-6;
+}
+</style>
+{% endblock %}

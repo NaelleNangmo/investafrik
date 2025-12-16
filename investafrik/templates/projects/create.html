@@ -1,0 +1,446 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Créer un Projet - InvestAfrik{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50 py-8">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">Créer un Nouveau Projet</h1>
+            <p class="text-gray-600 mt-2">Présentez votre idée et commencez à lever des fonds</p>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="flex items-center justify-center w-8 h-8 bg-primary-600 text-white rounded-full text-sm font-medium">1</div>
+                    <span class="ml-2 text-sm font-medium text-primary-600">Informations de base</span>
+                </div>
+                <div class="flex-1 mx-4 h-1 bg-gray-200 rounded"></div>
+                <div class="flex items-center">
+                    <div class="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-600 rounded-full text-sm font-medium">2</div>
+                    <span class="ml-2 text-sm font-medium text-gray-600">Détails financiers</span>
+                </div>
+                <div class="flex-1 mx-4 h-1 bg-gray-200 rounded"></div>
+                <div class="flex items-center">
+                    <div class="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-600 rounded-full text-sm font-medium">3</div>
+                    <span class="ml-2 text-sm font-medium text-gray-600">Médias et publication</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form id="projectForm" class="bg-white rounded-lg shadow p-6">
+            <!-- Step 1: Basic Information -->
+            <div id="step1" class="step">
+                <h2 class="text-xl font-semibold text-gray-900 mb-6">Informations de Base</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="md:col-span-2">
+                        <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Titre du projet *</label>
+                        <input type="text" id="title" name="title" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                               placeholder="Ex: Application mobile pour l'agriculture intelligente">
+                    </div>
+
+                    <div>
+                        <label for="category" class="block text-sm font-medium text-gray-700 mb-2">Catégorie *</label>
+                        <select id="category" name="category" required 
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <option value="">Sélectionnez une catégorie</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="country" class="block text-sm font-medium text-gray-700 mb-2">Pays *</label>
+                        <select id="country" name="country" required 
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <option value="">Sélectionnez un pays</option>
+                            <option value="CM">Cameroun</option>
+                            <option value="SN">Sénégal</option>
+                            <option value="CI">Côte d'Ivoire</option>
+                            <option value="BJ">Bénin</option>
+                            <option value="TG">Togo</option>
+                            <option value="BF">Burkina Faso</option>
+                            <option value="ML">Mali</option>
+                            <option value="NE">Niger</option>
+                            <option value="GN">Guinée</option>
+                            <option value="GH">Ghana</option>
+                            <option value="NG">Nigeria</option>
+                            <option value="KE">Kenya</option>
+                        </select>
+                    </div>
+
+                    <div class="md:col-span-2">
+                        <label for="short_description" class="block text-sm font-medium text-gray-700 mb-2">Description courte *</label>
+                        <textarea id="short_description" name="short_description" required rows="3"
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                  placeholder="Résumez votre projet en quelques phrases (max 200 caractères)"></textarea>
+                        <p class="text-sm text-gray-500 mt-1">0/200 caractères</p>
+                    </div>
+
+                    <div class="md:col-span-2">
+                        <label for="full_description" class="block text-sm font-medium text-gray-700 mb-2">Description complète *</label>
+                        <div id="editor-container" class="border border-gray-300 rounded-md">
+                            <div id="editor" style="height: 300px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-end mt-6">
+                    <button type="button" onclick="nextStep()" class="btn-primary">
+                        Suivant <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Financial Details -->
+            <div id="step2" class="step hidden">
+                <h2 class="text-xl font-semibold text-gray-900 mb-6">Détails Financiers</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="goal_amount" class="block text-sm font-medium text-gray-700 mb-2">Objectif de financement (FCFA) *</label>
+                        <input type="number" id="goal_amount" name="goal_amount" required min="100000"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                               placeholder="Ex: 5000000">
+                        <p class="text-sm text-gray-500 mt-1">Minimum: 100,000 FCFA</p>
+                    </div>
+
+                    <div>
+                        <label for="duration" class="block text-sm font-medium text-gray-700 mb-2">Durée de la campagne (jours) *</label>
+                        <select id="duration" name="duration" required 
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <option value="">Sélectionnez la durée</option>
+                            <option value="30">30 jours</option>
+                            <option value="45">45 jours</option>
+                            <option value="60">60 jours</option>
+                            <option value="90">90 jours</option>
+                        </select>
+                    </div>
+
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-4">Répartition du budget</label>
+                        <div id="budget-breakdown" class="space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <input type="text" placeholder="Poste de dépense" 
+                                       class="flex-1 px-3 py-2 border border-gray-300 rounded-md">
+                                <input type="number" placeholder="Montant (FCFA)" 
+                                       class="w-32 px-3 py-2 border border-gray-300 rounded-md">
+                                <button type="button" class="text-red-600 hover:text-red-700">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" onclick="addBudgetItem()" class="mt-3 text-primary-600 hover:text-primary-700 text-sm">
+                            <i class="fas fa-plus mr-1"></i>Ajouter un poste
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-6">
+                    <button type="button" onclick="prevStep()" class="btn-secondary">
+                        <i class="fas fa-arrow-left mr-2"></i>Précédent
+                    </button>
+                    <button type="button" onclick="nextStep()" class="btn-primary">
+                        Suivant <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Media and Publication -->
+            <div id="step3" class="step hidden">
+                <h2 class="text-xl font-semibold text-gray-900 mb-6">Médias et Publication</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Image principale *</label>
+                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                            <input type="file" id="featured_image" name="featured_image" accept="image/*" class="hidden">
+                            <div id="image-preview" class="hidden">
+                                <img id="preview-img" class="max-w-full h-48 mx-auto rounded-lg">
+                                <button type="button" onclick="removeImage()" class="mt-2 text-red-600 hover:text-red-700 text-sm">
+                                    Supprimer l'image
+                                </button>
+                            </div>
+                            <div id="image-upload" class="cursor-pointer" onclick="document.getElementById('featured_image').click()">
+                                <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-4"></i>
+                                <p class="text-gray-600">Cliquez pour télécharger une image</p>
+                                <p class="text-sm text-gray-500">PNG, JPG jusqu'à 5MB</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="video_url" class="block text-sm font-medium text-gray-700 mb-2">Vidéo de présentation (optionnel)</label>
+                        <input type="url" id="video_url" name="video_url"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                               placeholder="https://youtube.com/watch?v=...">
+                        <p class="text-sm text-gray-500 mt-1">URL YouTube ou Vimeo</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Statut de publication</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="radio" name="status" value="draft" checked class="mr-2">
+                                <span>Brouillon - Sauvegarder sans publier</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="status" value="pending" class="mr-2">
+                                <span>Soumettre pour validation - Publier après approbation</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-6">
+                    <button type="button" onclick="prevStep()" class="btn-secondary">
+                        <i class="fas fa-arrow-left mr-2"></i>Précédent
+                    </button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-save mr-2"></i>Créer le Projet
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+let currentStep = 1;
+let quill;
+
+// Initialize Quill editor
+document.addEventListener('DOMContentLoaded', function() {
+    quill = new Quill('#editor', {
+        theme: 'snow',
+        placeholder: 'Décrivez votre projet en détail...',
+        modules: {
+            toolbar: [
+                ['bold', 'italic', 'underline'],
+                ['link'],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                ['clean']
+            ]
+        }
+    });
+
+    loadCategories();
+    setupFormHandlers();
+});
+
+async function loadCategories() {
+    try {
+        const response = await api.request('/categories/');
+        if (response.ok) {
+            const categories = await response.json();
+            const select = document.getElementById('category');
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category.id;
+                option.textContent = category.name;
+                select.appendChild(option);
+            });
+        }
+    } catch (error) {
+        console.error('Error loading categories:', error);
+    }
+}
+
+function setupFormHandlers() {
+    // Character counter for short description
+    const shortDesc = document.getElementById('short_description');
+    shortDesc.addEventListener('input', function() {
+        const count = this.value.length;
+        const counter = this.nextElementSibling;
+        counter.textContent = `${count}/200 caractères`;
+        if (count > 200) {
+            counter.classList.add('text-red-500');
+        } else {
+            counter.classList.remove('text-red-500');
+        }
+    });
+
+    // Image upload handler
+    document.getElementById('featured_image').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('preview-img').src = e.target.result;
+                document.getElementById('image-preview').classList.remove('hidden');
+                document.getElementById('image-upload').classList.add('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Form submission
+    document.getElementById('projectForm').addEventListener('submit', handleSubmit);
+}
+
+function nextStep() {
+    if (validateStep(currentStep)) {
+        document.getElementById(`step${currentStep}`).classList.add('hidden');
+        currentStep++;
+        document.getElementById(`step${currentStep}`).classList.remove('hidden');
+        updateProgressBar();
+    }
+}
+
+function prevStep() {
+    document.getElementById(`step${currentStep}`).classList.add('hidden');
+    currentStep--;
+    document.getElementById(`step${currentStep}`).classList.remove('hidden');
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    // Update progress indicators
+    for (let i = 1; i <= 3; i++) {
+        const step = document.querySelector(`.flex:nth-child(${i*2-1}) .w-8`);
+        const text = document.querySelector(`.flex:nth-child(${i*2-1}) span`);
+        
+        if (i <= currentStep) {
+            step.classList.remove('bg-gray-200', 'text-gray-600');
+            step.classList.add('bg-primary-600', 'text-white');
+            text.classList.remove('text-gray-600');
+            text.classList.add('text-primary-600');
+        } else {
+            step.classList.remove('bg-primary-600', 'text-white');
+            step.classList.add('bg-gray-200', 'text-gray-600');
+            text.classList.remove('text-primary-600');
+            text.classList.add('text-gray-600');
+        }
+    }
+}
+
+function validateStep(step) {
+    const form = document.getElementById('projectForm');
+    const stepDiv = document.getElementById(`step${step}`);
+    const requiredFields = stepDiv.querySelectorAll('[required]');
+    
+    let isValid = true;
+    requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+            field.classList.add('border-red-500');
+            isValid = false;
+        } else {
+            field.classList.remove('border-red-500');
+        }
+    });
+
+    if (step === 1 && quill.getText().trim().length < 50) {
+        notifications.show('La description complète doit contenir au moins 50 caractères', 'error');
+        isValid = false;
+    }
+
+    return isValid;
+}
+
+function addBudgetItem() {
+    const container = document.getElementById('budget-breakdown');
+    const div = document.createElement('div');
+    div.className = 'flex items-center space-x-3';
+    div.innerHTML = `
+        <input type="text" placeholder="Poste de dépense" 
+               class="flex-1 px-3 py-2 border border-gray-300 rounded-md">
+        <input type="number" placeholder="Montant (FCFA)" 
+               class="w-32 px-3 py-2 border border-gray-300 rounded-md">
+        <button type="button" onclick="this.parentElement.remove()" class="text-red-600 hover:text-red-700">
+            <i class="fas fa-trash"></i>
+        </button>
+    `;
+    container.appendChild(div);
+}
+
+function removeImage() {
+    document.getElementById('featured_image').value = '';
+    document.getElementById('image-preview').classList.add('hidden');
+    document.getElementById('image-upload').classList.remove('hidden');
+}
+
+async function handleSubmit(e) {
+    e.preventDefault();
+    
+    if (!validateStep(3)) {
+        return;
+    }
+
+    const formData = new FormData();
+    const form = e.target;
+
+    // Basic fields
+    formData.append('title', form.title.value);
+    formData.append('category', form.category.value);
+    formData.append('country', form.country.value);
+    formData.append('short_description', form.short_description.value);
+    formData.append('full_description', quill.root.innerHTML);
+    formData.append('goal_amount', form.goal_amount.value);
+    formData.append('status', form.status.value);
+
+    // Calculate dates
+    const startDate = new Date();
+    const endDate = new Date();
+    endDate.setDate(startDate.getDate() + parseInt(form.duration.value));
+    
+    formData.append('start_date', startDate.toISOString().split('T')[0]);
+    formData.append('end_date', endDate.toISOString().split('T')[0]);
+
+    // Image
+    if (form.featured_image.files[0]) {
+        formData.append('featured_image', form.featured_image.files[0]);
+    }
+
+    // Video URL
+    if (form.video_url.value) {
+        formData.append('video_url', form.video_url.value);
+    }
+
+    // Budget breakdown
+    const budgetItems = [];
+    const budgetRows = document.querySelectorAll('#budget-breakdown .flex');
+    budgetRows.forEach(row => {
+        const inputs = row.querySelectorAll('input');
+        if (inputs[0].value && inputs[1].value) {
+            budgetItems.push({
+                item: inputs[0].value,
+                amount: parseFloat(inputs[1].value)
+            });
+        }
+    });
+    formData.append('budget_breakdown', JSON.stringify(budgetItems));
+
+    try {
+        const response = await api.request('/projects/', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            const project = await response.json();
+            notifications.show('Projet créé avec succès !', 'success');
+            setTimeout(() => {
+                window.location.href = `/projects/${project.id}/`;
+            }, 2000);
+        } else {
+            const error = await response.json();
+            notifications.show('Erreur lors de la création du projet', 'error');
+            console.error('Error:', error);
+        }
+    } catch (error) {
+        notifications.show('Erreur de connexion', 'error');
+        console.error('Error:', error);
+    }
+}
+</script>
+
+<!-- Quill CSS -->
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<!-- Quill JS -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+{% endblock %}

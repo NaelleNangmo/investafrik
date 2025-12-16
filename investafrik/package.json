@@ -1,0 +1,18 @@
+{
+  "name": "investafrik",
+  "version": "1.0.0",
+  "description": "Plateforme de crowdfunding africaine",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch",
+    "build-prod": "tailwindcss -i ./static/css/input.css -o ./static/css/output.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10"
+  },
+  "keywords": ["crowdfunding", "africa", "django", "tailwind"],
+  "author": "InvestAfrik Team",
+  "license": "MIT"
+}

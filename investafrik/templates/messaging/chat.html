@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Messages - InvestAfrik{% endblock %}
+
+{% block content %}
+<div class="h-screen bg-gray-50 flex">
+    <!-- Sidebar - Conversations List -->
+    <div class="w-1/3 bg-white border-r border-gray-200 flex flex-col">
+        <!-- Header -->
+        <div class="p-4 border-b border-gray-200">
+            <div class="flex items-center justify-between">
+                <h2 class="text-lg font-semibold text-gray-900">Messages</h2>
+                <button id="newConversationBtn" class="btn-primary text-sm px-3 py-2">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                    Nouveau
+                </button>
+            </div>
+            <div class="mt-3">
+                <input type="text" id="searchConversations" placeholder="Rechercher une conversation..." 
+                       class="input-field text-sm">
+            </div>
+        </div>
+
+        <!-- Conversations List -->
+        <div class="flex-1 overflow-y-auto">
+            <div id="conversationsList" class="divide-y divide-gray-200">
+                <!-- Conversations will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Chat Area -->
+    <div class="flex-1 flex flex-col">
+        <!-- Chat Header -->
+        <div id="chatHeader" class="bg-white border-b border-gray-200 p-4 hidden">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <img id="chatAvatar" class="w-10 h-10 rounded-full" src="" alt="">
+                    <div>
+                        <h3 id="chatName" class="font-semibold text-gray-900"></h3>
+                        <p id="chatStatus" class="text-sm text-gray-500"></p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button id="chatInfoBtn" class="p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Messages Area -->
+        <div class="flex-1 overflow-y-auto p-4" id="messagesContainer">
+            <div id="welcomeMessage" class="flex items-center justify-center h-full">
+                <div class="text-center">
+                    <svg class="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Bienvenue dans vos messages</h3>
+                    <p class="text-gray-500">Sélectionnez une conversation pour commencer à discuter</p>
+                </div>
+            </div>
+            <div id="messagesList" class="space-y-4 hidden">
+                <!-- Messages will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Message Input -->
+        <div id="messageInput" class="bg-white border-t border-gray-200 p-4 hidden">
+            <form id="messageForm" class="flex items-end space-x-3">
+                <div class="flex-1">
+                    <textarea id="messageText" rows="1" placeholder="Tapez votre message..." 
+                              class="input-field resize-none" style="min-height: 40px; max-height: 120px;"></textarea>
+                </div>
+                <button type="submit" class="btn-primary px-4 py-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- New Conversation Modal -->
+<div id="newConversationModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-lg max-w-md w-full p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">Nouvelle conversation</h3>
+                <button id="closeNewConversationModal" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <form id="newConversationForm">
+                <div class="space-y-4">
+                    <div>
+                        <label for="searchUsers" class="block text-sm font-medium text-gray-700">Rechercher un utilisateur</label>
+                        <input type="text" id="searchUsers" name="search" 
+                               class="input-field mt-1" placeholder="Nom ou email...">
+                    </div>
+                    
+                    <div id="userSearchResults" class="max-h-48 overflow-y-auto space-y-2 hidden">
+                        <!-- Search results will appear here -->
+                    </div>
+                    
+                    <div>
+                        <label for="initialMessage" class="block text-sm font-medium text-gray-700">Message initial (optionnel)</label>
+                        <textarea id="initialMessage" name="message" rows="3" 
+                                 

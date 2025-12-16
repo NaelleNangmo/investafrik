@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Comment ça marche - InvestAfrik{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-primary-600 to-secondary-600 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Comment ça marche ?</h1>
+                <p class="text-xl md:text-2xl text-primary-100 max-w-3xl mx-auto">
+                    Découvrez comment InvestAfrik révolutionne le financement participatif en Afrique
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Steps Section -->
+    <div class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">3 étapes simples</h2>
+                <p class="text-lg text-gray-600">Que vous soyez porteur de projet ou investisseur</p>
+            </div>
+
+            <!-- For Project Owners -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-center text-primary-600 mb-8">
+                    <i class="fas fa-lightbulb mr-2"></i>Pour les Porteurs de Projets
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="bg-primary-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold text-primary-600">1</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-3">Créez votre compte</h4>
+                        <p class="text-gray-600">Inscrivez-vous en tant que porteur de projet et complétez votre profil</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-primary-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold text-primary-600">2</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-3">Présentez votre projet</h4>
+                        <p class="text-gray-600">Décrivez votre projet, définissez vos objectifs et ajoutez des médias</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-primary-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold text-primary-600">3</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-3">Collectez des fonds</h4>
+                        <p class="text-gray-600">Partagez votre projet et recevez des investissements de la communauté</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- For Investors -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-center text-secondary-600 mb-8">
+                    <i class="fas fa-coins mr-2"></i>Pour les Investisseurs
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="bg-secondary-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold text-secondary-600">1</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-3">Explorez les projets</h4>
+                        <p class="text-gray-600">Découvrez des projets innovants dans différents secteurs africains</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-secondary-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold text-secondary-600">2</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-3">Investissez en toute sécurité</h4>
+                        <p class="text-gray-600">Choisissez vos montants et investissez via notre plateforme sécurisée</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-secondary-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold text-secondary-600">3</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-3">Suivez vos investissements</h4>
+                        <p class="text-gray-600">Recevez des mises à jour et suivez la progression de vos investissements</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="bg-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Pourquoi choisir InvestAfrik ?</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <i class="fas fa-shield-alt text-4xl text-primary-600 mb-4"></i>
+                    <h4 class="text-lg font-semibold mb-2">Sécurisé</h4>
+                    <p class="text-gray-600">Transactions sécurisées et données protégées</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-users text-4xl text-secondary-600 mb-4"></i>
+                    <h4 class="text-lg font-semibold mb-2">Communauté</h4>
+                    <p class="text-gray-600">Rejoignez une communauté d'entrepreneurs africains</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-chart-line text-4xl text-accent-600 mb-4"></i>
+                    <h4 class="text-lg font-semibold mb-2">Transparent</h4>
+                    <p class="text-gray-600">Suivi en temps réel de tous vos projets</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-mobile-alt text-4xl text-primary-600 mb-4"></i>
+                    <h4 class="text-lg font-semibold mb-2">Mobile</h4>
+                    <p class="text-gray-600">Accessible partout, sur tous vos appareils</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-gradient-to-r from-primary-600 to-secondary-600 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Prêt à commencer ?</h2>
+            <p class="text-xl mb-8">Rejoignez des milliers d'entrepreneurs et d'investisseurs africains</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="{% url 'accounts:register' %}" class="btn bg-white text-primary-600 hover:bg-gray-100 px-8 py-3">
+                    Créer un compte
+                </a>
+                <a href="{% url 'projects:list' %}" class="btn border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-3">
+                    Voir les projets
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

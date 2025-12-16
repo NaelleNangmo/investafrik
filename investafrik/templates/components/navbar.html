@@ -1,0 +1,281 @@
+{% load static %}
+<nav class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="{% url 'home' %}" class="flex items-center">
+                    <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=40&h=40&fit=crop&crop=center" 
+                         alt="InvestAfrik" class="h-8 w-8 rounded mr-2">
+                    <span class="text-xl font-bold text-gray-900">InvestAfrik</span>
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="{% url 'projects:list' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                    Projets
+                </a>
+                
+                <!-- Authenticated User Navigation -->
+                {% if user.is_authenticated %}
+                    {% if user.user_type == 'porteur' %}
+                        <a href="{% url 'projects:my_projects' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                            <i class="fas fa-folder mr-1"></i>Mes Projets
+                        </a>
+                    {% elif user.user_type == 'investisseur' %}
+                        <a href="{% url 'investments:my_investments' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                            <i class="fas fa-chart-line mr-1"></i>Mes Investissements
+                        </a>
+                    {% endif %}
+                    <a href="{% url 'messaging:conversations' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                        <i class="fas fa-comments mr-1"></i>Messages
+                    </a>
+                {% endif %}
+                
+                <!-- Public Navigation -->
+                <a href="/how-it-works/" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                    Comment ça marche
+                </a>
+                <a href="/about/" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                    À propos
+                </a>
+            </div>
+            
+            <!-- Auth Buttons / User Menu -->
+            <div class="hidden md:flex items-center space-x-4">
+                {% if user.is_authenticated %}
+                    <!-- Authenticated user menu -->
+                    <div id="user-menu" class="relative">
+                        <button onclick="toggleUserMenu()" class="flex items-center space-x-2 text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                            <i class="fas fa-user-circle text-lg"></i>
+                            <span>{{ user.get_short_name|default:user.email }}</span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div id="user-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                            <a href="{% url 'accounts:dashboard' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                            </a>
+                            <a href="{% url 'accounts:profile' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-user mr-2"></i>Mon Profil
+                            </a>
+                            <hr class="my-1">
+                            <button onclick="logout()" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-sign-out-alt mr-2"></i>Déconnexion
+                            </button>
+                        </div>
+                    </div>
+                {% else %}
+                    <!-- Not authenticated -->
+                    <div id="guest-buttons" class="flex items-center space-x-4">
+                        <a href="{% url 'accounts:login' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                            Connexion
+                        </a>
+                        <a href="{% url 'accounts:register' %}" class="btn-primary text-sm px-4 py-2">
+                            Inscription
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button type="button" class="text-gray-700 hover:text-primary-600 focus:outline-none focus:text-primary-600" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4">
+            <div class="flex flex-col space-y-2">
+                <a href="{% url 'projects:list' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                    Projets
+                </a>
+                
+                <!-- Mobile Auth Navigation -->
+                {% if user.is_authenticated %}
+                    {% if user.user_type == 'porteur' %}
+                        <a href="{% url 'projects:my_projects' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                            <i class="fas fa-folder mr-1"></i>Mes Projets
+                        </a>
+                    {% elif user.user_type == 'investisseur' %}
+                        <a href="{% url 'investments:my_investments' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                            <i class="fas fa-chart-line mr-1"></i>Mes Investissements
+                        </a>
+                    {% endif %}
+                    <a href="{% url 'messaging:conversations' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                        <i class="fas fa-comments mr-1"></i>Messages
+                    </a>
+                    <a href="{% url 'accounts:dashboard' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                        <i class="fas fa-tachometer-alt mr-1"></i>Dashboard
+                    </a>
+                    <a href="{% url 'accounts:profile' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                        <i class="fas fa-user mr-1"></i>Mon Profil
+                    </a>
+                {% endif %}
+                
+                <a href="/how-it-works/" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                    Comment ça marche
+                </a>
+                <a href="/about/" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                    À propos
+                </a>
+                
+                <!-- Mobile Auth Buttons -->
+                {% if user.is_authenticated %}
+                    <div class="border-t pt-2 mt-2">
+                        <button onclick="logout()" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors w-full text-left">
+                            <i class="fas fa-sign-out-alt mr-1"></i>Déconnexion
+                        </button>
+                    </div>
+                {% else %}
+                    <div class="border-t pt-2 mt-2">
+                        <a href="{% url 'accounts:login' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                            Connexion
+                        </a>
+                        <a href="{% url 'accounts:register' %}" class="btn-primary text-sm px-4 py-2 text-center">
+                            Inscription
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+}
+
+function toggleUserMenu() {
+    const dropdown = document.getElementById('user-dropdown');
+    dropdown.classList.toggle('hidden');
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+    const userMenu = document.querySelector('[onclick="toggleUserMenu()"]');
+    const dropdown = document.getElementById('user-dropdown');
+    
+    if (userMenu && dropdown && !userMenu.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.classList.add('hidden');
+    }
+});
+
+function logout() {
+    // Afficher un indicateur de chargement
+    const logoutButtons = document.querySelectorAll('[onclick="logout()"]');
+    logoutButtons.forEach(btn => {
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Déconnexion...';
+        btn.disabled = true;
+    });
+    
+    // Réinitialiser immédiatement l'interface AVANT la requête
+    resetUIToGuestState();
+    
+    // Clear all local storage and session storage
+    localStorage.clear();
+    sessionStorage.clear();
+    
+    // Clear all cookies
+    document.cookie.split(";").forEach(function(c) { 
+        document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+    });
+    
+    // Get CSRF token from meta tag or form
+    let csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+    if (!csrfToken) {
+        csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
+    }
+    if (!csrfToken) {
+        // Try to get from cookies
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            const [name, value] = cookie.trim().split('=');
+            if (name === 'csrftoken') {
+                csrfToken = value;
+                break;
+            }
+        }
+    }
+    
+    // Logout from Django session
+    fetch('/auth/logout/', {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrfToken || '',
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        credentials: 'same-origin'
+    }).then(response => {
+        // Toujours rediriger vers l'accueil après déconnexion
+        window.location.href = '/';
+    }).catch((error) => {
+        console.error('Logout error:', error);
+        // En cas d'erreur, forcer la redirection
+        window.location.href = '/';
+    });
+}
+
+// Fonction pour réinitialiser l'interface utilisateur
+function resetUIToGuestState() {
+    console.log('Réinitialisation de l\'interface utilisateur...');
+    
+    // Masquer complètement le menu utilisateur
+    const userMenu = document.getElementById('user-menu');
+    if (userMenu) {
+        userMenu.style.display = 'none';
+        userMenu.remove(); // Supprimer complètement l'élément
+    }
+    
+    // Masquer tous les liens de navigation authentifiés
+    const authLinks = document.querySelectorAll('a[href*="my-projects"], a[href*="my-investments"], a[href*="dashboard"], a[href*="messaging"]');
+    authLinks.forEach(link => {
+        link.style.display = 'none';
+        link.parentElement?.remove(); // Supprimer le parent si c'est un li
+    });
+    
+    // Créer et afficher les boutons de connexion/inscription
+    const authButtonsContainer = document.querySelector('.hidden.md\\:flex.items-center.space-x-4');
+    if (authButtonsContainer) {
+        authButtonsContainer.innerHTML = `
+            <div id="guest-buttons" class="flex items-center space-x-4">
+                <a href="/auth/login/" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                    Connexion
+                </a>
+                <a href="/auth/register/" class="btn-primary text-sm px-4 py-2">
+                    Inscription
+                </a>
+            </div>
+        `;
+    }
+    
+    // Réinitialiser le menu mobile
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) {
+        // Supprimer tous les liens authentifiés du menu mobile
+        const mobileAuthLinks = mobileMenu.querySelectorAll('a[href*="my-projects"], a[href*="my-investments"], a[href*="dashboard"], a[href*="messaging"]');
+        mobileAuthLinks.forEach(link => {
+            link.remove();
+        });
+        
+        // Réinitialiser la section des boutons mobiles
+        const mobileBorder = mobileMenu.querySelector('.border-t');
+        if (mobileBorder) {
+            mobileBorder.innerHTML = `
+                <a href="/auth/login/" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors block">
+                    Connexion
+                </a>
+                <a href="/auth/register/" class="btn-primary text-sm px-4 py-2 text-center block mt-2">
+                    Inscription
+                </a>
+            `;
+        }
+    }
+    
+    console.log('Interface utilisateur réinitialisée');
+}
+</script>

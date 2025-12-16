@@ -1,0 +1,414 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}InvestAfrik - Financez l'avenir de l'Afrique{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-br from-primary-500 to-secondary-600 text-white">
+    <div class="absolute inset-0 bg-black opacity-20"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-6xl font-display font-bold mb-6 animate-fade-in">
+                Financez l'avenir de l'Afrique
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-slide-up">
+                Connectez-vous avec des entrepreneurs africains visionnaires et investissez dans des projets qui transforment le continent.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-bounce-in">
+                <a href="{% url 'projects:list' %}" class="btn bg-white text-primary-600 hover:bg-gray-100 text-lg px-8 py-3">
+                    Découvrir les projets
+                </a>
+                <a href="#" class="btn border-2 border-white text-white hover:bg-white hover:text-primary-600 text-lg px-8 py-3">
+                    Lancer mon projet
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="animate-fade-in">
+                <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-2" id="statsProjects">250+</div>
+                <div class="text-gray-600">Projets financés</div>
+            </div>
+            <div class="animate-fade-in">
+                <div class="text-3xl md:text-4xl font-bold text-secondary-600 mb-2" id="statsAmount">15M+</div>
+                <div class="text-gray-600">FCFA levés</div>
+            </div>
+            <div class="animate-fade-in">
+                <div class="text-3xl md:text-4xl font-bold text-accent-600 mb-2" id="statsInvestors">5,000+</div>
+                <div class="text-gray-600">Investisseurs</div>
+            </div>
+            <div class="animate-fade-in">
+                <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-2">23</div>
+                <div class="text-gray-600">Pays africains</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
+                Projets à la Une
+            </h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Découvrez les projets les plus prometteurs et soutenez l'innovation africaine
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="featuredProjects">
+            <!-- Featured projects will be loaded here -->
+        </div>
+        
+        <div class="text-center mt-12">
+            <a href="{% url 'projects:list' %}" class="btn-primary text-lg px-8 py-3">
+                Voir tous les projets
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
+                Explorez par Catégories
+            </h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Trouvez des projets dans les secteurs qui vous passionnent
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6" id="categoriesGrid">
+            <!-- Categories will be loaded here -->
+        </div>
+    </div>
+</section>
+
+<!-- How it Works Section -->
+<section class="py-16 bg-gradient-to-br from-primary-50 to-secondary-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
+                Comment ça marche ?
+            </h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Trois étapes simples pour financer ou investir dans des projets africains
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Pour les porteurs -->
+            <div class="text-center">
+                <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-10 h-10 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">1. Créez votre projet</h3>
+                <p class="text-gray-600">
+                    Présentez votre idée, définissez votre objectif de financement et ajoutez des médias attractifs
+                </p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-20 h-20 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-10 h-10 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">2. Attirez des investisseurs</h3>
+                <p class="text-gray-600">
+                    Partagez votre projet, communiquez avec la communauté et recevez des investissements
+                </p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-20 h-20 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-10 h-10 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">3. Réalisez votre vision</h3>
+                <p class="text-gray-600">
+                    Une fois financé, concrétisez votre projet et tenez vos investisseurs informés des progrès
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
+                Ils nous font confiance
+            </h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Découvrez les témoignages de nos porteurs de projets et investisseurs
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-gray-50 rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <img class="w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Amina Diallo">
+                    <div class="ml-4">
+                        <h4 class="font-semibold text-gray-900">Amina Diallo</h4>
+                        <p class="text-sm text-gray-600">Porteur de projet, Sénégal</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 italic">
+                    "Grâce à InvestAfrik, j'ai pu financer ma ferme aquaponique. La plateforme est intuitive et la communauté très engagée."
+                </p>
+            </div>
+            
+            <div class="bg-gray-50 rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <img class="w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Jean Dupont">
+                    <div class="ml-4">
+                        <h4 class="font-semibold text-gray-900">Jean Dupont</h4>
+                        <p class="text-sm text-gray-600">Investisseur, Cameroun</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 italic">
+                    "J'ai investi dans 5 projets via InvestAfrik. C'est gratifiant de soutenir l'innovation africaine tout en diversifiant mon portefeuille."
+                </p>
+            </div>
+            
+            <div class="bg-gray-50 rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <img class="w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Fatou Ba">
+                    <div class="ml-4">
+                        <h4 class="font-semibold text-gray-900">Fatou Ba</h4>
+                        <p class="text-sm text-gray-600">Porteur de projet, Cameroun</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 italic">
+                    "Mon école numérique a dépassé son objectif de financement. Les outils de communication avec les investisseurs sont excellents."
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
+                Questions Fréquentes
+            </h2>
+            <p class="text-xl text-gray-600">
+                Trouvez rapidement les réponses à vos questions
+            </p>
+        </div>
+        
+        <div class="space-y-4" id="faqAccordion">
+            <div class="bg-white rounded-lg shadow">
+                <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(0)">
+                    <span class="font-semibold text-gray-900">Comment créer un projet sur InvestAfrik ?</span>
+                    <svg class="w-5 h-5 text-gray-500 transform transition-transform" id="faq-icon-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div class="px-6 pb-4 hidden" id="faq-content-0">
+                    <p class="text-gray-600">
+                        Inscrivez-vous comme porteur de projet, complétez votre profil, puis cliquez sur "Créer un projet". 
+                        Suivez notre assistant en 5 étapes pour présenter votre idée, définir votre objectif et ajouter des médias.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow">
+                <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(1)">
+                    <span class="font-semibold text-gray-900">Quels sont les frais sur InvestAfrik ?</span>
+                    <svg class="w-5 h-5 text-gray-500 transform transition-transform" id="faq-icon-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div class="px-6 pb-4 hidden" id="faq-content-1">
+                    <p class="text-gray-600">
+                        InvestAfrik prélève 5% sur les fonds levés avec succès. Aucun frais n'est appliqué si votre projet n'atteint pas son objectif. 
+                        Les frais de transaction dépendent du mode de paiement choisi.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow">
+                <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(2)">
+                    <span class="font-semibold text-gray-900">Comment investir dans un projet ?</span>
+                    <svg class="w-5 h-5 text-gray-500 transform transition-transform" id="faq-icon-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div class="px-6 pb-4 hidden" id="faq-content-2">
+                    <p class="text-gray-600">
+                        Parcourez les projets, sélectionnez celui qui vous intéresse, cliquez sur "Investir maintenant", 
+                        choisissez votre montant et votre méthode de paiement. Vous pouvez payer par Mobile Money, virement ou carte bancaire.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow">
+                <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(3)">
+                    <span class="font-semibold text-gray-900">Que se passe-t-il si un projet n'atteint pas son objectif ?</span>
+                    <svg class="w-5 h-5 text-gray-500 transform transition-transform" id="faq-icon-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div class="px-6 pb-4 hidden" id="faq-content-3">
+                    <p class="text-gray-600">
+                        Si un projet n'atteint pas son objectif de financement dans les délais impartis, 
+                        tous les investissements sont remboursés intégralement aux investisseurs. Aucun frais n'est prélevé.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Load dynamic content
+async function loadHomePageData() {
+    try {
+        // Load platform statistics
+        const statsResponse = await api.request('/stats/platform/');
+        if (statsResponse.ok) {
+            const stats = await statsResponse.json();
+            updateStats(stats);
+        }
+        
+        // Load featured projects
+        const projectsResponse = await api.request('/projects/?is_featured=true&limit=6');
+        if (projectsResponse.ok) {
+            const projects = await projectsResponse.json();
+            renderFeaturedProjects(projects.results || projects);
+        }
+        
+        // Load categories
+        const categoriesResponse = await api.request('/categories/');
+        if (categoriesResponse.ok) {
+            const categories = await categoriesResponse.json();
+            renderCategories(categories.slice(0, 10)); // Show first 10 categories
+        }
+        
+    } catch (error) {
+        console.error('Error loading home page data:', error);
+    }
+}
+
+function updateStats(stats) {
+    if (stats.total_projects) {
+        document.getElementById('statsProjects').textContent = stats.total_projects + '+';
+    }
+    if (stats.total_amount_raised) {
+        const amount = parseFloat(stats.total_amount_raised);
+        if (amount >= 1000000) {
+            document.getElementById('statsAmount').textContent = (amount / 1000000).toFixed(1) + 'M+';
+        } else {
+            document.getElementById('statsAmount').textContent = utils.formatCurrency(amount);
+        }
+    }
+    if (stats.total_investors) {
+        document.getElementById('statsInvestors').textContent = stats.total_investors + '+';
+    }
+}
+
+function renderFeaturedProjects(projects) {
+    const container = document.getElementById('featuredProjects');
+    
+    container.innerHTML = projects.map(project => `
+        <div class="card-hover">
+            <div class="relative">
+                <img src="${project.featured_image || 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop'}" 
+                     alt="${project.title}" class="w-full h-48 object-cover">
+                <div class="absolute top-4 left-4">
+                    <span class="badge badge-primary">${project.category.name}</span>
+                </div>
+                <div class="absolute top-4 right-4">
+                    <button class="w-8 h-8 bg-white bg-opacity-90 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="font-semibold text-lg mb-2 line-clamp-2">${project.title}</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-3">${project.short_description}</p>
+                
+                <div class="flex items-center space-x-2 mb-4">
+                    <img src="${project.owner.profile_picture || '/static/images/default-avatar.png'}" 
+                         alt="${project.owner.first_name}" class="w-8 h-8 rounded-full">
+                    <span class="text-sm text-gray-700">${project.owner.first_name} ${project.owner.last_name}</span>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="flex justify-between text-sm text-gray-600 mb-1">
+                        <span>${utils.formatCurrency(project.current_amount)}</span>
+                        <span>${project.funding_percentage.toFixed(1)}%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2 rounded-full transition-all duration-500" 
+                             style="width: ${Math.min(project.funding_percentage, 100)}%"></div>
+                    </div>
+                    <div class="flex justify-between text-sm text-gray-600 mt-1">
+                        <span>Objectif: ${utils.formatCurrency(project.goal_amount)}</span>
+                        <span>${project.days_remaining} jours</span>
+                    </div>
+                </div>
+                
+                <a href="/projects/${project.id}/" class="btn-primary w-full text-center">
+                    Voir le projet
+                </a>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderCategories(categories) {
+    const container = document.getElementById('categoriesGrid');
+    
+    container.innerHTML = categories.map(category => `
+        <a href="/projects/?category=${category.slug}" class="group block">
+            <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" 
+                     style="background-color: ${category.color_hex}20;">
+                    <i class="${category.icon_class} text-2xl" style="color: ${category.color_hex};"></i>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
+                    ${category.name}
+                </h3>
+                <p class="text-sm text-gray-600">${category.project_count || 0} projets</p>
+            </div>
+        </a>
+    `).join('');
+}
+
+function toggleFaq(index) {
+    const content = document.getElementById(`faq-content-${index}`);
+    const icon = document.getElementById(`faq-icon-${index}`);
+    
+    if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+    } else {
+        content.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+    }
+}
+
+// Initialize home page
+document.addEventListener('DOMContentLoaded', loadHomePageData);
+</script>
+{% endblock %}

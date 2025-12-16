@@ -1,0 +1,378 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inscription - InvestAfrik{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto">
+        <!-- Logo et titre -->
+        <div class="text-center mb-8">
+            <img class="mx-auto h-12 w-12 rounded-lg" src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=48&h=48&fit=crop&crop=center" alt="InvestAfrik">
+            <h2 class="mt-6 text-3xl font-display font-bold text-gray-900">
+                Rejoignez InvestAfrik
+            </h2>
+            <p class="mt-2 text-sm text-gray-600">
+                Déjà membre ?
+                <a href="{% url 'accounts:login' %}" class="font-medium text-primary-600 hover:text-primary-500">
+                    Connectez-vous ici
+                </a>
+            </p>
+        </div>
+
+        <!-- Formulaire multi-étapes -->
+        <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+            <!-- Progress bar -->
+            <div class="bg-gray-50 px-6 py-4">
+                <div class="flex items-center">
+                    <div class="flex items-center text-sm font-medium text-primary-600">
+                        <span class="flex items-center justify-center w-8 h-8 bg-primary-600 text-white rounded-full mr-3">1</span>
+                        Informations personnelles
+                    </div>
+                    <div class="flex-1 mx-4 h-1 bg-gray-200 rounded">
+                        <div class="h-1 bg-primary-600 rounded transition-all duration-300" id="progressBar" style="width: 33%"></div>
+                    </div>
+                    <div class="flex items-center text-sm font-medium text-gray-400" id="step2">
+                        <span class="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-400 rounded-full mr-3">2</span>
+                        Type de compte
+                    </div>
+                    <div class="flex-1 mx-4 h-1 bg-gray-200 rounded"></div>
+                    <div class="flex items-center text-sm font-medium text-gray-400" id="step3">
+                        <span class="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-400 rounded-full mr-3">3</span>
+                        Finalisation
+                    </div>
+                </div>
+            </div>
+
+            <form id="registerForm" class="px-6 py-8">
+                <!-- Étape 1: Informations personnelles -->
+                <div id="step-1" class="step-content">
+                    <h3 class="text-lg font-medium text-gray-900 mb-6">Vos informations personnelles</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="first_name" class="block text-sm font-medium text-gray-700">Prénom *</label>
+                            <input type="text" id="first_name" name="first_name" required 
+                                   class="input-field mt-1" placeholder="Votre prénom">
+                        </div>
+                        <div>
+                            <label for="last_name" class="block text-sm font-medium text-gray-700">Nom *</label>
+                            <input type="text" id="last_name" name="last_name" required 
+                                   class="input-field mt-1" placeholder="Votre nom">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email *</label>
+                            <input type="email" id="email" name="email" required 
+                                   class="input-field mt-1" placeholder="votre@email.com">
+                        </div>
+                        <div>
+                            <label for="phone_number" class="block text-sm font-medium text-gray-700">Téléphone</label>
+                            <input type="tel" id="phone_number" name="phone_number" 
+                                   class="input-field mt-1" placeholder="+237 XXX XXX XXX">
+                        </div>
+                        <div>
+                            <label for="country" class="block text-sm font-medium text-gray-700">Pays *</label>
+                            <select id="country" name="country" required class="input-field mt-1">
+                                <option value="">Sélectionnez votre pays</option>
+                                <option value="CM">Cameroun</option>
+                                <option value="SN">Sénégal</option>
+                                <option value="CI">Côte d'Ivoire</option>
+                                <option value="BJ">Bénin</option>
+                                <option value="TG">Togo</option>
+                                <option value="BF">Burkina Faso</option>
+                                <option value="ML">Mali</option>
+                                <option value="NE">Niger</option>
+                                <option value="GN">Guinée</option>
+                                <option value="CD">RDC</option>
+                                <option value="CG">Congo</option>
+                                <option value="GA">Gabon</option>
+                                <option value="TD">Tchad</option>
+                                <option value="CF">RCA</option>
+                                <option value="RW">Rwanda</option>
+                                <option value="BI">Burundi</option>
+                                <option value="KE">Kenya</option>
+                                <option value="TZ">Tanzanie</option>
+                                <option value="UG">Uganda</option>
+                                <option value="NG">Nigeria</option>
+                                <option value="GH">Ghana</option>
+                                <option value="MG">Madagascar</option>
+                                <option value="MU">Maurice</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="username" class="block text-sm font-medium text-gray-700">Nom d'utilisateur *</label>
+                            <input type="text" id="username" name="username" required 
+                                   class="input-field mt-1" placeholder="nom_utilisateur">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Étape 2: Type de compte -->
+                <div id="step-2" class="step-content hidden">
+                    <h3 class="text-lg font-medium text-gray-900 mb-6">Quel type de compte souhaitez-vous ?</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="relative">
+                            <input type="radio" id="porteur" name="user_type" value="porteur" class="sr-only">
+                            <label for="porteur" class="block p-6 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-primary-300 transition-colors user-type-card">
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                        </svg>
+                                    </div>
+                                    <h4 class="text-lg font-semibold text-gray-900 mb-2">Porteur de Projet</h4>
+                                    <p class="text-sm text-gray-600">Je veux créer et financer mes projets entrepreneuriaux</p>
+                                    <ul class="mt-4 text-xs text-gray-500 space-y-1">
+                                        <li>• Créer des projets</li>
+                                        <li>• Recevoir des investissements</li>
+                                        <li>• Communiquer avec les investisseurs</li>
+                                    </ul>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="relative">
+                            <input type="radio" id="investisseur" name="user_type" value="investisseur" class="sr-only">
+                            <label for="investisseur" class="block p-6 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-primary-300 transition-colors user-type-card">
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <svg class="w-8 h-8 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <h4 class="text-lg font-semibold text-gray-900 mb-2">Investisseur</h4>
+                                    <p class="text-sm text-gray-600">Je veux investir dans des projets prometteurs</p>
+                                    <ul class="mt-4 text-xs text-gray-500 space-y-1">
+                                        <li>• Découvrir des projets</li>
+                                        <li>• Investir et suivre mes placements</li>
+                                        <li>• Échanger avec les porteurs</li>
+                                    </ul>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Étape 3: Finalisation -->
+                <div id="step-3" class="step-content hidden">
+                    <h3 class="text-lg font-medium text-gray-900 mb-6">Finalisez votre inscription</h3>
+                    <div class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="password" class="block text-sm font-medium text-gray-700">Mot de passe *</label>
+                                <input type="password" id="password" name="password" required 
+                                       class="input-field mt-1" placeholder="Minimum 8 caractères">
+                            </div>
+                            <div>
+                                <label for="password_confirm" class="block text-sm font-medium text-gray-700">Confirmer le mot de passe *</label>
+                                <input type="password" id="password_confirm" name="password_confirm" required 
+                                       class="input-field mt-1" placeholder="Répétez votre mot de passe">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="bio" class="block text-sm font-medium text-gray-700">Bio (optionnel)</label>
+                            <textarea id="bio" name="bio" rows="3" 
+                                      class="input-field mt-1" placeholder="Parlez-nous un peu de vous..."></textarea>
+                        </div>
+                        <div class="flex items-center">
+                            <input id="terms" name="terms" type="checkbox" required
+                                   class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded">
+                            <label for="terms" class="ml-2 block text-sm text-gray-900">
+                                J'accepte les <a href="#" class="text-primary-600 hover:text-primary-500">conditions d'utilisation</a> 
+                                et la <a href="#" class="text-primary-600 hover:text-primary-500">politique de confidentialité</a>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Boutons de navigation -->
+                <div class="flex justify-between mt-8 pt-6 border-t border-gray-200">
+                    <button type="button" id="prevBtn" class="btn-outline hidden">
+                        Précédent
+                    </button>
+                    <div class="flex-1"></div>
+                    <button type="button" id="nextBtn" class="btn-primary">
+                        Suivant
+                    </button>
+                    <button type="submit" id="submitBtn" class="btn-primary hidden">
+                        <span id="submitText">Créer mon compte</span>
+                        <svg id="submitSpinner" class="hidden animate-spin ml-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+let currentStep = 1;
+const totalSteps = 3;
+
+// Navigation entre les étapes
+document.getElementById('nextBtn').addEventListener('click', function() {
+    if (validateStep(currentStep)) {
+        if (currentStep < totalSteps) {
+            currentStep++;
+            showStep(currentStep);
+        }
+    }
+});
+
+document.getElementById('prevBtn').addEventListener('click', function() {
+    if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+    }
+});
+
+// Gestion des cartes de type d'utilisateur
+document.querySelectorAll('input[name="user_type"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+        document.querySelectorAll('.user-type-card').forEach(card => {
+            card.classList.remove('border-primary-500', 'bg-primary-50');
+            card.classList.add('border-gray-200');
+        });
+        
+        if (this.checked) {
+            const label = document.querySelector(`label[for="${this.id}"]`);
+            label.classList.remove('border-gray-200');
+            label.classList.add('border-primary-500', 'bg-primary-50');
+        }
+    });
+});
+
+function showStep(step) {
+    // Masquer toutes les étapes
+    document.querySelectorAll('.step-content').forEach(content => {
+        content.classList.add('hidden');
+    });
+    
+    // Afficher l'étape actuelle
+    document.getElementById(`step-${step}`).classList.remove('hidden');
+    
+    // Mettre à jour la barre de progression
+    const progressBar = document.getElementById('progressBar');
+    progressBar.style.width = `${(step / totalSteps) * 100}%`;
+    
+    // Mettre à jour les indicateurs d'étapes
+    for (let i = 1; i <= totalSteps; i++) {
+        const stepElement = document.getElementById(`step${i}`);
+        if (stepElement) {
+            const circle = stepElement.querySelector('span');
+            if (i <= step) {
+                stepElement.classList.remove('text-gray-400');
+                stepElement.classList.add('text-primary-600');
+                circle.classList.remove('bg-gray-200', 'text-gray-400');
+                circle.classList.add('bg-primary-600', 'text-white');
+            } else {
+                stepElement.classList.remove('text-primary-600');
+                stepElement.classList.add('text-gray-400');
+                circle.classList.remove('bg-primary-600', 'text-white');
+                circle.classList.add('bg-gray-200', 'text-gray-400');
+            }
+        }
+    }
+    
+    // Gérer la visibilité des boutons
+    document.getElementById('prevBtn').classList.toggle('hidden', step === 1);
+    document.getElementById('nextBtn').classList.toggle('hidden', step === totalSteps);
+    document.getElementById('submitBtn').classList.toggle('hidden', step !== totalSteps);
+}
+
+function validateStep(step) {
+    let isValid = true;
+    
+    if (step === 1) {
+        const requiredFields = ['first_name', 'last_name', 'email', 'country', 'username'];
+        requiredFields.forEach(field => {
+            const input = document.getElementById(field);
+            if (!input.value.trim()) {
+                input.classList.add('border-red-500');
+                isValid = false;
+            } else {
+                input.classList.remove('border-red-500');
+            }
+        });
+    } else if (step === 2) {
+        const userType = document.querySelector('input[name="user_type"]:checked');
+        if (!userType) {
+            notifications.show('Veuillez sélectionner un type de compte', 'error');
+            isValid = false;
+        }
+    }
+    
+    return isValid;
+}
+
+// Soumission du formulaire
+document.getElementById('registerForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const submitBtn = document.getElementById('submitBtn');
+    const submitText = document.getElementById('submitText');
+    const submitSpinner = document.getElementById('submitSpinner');
+    
+    // Validation finale
+    if (!validateStep(3)) return;
+    
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('password_confirm').value;
+    
+    if (password !== passwordConfirm) {
+        notifications.show('Les mots de passe ne correspondent pas', 'error');
+        return;
+    }
+    
+    // Show loading state
+    submitBtn.disabled = true;
+    submitText.textContent = 'Création du compte...';
+    submitSpinner.classList.remove('hidden');
+    
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries());
+    
+    try {
+        const response = await api.post('/api/auth/register/', data);
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            notifications.show('Compte créé avec succès ! Redirection...', 'success');
+            
+            // Store tokens
+            localStorage.setItem('access_token', result.tokens.access);
+            localStorage.setItem('refresh_token', result.tokens.refresh);
+            
+            setTimeout(() => {
+                if (result.user.user_type === 'porteur') {
+                    window.location.href = '/auth/dashboard/porteur/';
+                } else {
+                    window.location.href = '/auth/dashboard/investisseur/';
+                }
+            }, 1500);
+        } else {
+            const errors = result.errors || result;
+            let errorMessage = 'Erreur lors de la création du compte';
+            
+            if (typeof errors === 'object') {
+                errorMessage = Object.values(errors).flat().join(', ');
+            } else if (typeof errors === 'string') {
+                errorMessage = errors;
+            }
+            
+            notifications.show(errorMessage, 'error');
+        }
+    } catch (error) {
+        notifications.show('Erreur de connexion. Veuillez réessayer.', 'error');
+    } finally {
+        // Reset button state
+        submitBtn.disabled = false;
+        submitText.textContent = 'Créer mon compte';
+        submitSpinner.classList.add('hidden');
+    }
+});
+</script>
+{% endblock %}

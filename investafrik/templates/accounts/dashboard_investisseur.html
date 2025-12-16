@@ -1,0 +1,263 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard Investisseur - InvestAfrik{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <div class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Dashboard Investisseur</h1>
+                    <p class="text-gray-600">Suivez vos investissements et découvrez de nouveaux projets</p>
+                </div>
+                <a href="{% url 'projects:list' %}" class="btn-primary">
+                    <i class="fas fa-search mr-2"></i>Découvrir des Projets
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-blue-100">
+                        <i class="fas fa-hand-holding-usd text-blue-600 text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Investissements</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="totalInvestments">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-green-100">
+                        <i class="fas fa-coins text-green-600 text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Montant Investi</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="totalInvested">0 FCFA</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-yellow-100">
+                        <i class="fas fa-chart-line text-yellow-600 text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Projets Financés</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="successfulProjects">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-purple-100">
+                        <i class="fas fa-wallet text-purple-600 text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Budget Disponible</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="availableBudget">0 FCFA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-900">Actions Rapides</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a href="{% url 'projects:list' %}" class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                        <i class="fas fa-search text-primary-600 text-2xl mr-4"></i>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Découvrir des Projets</h3>
+                            <p class="text-sm text-gray-600">Trouvez votre prochain investissement</p>
+                        </div>
+                    </a>
+
+                    <a href="{% url 'investments:my_investments' %}" class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                        <i class="fas fa-chart-pie text-blue-600 text-2xl mr-4"></i>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Mon Portefeuille</h3>
+                            <p class="text-sm text-gray-600">Suivez vos investissements</p>
+                        </div>
+                    </a>
+
+                    <a href="{% url 'messaging:conversations' %}" class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                        <i class="fas fa-comments text-green-600 text-2xl mr-4"></i>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Messages</h3>
+                            <p class="text-sm text-gray-600">Échangez avec les porteurs</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Recent Investments -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                    <h2 class="text-lg font-semibold text-gray-900">Investissements Récents</h2>
+                    <a href="{% url 'investments:my_investments' %}" class="text-primary-600 hover:text-primary-700 text-sm font-medium">
+                        Voir tous
+                    </a>
+                </div>
+                <div class="p-6">
+                    <div id="recentInvestments" class="space-y-4">
+                        <!-- Investments will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommended Projects -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold text-gray-900">Projets Recommandés</h2>
+                </div>
+                <div class="p-6">
+                    <div id="recommendedProjects" class="space-y-4">
+                        <!-- Recommended projects will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Load dashboard data
+async function loadDashboardData() {
+    try {
+        // Load user profile for budget
+        const profileResponse = await api.request('/auth/profile/');
+        if (profileResponse.ok) {
+            const profile = await profileResponse.json();
+            document.getElementById('availableBudget').textContent = utils.formatCurrency(profile.available_budget || 0);
+        }
+
+        // Load user investments
+        const investmentsResponse = await api.request('/investments/?investor=me');
+        if (investmentsResponse.ok) {
+            const investments = await investmentsResponse.json();
+            updateInvestmentStats(investments.results || investments);
+            renderRecentInvestments(investments.results || investments);
+        }
+
+        // Load recommended projects
+        const projectsResponse = await api.request('/projects/?status=active&limit=5');
+        if (projectsResponse.ok) {
+            const projects = await projectsResponse.json();
+            renderRecommendedProjects(projects.results || projects);
+        }
+    } catch (error) {
+        console.error('Error loading dashboard data:', error);
+    }
+}
+
+function updateInvestmentStats(investments) {
+    const totalInvestments = investments.length;
+    const totalInvested = investments.reduce((sum, inv) => sum + parseFloat(inv.amount || 0), 0);
+    const successfulProjects = new Set(investments.filter(inv => inv.project.status === 'successful').map(inv => inv.project.id)).size;
+
+    document.getElementById('totalInvestments').textContent = totalInvestments;
+    document.getElementById('totalInvested').textContent = utils.formatCurrency(totalInvested);
+    document.getElementById('successfulProjects').textContent = successfulProjects;
+}
+
+function renderRecentInvestments(investments) {
+    const container = document.getElementById('recentInvestments');
+    
+    if (investments.length === 0) {
+        container.innerHTML = `
+            <div class="text-center py-8">
+                <i class="fas fa-hand-holding-usd text-gray-400 text-4xl mb-4"></i>
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Aucun investissement</h3>
+                <p class="text-gray-600 mb-4">Découvrez des projets prometteurs et commencez à investir</p>
+                <a href="/projects/" class="btn-primary">Découvrir des Projets</a>
+            </div>
+        `;
+        return;
+    }
+
+    container.innerHTML = investments.slice(0, 5).map(investment => `
+        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+            <div class="flex items-center space-x-4">
+                <img src="${investment.project.featured_image || '/static/images/default-project.jpg'}" 
+                     alt="${investment.project.title}" class="w-12 h-12 rounded-lg object-cover">
+                <div>
+                    <h3 class="font-semibold text-gray-900">${investment.project.title}</h3>
+                    <p class="text-sm text-gray-600">${utils.formatCurrency(investment.amount)}</p>
+                    <p class="text-xs text-gray-500">${utils.formatDate(investment.invested_at)}</p>
+                </div>
+            </div>
+            <div class="text-right">
+                <span class="px-2 py-1 text-xs rounded-full ${getPaymentStatusClass(investment.payment_status)}">
+                    ${getPaymentStatusText(investment.payment_status)}
+                </span>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderRecommendedProjects(projects) {
+    const container = document.getElementById('recommendedProjects');
+    
+    container.innerHTML = projects.slice(0, 3).map(project => `
+        <div class="border border-gray-200 rounded-lg p-4">
+            <div class="flex items-start space-x-4">
+                <img src="${project.featured_image || '/static/images/default-project.jpg'}" 
+                     alt="${project.title}" class="w-16 h-16 rounded-lg object-cover">
+                <div class="flex-1">
+                    <h3 class="font-semibold text-gray-900 mb-1">${project.title}</h3>
+                    <p class="text-sm text-gray-600 mb-2">${project.short_description}</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-500">${project.funding_percentage.toFixed(1)}% financé</span>
+                        <a href="/projects/${project.id}/" class="btn-primary btn-sm">Voir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function getPaymentStatusClass(status) {
+    const classes = {
+        'pending': 'bg-yellow-100 text-yellow-800',
+        'processing': 'bg-blue-100 text-blue-800',
+        'completed': 'bg-green-100 text-green-800',
+        'failed': 'bg-red-100 text-red-800',
+        'cancelled': 'bg-gray-100 text-gray-800',
+        'refunded': 'bg-purple-100 text-purple-800'
+    };
+    return classes[status] || 'bg-gray-100 text-gray-800';
+}
+
+function getPaymentStatusText(status) {
+    const texts = {
+        'pending': 'En attente',
+        'processing': 'En cours',
+        'completed': 'Complété',
+        'failed': 'Échec',
+        'cancelled': 'Annulé',
+        'refunded': 'Remboursé'
+    };
+    return texts[status] || status;
+}
+
+// Initialize dashboard
+document.addEventListener('DOMContentLoaded', loadDashboardData);
+</script>
+{% endblock %}

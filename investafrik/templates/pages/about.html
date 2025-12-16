@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}À propos - InvestAfrik{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-primary-600 to-secondary-600 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">À propos d'InvestAfrik</h1>
+                <p class="text-xl md:text-2xl text-primary-100 max-w-3xl mx-auto">
+                    La première plateforme de crowdfunding dédiée à l'entrepreneuriat africain
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mission Section -->
+    <div class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Notre Mission</h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    InvestAfrik a pour mission de démocratiser l'accès au financement pour les entrepreneurs africains 
+                    et de connecter les investisseurs avec des projets innovants qui transforment le continent.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                    <div class="text-center">
+                        <i class="fas fa-rocket text-4xl text-primary-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Innovation</h3>
+                        <p class="text-gray-600">Soutenir l'innovation et l'entrepreneuriat africain</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-handshake text-4xl text-secondary-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Collaboration</h3>
+                        <p class="text-gray-600">Créer des ponts entre entrepreneurs et investisseurs</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-globe-africa text-4xl text-accent-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Impact</h3>
+                        <p class="text-gray-600">Générer un impact positif sur le développement africain</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="bg-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">InvestAfrik en chiffres</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-primary-600 mb-2">500+</div>
+                    <div class="text-gray-600">Projets financés</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-secondary-600 mb-2">2M+</div>
+                    <div class="text-gray-600">FCFA collectés</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-accent-600 mb-2">1000+</div>
+                    <div class="text-gray-600">Investisseurs actifs</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-primary-600 mb-2">23</div>
+                    <div class="text-gray-600">Pays africains</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Notre Équipe</h2>
+                <p class="text-lg text-gray-600">Une équipe passionnée par l'entrepreneuriat africain</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="text-center">
+                    <div class="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4"></div>
+                    <h3 class="text-xl font-semibold mb-2">Amina Kone</h3>
+                    <p class="text-primary-600 mb-2">CEO & Fondatrice</p>
+                    <p class="text-gray-600 text-sm">Experte en financement et développement économique africain</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4"></div>
+                    <h3 class="text-xl font-semibold mb-2">Kwame Asante</h3>
+                    <p class="text-secondary-600 mb-2">CTO</p>
+                    <p class="text-gray-600 text-sm">Ingénieur logiciel spécialisé en fintech</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4"></div>
+                    <h3 class="text-xl font-semibold mb-2">Fatou Diop</h3>
+                    <p class="text-accent-600 mb-2">Directrice Marketing</p>
+                    <p class="text-gray-600 text-sm">Spécialiste en marketing digital et communication</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Contactez-nous</h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    Une question ? Une suggestion ? N'hésitez pas à nous contacter
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <i class="fas fa-envelope text-2xl text-primary-600 mb-3"></i>
+                        <p class="font-semibold">Email</p>
+                        <p class="text-gray-600">contact@investafrik.com</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-phone text-2xl text-secondary-600 mb-3"></i>
+                        <p class="font-semibold">Téléphone</p>
+                        <p class="text-gray-600">+221 33 123 45 67</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-map-marker-alt text-2xl text-accent-600 mb-3"></i>
+                        <p class="font-semibold">Adresse</p>
+                        <p class="text-gray-600">Dakar, Sénégal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

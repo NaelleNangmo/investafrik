@@ -1,0 +1,345 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}Dashboard - InvestAfrik Admin{% endblock %}
+
+{% block extrahead %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+.dashboard-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 8px;
+    color: white;
+}
+
+.stat-card.primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.stat-card.success { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+.stat-card.info { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.stat-card.warning { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.growth-indicator {
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+.growth-positive { color: #10b981; }
+.growth-negative { color: #ef4444; }
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    margin: 1rem 0;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <h1>📊 Dashboard InvestAfrik</h1>
+    <p class="help">Vue d'ensemble de la plateforme avec statistiques en temps réel</p>
+    
+    <!-- Statistiques principales -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0;">
+        <div class="stat-card primary">
+            <div class="stat-number">{{ total_users|floatformat:0 }}</div>
+            <div class="stat-label">Utilisateurs Total</div>
+            <div class="growth-indicator growth-positive">
+                +{{ new_users_30d }} ce mois
+            </div>
+        </div>
+        
+        <div class="stat-card success">
+            <div class="stat-number">{{ total_projects|floatformat:0 }}</div>
+            <div class="stat-label">Projets</div>
+            <div class="growth-indicator growth-positive">
+                +{{ new_projects_30d }} ce mois
+            </div>
+        </div>
+        
+        <div class="stat-card info">
+            <div class="stat-number">{{ total_amount_raised|floatformat:0|intcomma }}</div>
+            <div class="stat-label">FCFA Levés</div>
+            <div class="growth-indicator growth-positive">
+                {{ completed_investments }} investissements
+            </div>
+        </div>
+        
+        <div class="stat-card warning">
+            <div class="stat-number">{{ success_rate|floatformat:1 }}%</div>
+            <div class="stat-label">Taux de Succès</div>
+            <div class="growth-indicator">
+                {{ successful_projects }}/{{ total_projects }} projets
+            </div>
+        </div>
+    </div>
+    
+    <!-- Graphiques -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+        <div class="dashboard-card">
+            <h3>📈 Évolution des Inscriptions (30j)</h3>
+            <div class="chart-container">
+                <canvas id="userChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="dashboard-card">
+            <h3>💰 Évolution des Investissements (30j)</h3>
+            <div class="chart-container">
+                <canvas id="investmentChart"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Répartition par catégorie -->
+    <div class="dashboard-card">
+        <h3>🏷️ Projets par Catégorie</h3>
+        <div class="table-responsive">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background: #f8f9fa;">
+                        <th style="padding: 0.75rem; text-align: left; border-bottom: 1px solid #dee2e6;">Catégorie</th>
+                        <th style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #dee2e6;">Projets</th>
+                        <th style="padding: 0.75rem; text-align: right; border-bottom: 1px solid #dee2e6;">Montant Levé</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in projects_by_category %}
+                    <tr>
+                        <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">
+                            <strong>{{ category.name }}</strong>
+                        </td>
+                        <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #eee;">
+                            {{ category.project_count }}
+                        </td>
+                        <td style="padding: 0.75rem; text-align: right; border-bottom: 1px solid #eee;">
+                            {{ category.total_raised|default:0|floatformat:0|intcomma }} FCFA
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Top projets et investisseurs -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+        <div class="dashboard-card">
+            <h3>🚀 Top Projets (Montant Levé)</h3>
+            <div class="table-responsive">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background: #f8f9fa;">
+                            <th style="padding: 0.5rem; text-align: left; border-bottom: 1px solid #dee2e6;">Projet</th>
+                            <th style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #dee2e6;">Montant</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for project in top_projects %}
+                        <tr>
+                            <td style="padding: 0.5rem; border-bottom: 1px solid #eee;">
+                                <strong>{{ project.title|truncatechars:30 }}</strong><br>
+                                <small style="color: #666;">{{ project.owner.get_full_name }}</small>
+                            </td>
+                            <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #eee;">
+                                <strong>{{ project.total_raised|default:0|floatformat:0|intcomma }} FCFA</strong>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="dashboard-card">
+            <h3>💎 Top Investisseurs</h3>
+            <div class="table-responsive">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background: #f8f9fa;">
+                            <th style="padding: 0.5rem; text-align: left; border-bottom: 1px solid #dee2e6;">Investisseur</th>
+                            <th style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #dee2e6;">Total Investi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for investor in top_investors %}
+                        <tr>
+                            <td style="padding: 0.5rem; border-bottom: 1px solid #eee;">
+                                <strong>{{ investor.get_full_name }}</strong><br>
+                                <small style="color: #666;">{{ investor.investment_count }} investissement{{ investor.investment_count|pluralize }}</small>
+                            </td>
+                            <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #eee;">
+                                <strong>{{ investor.total_invested|default:0|floatformat:0|intcomma }} FCFA</strong>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Activité récente -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+        <div class="dashboard-card">
+            <h3>👥 Nouveaux Utilisateurs</h3>
+            {% for user in recent_users %}
+            <div style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                <strong>{{ user.get_full_name }}</strong>
+                <small style="display: block; color: #666;">
+                    {{ user.user_type|capfirst }} - {{ user.date_joined|timesince }}
+                </small>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="dashboard-card">
+            <h3>📁 Nouveaux Projets</h3>
+            {% for project in recent_projects %}
+            <div style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                <strong>{{ project.title|truncatechars:25 }}</strong>
+                <small style="display: block; color: #666;">
+                    {{ project.goal_amount|floatformat:0|intcomma }} FCFA - {{ project.created_at|timesince }}
+                </small>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="dashboard-card">
+            <h3>💰 Investissements Récents</h3>
+            {% for investment in recent_investments %}
+            <div style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                <strong>{{ investment.amount|floatformat:0|intcomma }} FCFA</strong>
+                <small style="display: block; color: #666;">
+                    {{ investment.investor.get_full_name }} - {{ investment.created_at|timesince }}
+                </small>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- Métriques détaillées -->
+    <div class="dashboard-card">
+        <h3>📊 Métriques Détaillées</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+            <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
+                <div style="font-size: 1.5rem; font-weight: bold; color: #495057;">{{ total_porteurs }}</div>
+                <div style="color: #6c757d;">Porteurs de Projets</div>
+            </div>
+            <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
+                <div style="font-size: 1.5rem; font-weight: bold; color: #495057;">{{ total_investisseurs }}</div>
+                <div style="color: #6c757d;">Investisseurs</div>
+            </div>
+            <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
+                <div style="font-size: 1.5rem; font-weight: bold; color: #495057;">{{ active_projects }}</div>
+                <div style="color: #6c757d;">Projets Actifs</div>
+            </div>
+            <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
+                <div style="font-size: 1.5rem; font-weight: bold; color: #495057;">{{ conversion_rate|floatformat:1 }}%</div>
+                <div style="color: #6c757d;">Taux de Conversion</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Graphique des inscriptions
+const userCtx = document.getElementById('userChart').getContext('2d');
+const userChart = new Chart(userCtx, {
+    type: 'line',
+    data: {
+        labels: {{ user_registrations|safe }}.map(item => {
+            const date = new Date(item.date);
+            return date.toLocaleDateString('fr-FR', { month: 'short', day: 'numeric' });
+        }),
+        datasets: [{
+            label: 'Nouvelles inscriptions',
+            data: {{ user_registrations|safe }}.map(item => item.count),
+            borderColor: '#667eea',
+            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+            tension: 0.4,
+            fill: true
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    stepSize: 1
+                }
+            }
+        }
+    }
+});
+
+// Graphique des investissements
+const investmentCtx = document.getElementById('investmentChart').getContext('2d');
+const investmentChart = new Chart(investmentCtx, {
+    type: 'bar',
+    data: {
+        labels: {{ investment_evolution|safe }}.map(item => {
+            const date = new Date(item.date);
+            return date.toLocaleDateString('fr-FR', { month: 'short', day: 'numeric' });
+        }),
+        datasets: [{
+            label: 'Montant investi (FCFA)',
+            data: {{ investment_evolution|safe }}.map(item => item.amount),
+            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    callback: function(value) {
+                        return new Intl.NumberFormat('fr-FR').format(value) + ' FCFA';
+                    }
+                }
+            }
+        }
+    }
+});
+</script>
+{% endblock %}

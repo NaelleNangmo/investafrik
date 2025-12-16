@@ -1,0 +1,508 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Messages - InvestAfrik{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <div class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Messages</h1>
+                    <p class="text-gray-600">Communiquez avec les porteurs de projets et investisseurs</p>
+                </div>
+                <button onclick="openNewConversationModal()" class="btn-primary">
+                    <i class="fas fa-plus mr-2"></i>Nouvelle Conversation
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Conversations List -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow">
+                    <div class="px-6 py-4 border-b border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-lg font-semibold text-gray-900">Conversations</h2>
+                            <span id="unread-count" class="px-2 py-1 text-xs bg-primary-100 text-primary-800 rounded-full hidden">0</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Search -->
+                    <div class="p-4 border-b border-gray-200">
+                        <div class="relative">
+                            <input type="text" id="search-conversations" 
+                                   placeholder="Rechercher une conversation..."
+                                   class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Conversations -->
+                    <div id="conversations-list" class="max-h-96 overflow-y-auto">
+                        <!-- Conversations will be loaded here -->
+                    </div>
+                    
+                    <!-- Empty State -->
+                    <div id="conversations-empty" class="hidden p-6 text-center">
+                        <i class="fas fa-comments text-gray-400 text-4xl mb-4"></i>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Aucune conversation</h3>
+                        <p class="text-gray-600 mb-4">Commencez une conversation avec un porteur de projet ou un investisseur</p>
+                        <button onclick="openNewConversationModal()" class="btn-primary btn-sm">
+                            Nouvelle Conversation
+                        </button>
+                    </div>
+                    
+                    <!-- Loading -->
+                    <div id="conversations-loading" class="p-6 text-center">
+                        <div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-primary-600"></div>
+                        <p class="text-gray-600 mt-2">Chargement...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Area -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-lg shadow h-96 lg:h-[600px] flex flex-col">
+                    <!-- Chat Header -->
+                    <div id="chat-header" class="px-6 py-4 border-b border-gray-200 hidden">
+                        <div class="flex items-center space-x-4">
+                            <img id="chat-avatar" class="w-10 h-10 rounded-full" src="" alt="">
+                            <div>
+                                <h3 id="chat-name" class="font-semibold text-gray-900"></h3>
+                                <p id="chat-status" class="text-sm text-gray-500"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Messages Area -->
+                    <div id="messages-container" class="flex-1 overflow-y-auto p-6 space-y-4">
+                        <!-- Welcome State -->
+                        <div id="welcome-state" class="flex items-center justify-center h-full">
+                            <div class="text-center">
+                                <i class="fas fa-comments text-gray-400 text-6xl mb-4"></i>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Sélectionnez une conversation</h3>
+                                <p class="text-gray-600">Choisissez une conversation dans la liste pour commencer à discuter</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Messages will be loaded here -->
+                    </div>
+                    
+                    <!-- Message Input -->
+                    <div id="message-input-area" class="px-6 py-4 border-t border-gray-200 hidden">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-1">
+                                <textarea id="message-input" rows="1" 
+                                          placeholder="Tapez votre message..."
+                                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none"></textarea>
+                            </div>
+                            <button id="send-button" onclick="sendMessage()" class="btn-primary px-4 py-2">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- New Conversation Modal -->
+<div id="new-conversation-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-lg max-w-md w-full p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold text-gray-900">Nouvelle Conversation</h3>
+                <button onclick="closeNewConversationModal()" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="space-y-4">
+                <div>
+                    <label for="user-search" class="block text-sm font-medium text-gray-700 mb-2">
+                        Rechercher un utilisateur
+                    </label>
+                    <input type="text" id="user-search" 
+                           placeholder="Nom ou email de l'utilisateur..."
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                </div>
+                
+                <div id="user-search-results" class="max-h-48 overflow-y-auto space-y-2">
+                    <!-- Search results will appear here -->
+                </div>
+                
+                <div class="flex justify-end space-x-3">
+                    <button onclick="closeNewConversationModal()" class="btn-secondary">
+                        Annuler
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentConversation = null;
+let conversations = [];
+let searchTimeout = null;
+
+// Load conversations
+async function loadConversations() {
+    try {
+        document.getElementById('conversations-loading').classList.remove('hidden');
+        
+        const response = await api.request('/api/messaging/conversations/');
+        if (response.ok) {
+            conversations = await response.json();
+            renderConversations(conversations.results || conversations);
+        }
+    } catch (error) {
+        console.error('Error loading conversations:', error);
+        notifications.show('Erreur lors du chargement des conversations', 'error');
+    } finally {
+        document.getElementById('conversations-loading').classList.add('hidden');
+    }
+}
+
+function renderConversations(conversationsList) {
+    const container = document.getElementById('conversations-list');
+    const emptyState = document.getElementById('conversations-empty');
+    
+    if (conversationsList.length === 0) {
+        container.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+    }
+    
+    emptyState.classList.add('hidden');
+    
+    // Update unread count
+    const totalUnread = conversationsList.reduce((sum, conv) => {
+        const unreadCount = conv.unread_count_p1 || conv.unread_count_p2 || 0;
+        return sum + unreadCount;
+    }, 0);
+    
+    const unreadBadge = document.getElementById('unread-count');
+    if (totalUnread > 0) {
+        unreadBadge.textContent = totalUnread;
+        unreadBadge.classList.remove('hidden');
+    } else {
+        unreadBadge.classList.add('hidden');
+    }
+    
+    container.innerHTML = conversationsList.map(conversation => {
+        const otherUser = conversation.participant_1.id === getCurrentUserId() ? 
+                         conversation.participant_2 : conversation.participant_1;
+        const unreadCount = conversation.unread_count_p1 || conversation.unread_count_p2 || 0;
+        
+        return `
+            <div class="conversation-item p-4 border-b border-gray-200 cursor-pointer hover:bg-gray-50 ${currentConversation?.id === conversation.id ? 'bg-primary-50' : ''}"
+                 onclick="selectConversation('${conversation.id}')">
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <img src="${otherUser.profile_picture || '/static/images/default-avatar.png'}" 
+                             alt="${otherUser.first_name}" class="w-12 h-12 rounded-full">
+                        ${unreadCount > 0 ? `<span class="absolute -top-1 -right-1 w-5 h-5 bg-primary-600 text-white text-xs rounded-full flex items-center justify-center">${unreadCount}</span>` : ''}
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-start">
+                            <h4 class="font-semibold text-gray-900 truncate">
+                                ${otherUser.first_name} ${otherUser.last_name}
+                            </h4>
+                            <span class="text-xs text-gray-500">
+                                ${utils.formatRelativeTime(conversation.last_message_at || conversation.created_at)}
+                            </span>
+                        </div>
+                        <p class="text-sm text-gray-600 truncate">
+                            ${conversation.last_message_preview || 'Aucun message'}
+                        </p>
+                        ${conversation.project ? `
+                            <p class="text-xs text-primary-600 truncate">
+                                À propos de: ${conversation.project.title}
+                            </p>
+                        ` : ''}
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+async function selectConversation(conversationId) {
+    try {
+        const conversation = conversations.results?.find(c => c.id === conversationId) || 
+                           conversations.find(c => c.id === conversationId);
+        
+        if (!conversation) return;
+        
+        currentConversation = conversation;
+        
+        // Update UI
+        document.querySelectorAll('.conversation-item').forEach(item => {
+            item.classList.remove('bg-primary-50');
+        });
+        event.currentTarget.classList.add('bg-primary-50');
+        
+        // Show chat area
+        document.getElementById('welcome-state').classList.add('hidden');
+        document.getElementById('chat-header').classList.remove('hidden');
+        document.getElementById('message-input-area').classList.remove('hidden');
+        
+        // Update chat header
+        const otherUser = conversation.participant_1.id === getCurrentUserId() ? 
+                         conversation.participant_2 : conversation.participant_1;
+        
+        document.getElementById('chat-avatar').src = otherUser.profile_picture || '/static/images/default-avatar.png';
+        document.getElementById('chat-name').textContent = `${otherUser.first_name} ${otherUser.last_name}`;
+        document.getElementById('chat-status').textContent = otherUser.user_type === 'porteur' ? 'Porteur de projet' : 'Investisseur';
+        
+        // Load messages
+        await loadMessages(conversationId);
+        
+        // Mark as read
+        await markConversationAsRead(conversationId);
+        
+    } catch (error) {
+        console.error('Error selecting conversation:', error);
+    }
+}
+
+async function loadMessages(conversationId) {
+    try {
+        const response = await api.request(`/api/messaging/conversations/${conversationId}/messages/`);
+        if (response.ok) {
+            const messages = await response.json();
+            renderMessages(messages.results || messages);
+        }
+    } catch (error) {
+        console.error('Error loading messages:', error);
+    }
+}
+
+function renderMessages(messages) {
+    const container = document.getElementById('messages-container');
+    const currentUserId = getCurrentUserId();
+    
+    container.innerHTML = messages.map(message => {
+        const isOwn = message.sender.id === currentUserId;
+        
+        return `
+            <div class="flex ${isOwn ? 'justify-end' : 'justify-start'}">
+                <div class="max-w-xs lg:max-w-md">
+                    ${!isOwn ? `
+                        <div class="flex items-center space-x-2 mb-1">
+                            <img src="${message.sender.profile_picture || '/static/images/default-avatar.png'}" 
+                                 alt="${message.sender.first_name}" class="w-6 h-6 rounded-full">
+                            <span class="text-xs text-gray-500">${message.sender.first_name}</span>
+                        </div>
+                    ` : ''}
+                    <div class="px-4 py-2 rounded-lg ${isOwn ? 'bg-primary-600 text-white' : 'bg-gray-200 text-gray-900'}">
+                        <p class="text-sm">${message.content}</p>
+                        ${message.attachment ? `
+                            <div class="mt-2">
+                                <a href="${message.attachment}" target="_blank" class="text-xs underline">
+                                    <i class="fas fa-paperclip mr-1"></i>${message.attachment_name || 'Fichier joint'}
+                                </a>
+                            </div>
+                        ` : ''}
+                    </div>
+                    <div class="text-xs text-gray-500 mt-1 ${isOwn ? 'text-right' : 'text-left'}">
+                        ${utils.formatRelativeTime(message.sent_at)}
+                        ${isOwn && message.is_read ? '<i class="fas fa-check-double ml-1"></i>' : ''}
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+    
+    // Scroll to bottom
+    container.scrollTop = container.scrollHeight;
+}
+
+async function sendMessage() {
+    const input = document.getElementById('message-input');
+    const content = input.value.trim();
+    
+    if (!content || !currentConversation) return;
+    
+    try {
+        const response = await api.post(`/api/messaging/conversations/${currentConversation.id}/send_message/`, {
+            content: content
+        });
+        
+        if (response.ok) {
+            input.value = '';
+            await loadMessages(currentConversation.id);
+            await loadConversations(); // Refresh conversations list
+        } else {
+            const error = await response.json();
+            notifications.show(error.error || 'Erreur lors de l\'envoi du message', 'error');
+        }
+    } catch (error) {
+        console.error('Error sending message:', error);
+        notifications.show('Erreur lors de l\'envoi du message', 'error');
+    }
+}
+
+async function markConversationAsRead(conversationId) {
+    try {
+        await api.request(`/api/messaging/conversations/${conversationId}/mark_read/`, {
+            method: 'POST'
+        });
+    } catch (error) {
+        console.error('Error marking as read:', error);
+    }
+}
+
+// New conversation modal
+function openNewConversationModal() {
+    document.getElementById('new-conversation-modal').classList.remove('hidden');
+}
+
+function closeNewConversationModal() {
+    document.getElementById('new-conversation-modal').classList.add('hidden');
+    document.getElementById('user-search').value = '';
+    document.getElementById('user-search-results').innerHTML = '';
+}
+
+// User search
+document.getElementById('user-search').addEventListener('input', function() {
+    const query = this.value.trim();
+    
+    clearTimeout(searchTimeout);
+    
+    if (query.length < 2) {
+        document.getElementById('user-search-results').innerHTML = '';
+        return;
+    }
+    
+    searchTimeout = setTimeout(() => searchUsers(query), 300);
+});
+
+async function searchUsers(query) {
+    try {
+        const response = await api.request(`/api/auth/users/?search=${encodeURIComponent(query)}`);
+        if (response.ok) {
+            const users = await response.json();
+            renderUserSearchResults(users.results || users);
+        }
+    } catch (error) {
+        console.error('Error searching users:', error);
+    }
+}
+
+function renderUserSearchResults(users) {
+    const container = document.getElementById('user-search-results');
+    const currentUserId = getCurrentUserId();
+    
+    // Filter out current user
+    const filteredUsers = users.filter(user => user.id !== currentUserId);
+    
+    if (filteredUsers.length === 0) {
+        container.innerHTML = '<p class="text-gray-500 text-sm text-center py-4">Aucun utilisateur trouvé</p>';
+        return;
+    }
+    
+    container.innerHTML = filteredUsers.map(user => `
+        <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer"
+             onclick="startConversation('${user.id}')">
+            <img src="${user.profile_picture || '/static/images/default-avatar.png'}" 
+                 alt="${user.first_name}" class="w-10 h-10 rounded-full">
+            <div>
+                <h4 class="font-medium text-gray-900">${user.first_name} ${user.last_name}</h4>
+                <p class="text-sm text-gray-600">${user.user_type === 'porteur' ? 'Porteur de projet' : 'Investisseur'}</p>
+            </div>
+        </div>
+    `).join('');
+}
+
+async function startConversation(userId) {
+    try {
+        // Vérifier l'authentification
+        if (!api.isAuthenticated()) {
+            notifications.show('Veuillez vous connecter pour créer une conversation', 'warning');
+            window.location.href = '/auth/login/';
+            return;
+        }
+        
+        const response = await api.post('/api/messaging/conversations/', {
+            participant_2: userId
+        });
+        
+        if (response.ok) {
+            const conversation = await response.json();
+            closeNewConversationModal();
+            notifications.show('Conversation créée avec succès', 'success');
+            await loadConversations();
+            
+            // Wait a bit for the conversations to load, then select the new one
+            setTimeout(() => {
+                selectConversation(conversation.id);
+            }, 500);
+        } else {
+            const error = await response.json();
+            console.error('API Error:', error);
+            notifications.show(error.error || error.message || 'Erreur lors de la création de la conversation', 'error');
+        }
+    } catch (error) {
+        console.error('Error starting conversation:', error);
+        notifications.show('Erreur de connexion', 'error');
+    }
+}
+
+// Conversation search
+document.getElementById('search-conversations').addEventListener('input', function() {
+    const query = this.value.toLowerCase().trim();
+    
+    if (!query) {
+        renderConversations(conversations.results || conversations);
+        return;
+    }
+    
+    const filtered = (conversations.results || conversations).filter(conversation => {
+        const otherUser = conversation.participant_1.id === getCurrentUserId() ? 
+                         conversation.participant_2 : conversation.participant_1;
+        const fullName = `${otherUser.first_name} ${otherUser.last_name}`.toLowerCase();
+        const lastMessage = (conversation.last_message_preview || '').toLowerCase();
+        
+        return fullName.includes(query) || lastMessage.includes(query);
+    });
+    
+    renderConversations(filtered);
+});
+
+// Message input handling
+document.getElementById('message-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+    }
+});
+
+// Auto-resize textarea
+document.getElementById('message-input').addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+});
+
+// Utility functions
+function getCurrentUserId() {
+    // Get from Django template context
+    return '{{ user.id }}';
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    loadConversations();
+    
+    // Auto-refresh conversations every 30 seconds
+    setInterval(loadConversations, 30000);
+});
+</script>
+{% endblock %}
