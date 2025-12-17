@@ -107,6 +107,75 @@ L'application est livrée avec des comptes de test pré-configurés :
 - [Guide utilisateur](docs/USER_GUIDE.md)
 - [Guide de déploiement](docs/DEPLOYMENT_GUIDE.md)
 
+## 🗄️ Script SQL de la Base de Données
+
+### Configuration PostgreSQL
+
+```sql
+-- Créer la base de données
+CREATE DATABASE INVESTAFRIKDB;
+
+-- Se connecter à la base de données
+\c INVESTAFRIKDB;
+
+-- Créer un utilisateur pour l'application (optionnel)
+CREATE USER investafrik_user WITH PASSWORD 'your_password';
+GRANT ALL PRIVILEGES ON DATABASE INVESTAFRIKDB TO investafrik_user;
+
+-- Extensions nécessaires
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "pg_trgm";
+
+-- Après avoir exécuté les migrations Django, vous aurez ces tables principales :
+
+-- Table des utilisateurs
+-- accounts_user : Utilisateurs (porteurs et investisseurs)
+-- accounts_userprofile : Profils étendus des utilisateurs
+
+-- Tables des projets
+-- projects_project : Projets de crowdfunding
+-- categories_category : Catégories de projets
+
+-- Tables des investissements
+-- investments_investment : Investissements dans les projets
+
+-- Tables de messagerie
+-- messaging_conversation : Conversations entre utilisateurs
+-- messaging_message : Messages individuels
+
+-- Tables de notifications
+-- notifications_notification : Notifications système
+
+-- Données de test (exécutées par la commande seed_data)
+-- 12 utilisateurs (6 porteurs + 6 investisseurs)
+-- 10 catégories de projets
+-- 10 projets actifs
+-- 15 investissements complétés
+```
+
+### Variables d'environnement (.env)
+
+```env
+# Base de données
+DATABASE_NAME=INVESTAFRIKDB
+DATABASE_USER=investafrik_user
+DATABASE_PASSWORD=your_password
+DATABASE_HOST=localhost
+DATABASE_PORT=5432
+
+# Django
+SECRET_KEY=your-secret-key-here
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
+
+# Email (optionnel)
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER=your-email@gmail.com
+EMAIL_HOST_PASSWORD=your-app-password
+```
+
 ## 🏗️ Structure du Projet
 
 ```

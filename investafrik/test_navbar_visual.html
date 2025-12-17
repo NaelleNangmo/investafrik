@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Visuel - Déconnexion Navbar InvestAfrik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="csrf-token" content="test-csrf-token">
+    <style>
+        .btn-primary {
+            @apply bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors;
+        }
+        .btn-secondary {
+            @apply bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors;
+        }
+        .btn-sm {
+            @apply px-3 py-1 text-sm;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto p-8">
+        <h1 class="text-3xl font-bold mb-8 text-center">🧪 Test Visuel - Déconnexion Navbar</h1>
+        
+        <!-- État Initial: Utilisateur Connecté -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4">1️⃣ État Initial (Utilisateur Connecté)</h2>
+            
+            <!-- Navbar Connectée -->
+            <nav class="bg-white shadow-lg sticky top-0 z-50 border rounded-lg">
+                <div class="container mx-auto px-4">
+                    <div class="flex justify-between items-center py-4">
+                        <!-- Logo -->
+                        <div class="flex items-center">
+                            <a href="#" class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=40&h=40&fit=crop&crop=center" 
+                                     alt="InvestAfrik" class="h-8 w-8 rounded mr-2">
+                                <span class="text-xl font-bold text-gray-900">InvestAfrik</span>
+                            </a>
+                        </div>
+                        
+                        <!-- Desktop Navigation -->
+                        <div class="hidden md:flex items-center space-x-8">
+                            <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                                Projets
+                            </a>
+                            
+                            <!-- Authenticated User Navigation -->
+                            <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                                <i class="fas fa-folder mr-1"></i>Mes Projets
+                            </a>
+                            <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                                <i class="fas fa-comments mr-1"></i>Messages
+                            </a>
+                            
+                            <!-- Public Navigation -->
+                            <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                                Comment ça marche
+                            </a>
+                            <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                                À propos
+                            </a>
+                        </div>
+                        
+                        <!-- Auth Buttons / User Menu -->
+                        <div id="auth-container-1" class="hidden md:flex items-center space-x-4">
+                            <!-- Authenticated user menu -->
+                            <div id="user-menu-1" class="relative">
+                                <button onclick="toggleUserMenu(1)" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                                    <i class="fas fa-user-circle text-lg"></i>
+                                    <span>Admin Test</span>
+                                    <i class="fas fa-chevron-down text-xs"></i>
+                                </button>
+                                <div id="user-dropdown-1" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        <i class="fas fa-user mr-2"></i>Mon Profil
+                                    </a>
+                                    <hr class="my-1">
+                                    <button onclick="testLogout(1)" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        <i class="fas fa-sign-out-alt mr-2"></i>Déconnexion
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            
+            <div class="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <p class="text-green-800">✅ État connecté : Menu utilisateur visible, liens authentifiés présents</p>
+            </div>
+            
+            <button onclick="testLogout(1)" class="mt-4 bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700">
+                🧪 Tester la Déconnexion
+            </button>
+        </div>
+        
+        <!-- État Final: Utilisateur Déconnecté -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4">2️⃣ État Final Attendu (Utilisateur Déconnecté)</h2>
+            
+            <!-- Navbar Déconnectée -->
+            <nav class="bg-white shadow-lg sticky top-0 z-50 border rounded-lg">
+                <div class="container mx-auto px-4">
+                    <div class="flex justify-between items-center py-4">
+                        <!-- Logo -->
+                        <div class="flex items-center">
+                            <a href="#" class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=40&h=40&fit=crop&crop=center" 
+                                     alt="InvestAfrik" class="h-8 w-8 rounded mr-2">
+                                <span class="text-xl font-bold text-gray-900">InvestAfrik</span>
+                            </a>
+                        </div>
+                        
+                        <!-- Desktop Navigation -->
+                        <div class="hidden md:flex items-center space-x-8">
+                            <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                                Projets
+                            </a>
+                            
+                            <!-- Public Navigation -->
+                            <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                                Comment ça marche
+                            </a>
+                            <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                                À propos
+                            </a>
+                        </div>
+                        
+                        <!-- Guest Buttons -->
+                        <div class="hidden md:flex items-center space-x-4">
+                            <div id="guest-buttons" class="flex items-center space-x-4">
+                                <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                                    Connexion
+                                </a>
+                                <a href="#" class="btn-primary text-sm px-4 py-2">
+                                    Inscription
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            
+            <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <p class="text-blue-800">✅ État déconnecté : Boutons Connexion/Inscription visibles, plus de menu utilisateur</p>
+            </div>
+        </div>
+        
+        <!-- Console de Debug -->
+        <div class="bg-gray-900 text-green-400 rounded-lg p-4 font-mono text-sm">
+            <h3 class="text-white font-bold mb-2">📊 Console de Debug</h3>
+            <div id="debug-console">
+                <div>🔄 Prêt pour le test...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fonction de debug
+        function debugLog(message) {
+            const console = document.getElementById('debug-console');
+            const timestamp = new Date().toLocaleTimeString();
+            console.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+            console.scrollTop = console.scrollHeight;
+        }
+
+        // Toggle user menu
+        function toggleUserMenu(id) {
+            const dropdown = document.getElementById(`user-dropdown-${id}`);
+            dropdown.classList.toggle('hidden');
+            debugLog(`🔽 Menu utilisateur ${id} ${dropdown.classList.contains('hidden') ? 'fermé' : 'ouvert'}`);
+        }
+
+        // Test de déconnexion
+        function testLogout(id) {
+            debugLog('🔄 Début du test de déconnexion...');
+            
+            // Réinitialiser l'interface
+            resetUIToGuestState(id);
+            
+            // Simuler un délai de requête
+            setTimeout(() => {
+                debugLog('✅ Déconnexion simulée terminée');
+                showLogoutMessage();
+            }, 500);
+        }
+
+        // Fonction pour réinitialiser l'interface utilisateur
+        function resetUIToGuestState(id) {
+            debugLog('🔄 Réinitialisation de l\'interface utilisateur...');
+            
+            // 1. Trouver le conteneur d'authentification
+            const authContainer = document.getElementById(`auth-container-${id}`);
+            
+            if (authContainer) {
+                debugLog('📝 Remplacement du contenu d\'authentification...');
+                
+                // Remplacer complètement le contenu par les boutons guest
+                authContainer.innerHTML = `
+                    <div id="guest-buttons-${id}" class="flex items-center space-x-4">
+                        <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                            Connexion
+                        </a>
+                        <a href="#" class="btn-primary text-sm px-4 py-2">
+                            Inscription
+                        </a>
+                    </div>
+                `;
+                debugLog('✅ Boutons de connexion/inscription affichés');
+            }
+            
+            // 2. Masquer les liens de navigation authentifiés
+            const authLinks = document.querySelectorAll('a[href*="my-projects"], a[href*="messaging"]');
+            authLinks.forEach(link => {
+                link.style.display = 'none';
+                debugLog(`🔒 Lien masqué: ${link.textContent.trim()}`);
+            });
+            
+            debugLog('✅ Interface utilisateur complètement réinitialisée');
+        }
+
+        // Fonction pour afficher un message de déconnexion
+        function showLogoutMessage() {
+            // Créer un message de confirmation temporaire
+            const message = document.createElement('div');
+            message.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform transition-all duration-300';
+            message.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>Déconnexion réussie</span>
+                </div>
+            `;
+            
+            document.body.appendChild(message);
+            debugLog('💬 Message de confirmation affiché');
+            
+            // Supprimer le message après 3 secondes
+            setTimeout(() => {
+                message.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (message.parentNode) {
+                        message.parentNode.removeChild(message);
+                        debugLog('💬 Message de confirmation supprimé');
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            debugLog('🚀 Test visuel de déconnexion navbar initialisé');
+            debugLog('📋 Cliquez sur "Tester la Déconnexion" pour voir la transformation');
+        });
+    </script>
+</body>
+</html>

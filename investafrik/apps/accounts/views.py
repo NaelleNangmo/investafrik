@@ -229,6 +229,33 @@ class LoginPageView(TemplateView):
         if request.user.is_authenticated:
             return redirect('accounts:dashboard')
         return super().dispatch(request, *args, **kwargs)
+    
+    def post(self, request, *args, **kwargs):
+        """Handle login form submission."""
+        from django.contrib.auth import login, authenticate
+        from django.contrib import messages
+        
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        
+        if email and password:
+            user = authenticate(request, email=email, password=password)
+            if user is not None:
+                login(request, user)
+                
+                # Redirection selon le type d'utilisateur
+                if user.user_type == 'porteur':
+                    return redirect('/auth/dashboard/porteur/')
+                elif user.user_type == 'investisseur':
+                    return redirect('/auth/dashboard/investisseur/')
+                else:
+                    return redirect('/auth/dashboard/')
+            else:
+                messages.error(request, 'Email ou mot de passe incorrect.')
+        else:
+            messages.error(request, 'Veuillez remplir tous les champs.')
+        
+        return self.get(request, *args, **kwargs)
 
 
 class RegisterPageView(TemplateView):
@@ -244,6 +271,58 @@ class RegisterPageView(TemplateView):
 class ProfilePageView(LoginRequiredMixin, TemplateView):
     """Page de profil utilisateur."""
     template_name = 'accounts/profile.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        # Récupérer ou créer le profil étendu
+        from .models import UserProfile
+        
+        try:
+            profile = self.request.user.profile
+        except UserProfile.DoesNotExist:
+            profile = UserProfile.objects.create(user=self.request.user)
+        
+        context['profile'] = profile
+        return context
+    
+    def post(self, request, *args, **kwargs):
+        """Gérer la mise à jour du profil."""
+        from .models import UserProfile
+        
+        # Mettre à jour les informations utilisateur
+        user = request.user
+        user.first_name = request.POST.get('first_name', user.first_name)
+        user.last_name = request.POST.get('last_name', user.last_name)
+        user.phone_number = request.POST.get('phone_number', user.phone_number)
+        user.bio = request.POST.get('bio', user.bio)
+        user.country = request.POST.get('country', user.country)
+        user.save()
+        
+        # Mettre à jour le profil étendu
+        try:
+            profile = user.profile
+        except UserProfile.DoesNotExist:
+            profile = UserProfile.objects.create(user=user)
+        
+        profile.company = request.POST.get('company', profile.company)
+        profile.job_title = request.POST.get('job_title', profile.job_title)
+        profile.website = request.POST.get('website', profile.website)
+        profile.linkedin = request.POST.get('linkedin', profile.linkedin)
+        profile.twitter = request.POST.get('twitter', profile.twitter)
+        profile.facebook = request.POST.get('facebook', profile.facebook)
+        
+        # Préférences de notification
+        profile.email_notifications = 'email_notifications' in request.POST
+        profile.sms_notifications = 'sms_notifications' in request.POST
+        profile.push_notifications = 'push_notifications' in request.POST
+        
+        profile.save()
+        
+        from django.contrib import messages
+        messages.success(request, 'Profil mis à jour avec succès!')
+        
+        return redirect('accounts:profile')
 
 
 class DashboardView(LoginRequiredMixin, TemplateView):
@@ -313,9 +392,50 @@ class DashboardInvestisseurView(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/dashboard_investisseur.html'
     
     def dispatch(self, request, *args, **kwargs):
-        if request.user.user_type != 'investisseur':
+        if not request.user.is_authenticated or request.user.user_type != 'investisseur':
             return redirect('accounts:dashboard')
         return super().dispatch(request, *args, **kwargs)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        # Récupérer les investissements de l'utilisateur
+        from apps.investments.models import Investment
+        from apps.projects.models import Project
+        from django.db.models import Sum, Count
+        
+        user_investments = Investment.objects.filter(
+            investor=self.request.user,
+            payment_status='completed'
+        )
+        
+        # Statistiques
+        total_invested = user_investments.aggregate(
+            total=Sum('amount')
+        )['total'] or 0
+        
+        total_projects = user_investments.values('project').distinct().count()
+        total_investments = user_investments.count()
+        
+        # Investissements récents
+        recent_investments = user_investments.select_related('project').order_by('-invested_at')[:5]
+        
+        # Projets disponibles pour investissement
+        available_projects = Project.objects.filter(
+            status='active'
+        ).exclude(
+            owner=self.request.user
+        ).order_by('-created_at')[:5]
+        
+        context.update({
+            'total_invested': total_invested,
+            'total_projects': total_projects,
+            'total_investments': total_investments,
+            'recent_investments': recent_investments,
+            'available_projects': available_projects,
+        })
+        
+        return context
 
 
 class LogoutPageView(TemplateView):

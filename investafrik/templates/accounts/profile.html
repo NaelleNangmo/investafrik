@@ -21,19 +21,39 @@
             <div class="lg:col-span-1">
                 <div class="bg-white rounded-lg shadow p-6 text-center">
                     <div class="mb-4">
-                        <img id="profile-picture" class="w-32 h-32 rounded-full mx-auto object-cover" 
-                             src="/static/images/default-avatar.png" alt="Photo de profil">
+                        <img class="w-32 h-32 rounded-full mx-auto object-cover" 
+                             src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}/static/images/default-avatar.png{% endif %}" alt="Photo de profil">
                     </div>
-                    <h2 id="profile-name" class="text-xl font-semibold text-gray-900 mb-2">Chargement...</h2>
-                    <p id="profile-type" class="text-gray-600 mb-4">Type d'utilisateur</p>
+                    <h2 class="text-xl font-semibold text-gray-900 mb-2">{{ user.get_full_name }}</h2>
+                    <p class="text-gray-600 mb-4">
+                        {% if user.user_type == 'porteur' %}Porteur de projet{% else %}Investisseur{% endif %}
+                    </p>
                     
                     <input type="file" id="picture-input" accept="image/*" class="hidden">
                     <button onclick="document.getElementById('picture-input').click()" class="btn-primary w-full mb-3">
                         <i class="fas fa-camera mr-2"></i>Changer la photo
                     </button>
                     
-                    <div id="profile-stats" class="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-gray-200">
-                        <!-- Stats will be loaded here -->
+                    <div class="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-gray-200">
+                        {% if user.user_type == 'porteur' %}
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-primary-600">{{ user.projects.count }}</div>
+                                <div class="text-xs text-gray-600">Projets</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-green-600">{{ user.total_raised|default:0|floatformat:0 }} FCFA</div>
+                                <div class="text-xs text-gray-600">Levés</div>
+                            </div>
+                        {% else %}
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-blue-600">{{ user.investments.count }}</div>
+                                <div class="text-xs text-gray-600">Investissements</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-green-600">{{ user.total_invested|default:0|floatformat:0 }} FCFA</div>
+                                <div class="text-xs text-gray-600">Investis</div>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -53,29 +73,30 @@
                     <div class="p-6">
                         <!-- Personal Information Tab -->
                         <div id="tab-personal" class="tab-content">
-                            <form id="personal-form">
+                            <form method="post" action="{% url 'accounts:profile' %}"
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label for="first_name" class="block text-sm font-medium text-gray-700 mb-2">Prénom *</label>
-                                        <input type="text" id="first_name" name="first_name" required
+                                        <input type="text" id="first_name" name="first_name" required value="{{ user.first_name|default:'' }}"
                                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
                                     </div>
                                     
                                     <div>
                                         <label for="last_name" class="block text-sm font-medium text-gray-700 mb-2">Nom *</label>
-                                        <input type="text" id="last_name" name="last_name" required
+                                        <input type="text" id="last_name" name="last_name" required value="{{ user.last_name|default:'' }}"
                                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
                                     </div>
                                     
                                     <div>
                                         <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                                        <input type="email" id="email" name="email" required
-                                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                        <input type="email" id="email" name="email" required value="{{ user.email }}" readonly
+                                               class="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                        <p class="text-sm text-gray-500 mt-1">L'email ne peut pas être modifié</p>
                                     </div>
                                     
                                     <div>
                                         <label for="phone_number" class="block text-sm font-medium text-gray-700 mb-2">Téléphone</label>
-                                        <input type="tel" id="phone_number" name="phone_number"
+                                        <input type="tel" id="phone_number" name="phone_number" value="{{ user.phone_number|default:'' }}"
                                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
                                     </div>
                                     
@@ -83,32 +104,48 @@
                                         <label for="country" class="block text-sm font-medium text-gray-700 mb-2">Pays *</label>
                                         <select id="country" name="country" required
                                                 class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
-                                            <option value="CM">Cameroun</option>
-                                            <option value="SN">Sénégal</option>
-                                            <option value="CI">Côte d'Ivoire</option>
-                                            <option value="BJ">Bénin</option>
-                                            <option value="TG">Togo</option>
-                                            <option value="BF">Burkina Faso</option>
-                                            <option value="ML">Mali</option>
-                                            <option value="NE">Niger</option>
-                                            <option value="GN">Guinée</option>
-                                            <option value="GH">Ghana</option>
-                                            <option value="NG">Nigeria</option>
-                                            <option value="KE">Kenya</option>
+                                            <option value="CM" {% if user.country == 'CM' %}selected{% endif %}>Cameroun</option>
+                                            <option value="SN" {% if user.country == 'SN' %}selected{% endif %}>Sénégal</option>
+                                            <option value="CI" {% if user.country == 'CI' %}selected{% endif %}>Côte d'Ivoire</option>
+                                            <option value="BJ" {% if user.country == 'BJ' %}selected{% endif %}>Bénin</option>
+                                            <option value="TG" {% if user.country == 'TG' %}selected{% endif %}>Togo</option>
+                                            <option value="BF" {% if user.country == 'BF' %}selected{% endif %}>Burkina Faso</option>
+                                            <option value="ML" {% if user.country == 'ML' %}selected{% endif %}>Mali</option>
+                                            <option value="NE" {% if user.country == 'NE' %}selected{% endif %}>Niger</option>
+                                            <option value="GN" {% if user.country == 'GN' %}selected{% endif %}>Guinée</option>
+                                            <option value="GH" {% if user.country == 'GH' %}selected{% endif %}>Ghana</option>
+                                            <option value="NG" {% if user.country == 'NG' %}selected{% endif %}>Nigeria</option>
+                                            <option value="KE" {% if user.country == 'KE' %}selected{% endif %}>Kenya</option>
                                         </select>
                                     </div>
                                     
-                                    <div id="budget-field" class="hidden">
+                                    {% if user.user_type == 'investisseur' %}
+                                    <div>
                                         <label for="available_budget" class="block text-sm font-medium text-gray-700 mb-2">Budget disponible (FCFA)</label>
-                                        <input type="number" id="available_budget" name="available_budget" min="0"
+                                        <input type="number" id="available_budget" name="available_budget" min="0" value="{{ user.available_budget|default:'' }}"
                                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
                                     </div>
+                                    {% endif %}
+                                    
+                                    {% if user.user_type == 'porteur' %}
+                                    <div>
+                                        <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Entreprise</label>
+                                        <input type="text" id="company" name="company" value="{{ profile.company|default:'' }}"
+                                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="job_title" class="block text-sm font-medium text-gray-700 mb-2">Poste</label>
+                                        <input type="text" id="job_title" name="job_title" value="{{ profile.job_title|default:'' }}"
+                                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                    </div>
+                                    {% endif %}
                                     
                                     <div class="md:col-span-2">
                                         <label for="bio" class="block text-sm font-medium text-gray-700 mb-2">Biographie</label>
                                         <textarea id="bio" name="bio" rows="4"
                                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-                                                  placeholder="Parlez-nous de vous..."></textarea>
+                                                  placeholder="Parlez-nous de vous...">{{ user.bio|default:'' }}</textarea>
                                     </div>
                                 </div>
                                 
@@ -128,7 +165,7 @@
                                         <h3 class="text-lg font-medium text-gray-900 mb-4">Notifications Email</h3>
                                         <div class="space-y-3">
                                             <label class="flex items-center">
-                                                <input type="checkbox" id="email_notifications" name="email_notifications" class="mr-3">
+                                                <input type="checkbox" id="email_notifications" name="email_notifications" class="mr-3" {% if profile.email_notifications %}checked{% endif %}>
                                                 <span>Recevoir les notifications par email</span>
                                             </label>
                                             <label class="flex items-center">
@@ -150,7 +187,7 @@
                                         <h3 class="text-lg font-medium text-gray-900 mb-4">Notifications Push</h3>
                                         <div class="space-y-3">
                                             <label class="flex items-center">
-                                                <input type="checkbox" id="push_notifications" name="push_notifications" class="mr-3">
+                                                <input type="checkbox" id="push_notifications" name="push_notifications" class="mr-3" {% if profile.push_notifications %}checked{% endif %}>
                                                 <span>Recevoir les notifications push</span>
                                             </label>
                                             <label class="flex items-center">

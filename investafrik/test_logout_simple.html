@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Simple - Déconnexion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="csrf-token" content="test-token">
+    <style>
+        .btn-primary { @apply bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700; }
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8 text-center">🧪 Test Simple - Déconnexion Navbar</h1>
+        
+        <!-- Navbar de Test -->
+        <nav class="bg-white shadow-lg rounded-lg mb-8">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center py-4">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <span class="text-xl font-bold text-gray-900">InvestAfrik</span>
+                    </div>
+                    
+                    <!-- Navigation -->
+                    <div id="desktop-nav" class="hidden md:flex items-center space-x-8">
+                        <a href="#" class="text-gray-700 px-3 py-2 text-sm">Projets</a>
+                        <a href="#" class="auth-nav-link text-gray-700 px-3 py-2 text-sm">
+                            <i class="fas fa-folder mr-1"></i>Mes Projets
+                        </a>
+                        <a href="#" class="auth-nav-link text-gray-700 px-3 py-2 text-sm">
+                            <i class="fas fa-comments mr-1"></i>Messages
+                        </a>
+                        <a href="#" class="text-gray-700 px-3 py-2 text-sm">À propos</a>
+                    </div>
+                    
+                    <!-- Auth Container -->
+                    <div id="auth-container" class="hidden md:flex items-center space-x-4">
+                        <!-- Menu utilisateur connecté -->
+                        <div id="user-menu" class="relative">
+                            <button onclick="toggleUserMenu()" class="flex items-center space-x-2 text-gray-700 px-3 py-2 text-sm">
+                                <i class="fas fa-user-circle text-lg"></i>
+                                <span>Admin Test</span>
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </button>
+                            <div id="user-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                                </a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i class="fas fa-user mr-2"></i>Mon Profil
+                                </a>
+                                <hr class="my-1">
+                                <button onclick="logout()" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i class="fas fa-sign-out-alt mr-2"></i>Déconnexion
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Mobile -->
+                <div id="mobile-menu" class="md:hidden pb-4">
+                    <div class="flex flex-col space-y-2">
+                        <a href="#" class="text-gray-700 px-3 py-2 text-sm">Projets</a>
+                        <a href="#" class="mobile-auth-link text-gray-700 px-3 py-2 text-sm">
+                            <i class="fas fa-folder mr-1"></i>Mes Projets
+                        </a>
+                        <a href="#" class="mobile-auth-link text-gray-700 px-3 py-2 text-sm">
+                            <i class="fas fa-comments mr-1"></i>Messages
+                        </a>
+                        <a href="#" class="text-gray-700 px-3 py-2 text-sm">À propos</a>
+                        
+                        <div id="mobile-auth-section" class="border-t pt-2 mt-2">
+                            <button onclick="logout()" class="text-gray-700 px-3 py-2 text-sm w-full text-left">
+                                <i class="fas fa-sign-out-alt mr-1"></i>Déconnexion
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Boutons de Test -->
+        <div class="bg-white rounded-lg shadow p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4">🎮 Contrôles de Test</h2>
+            <div class="space-x-4">
+                <button onclick="logout()" class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700">
+                    🧪 Tester Déconnexion
+                </button>
+                <button onclick="resetToConnected()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">
+                    🔄 Remettre État Connecté
+                </button>
+            </div>
+        </div>
+        
+        <!-- Console de Debug -->
+        <div class="bg-gray-900 text-green-400 rounded-lg p-4 font-mono text-sm max-h-96 overflow-y-auto">
+            <h3 class="text-white font-bold mb-2">📊 Console de Debug</h3>
+            <div id="debug-console">
+                <div>[INIT] Test de déconnexion prêt...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Console de debug
+        function debugLog(message) {
+            const console = document.getElementById('debug-console');
+            const timestamp = new Date().toLocaleTimeString();
+            console.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+            console.scrollTop = console.scrollHeight;
+        }
+
+        // Toggle user menu
+        function toggleUserMenu() {
+            const dropdown = document.getElementById('user-dropdown');
+            dropdown.classList.toggle('hidden');
+            debugLog('🔽 Menu utilisateur ' + (dropdown.classList.contains('hidden') ? 'fermé' : 'ouvert'));
+        }
+
+        // Fonction de déconnexion (copie exacte de la navbar)
+        function logout() {
+            console.log('🔄 Début de la déconnexion...');
+            debugLog('🔄 DÉBUT - Déconnexion initiée...');
+            
+            // 1. Réinitialiser immédiatement l'interface utilisateur
+            resetUIToGuestState();
+            
+            // 2. Simuler le processus de déconnexion
+            debugLog('🔄 Simulation de la requête de déconnexion...');
+            
+            setTimeout(() => {
+                debugLog('✅ Déconnexion simulée terminée');
+                showLogoutMessage();
+            }, 500);
+        }
+
+        // Fonction pour réinitialiser l'interface utilisateur (copie exacte)
+        function resetUIToGuestState() {
+            debugLog('🔄 DÉBUT - Réinitialisation de l\'interface utilisateur...');
+            
+            // 1. Remplacer le conteneur d'authentification principal
+            const authContainer = document.getElementById('auth-container');
+            if (authContainer) {
+                debugLog('📝 Remplacement du conteneur d\'authentification...');
+                authContainer.innerHTML = `
+                    <div id="guest-buttons" class="flex items-center space-x-4">
+                        <a href="/auth/login/" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                            Connexion
+                        </a>
+                        <a href="/auth/register/" class="btn-primary text-sm px-4 py-2">
+                            Inscription
+                        </a>
+                    </div>
+                `;
+                debugLog('✅ Boutons Connexion/Inscription affichés dans le header');
+            } else {
+                debugLog('❌ Conteneur auth-container non trouvé!');
+            }
+            
+            // 2. Masquer les liens authentifiés du menu desktop
+            const authNavLinks = document.querySelectorAll('.auth-nav-link');
+            debugLog(`📝 Masquage de ${authNavLinks.length} liens authentifiés du menu desktop...`);
+            authNavLinks.forEach(link => {
+                link.style.display = 'none';
+                debugLog('🔒 Lien desktop masqué: ' + link.textContent.trim());
+            });
+            
+            // 3. Masquer les liens authentifiés du menu mobile
+            const mobileAuthLinks = document.querySelectorAll('.mobile-auth-link');
+            debugLog(`📱 Masquage de ${mobileAuthLinks.length} liens authentifiés du menu mobile...`);
+            mobileAuthLinks.forEach(link => {
+                link.style.display = 'none';
+                debugLog('🔒 Lien mobile masqué: ' + link.textContent.trim());
+            });
+            
+            // 4. Remplacer la section d'authentification mobile
+            const mobileAuthSection = document.getElementById('mobile-auth-section');
+            if (mobileAuthSection) {
+                debugLog('📱 Remplacement de la section mobile...');
+                mobileAuthSection.innerHTML = `
+                    <a href="/auth/login/" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors block">
+                        Connexion
+                    </a>
+                    <a href="/auth/register/" class="btn-primary text-sm px-4 py-2 text-center block mt-2">
+                        Inscription
+                    </a>
+                `;
+                debugLog('✅ Section mobile réinitialisée');
+            }
+            
+            debugLog('✅ FIN - Interface utilisateur complètement réinitialisée');
+            
+            // Vérification finale
+            setTimeout(() => {
+                const guestButtons = document.getElementById('guest-buttons');
+                if (guestButtons) {
+                    debugLog('🎉 SUCCÈS - Boutons guest visibles!');
+                } else {
+                    debugLog('❌ ÉCHEC - Boutons guest non trouvés!');
+                }
+            }, 100);
+        }
+
+        // Fonction pour afficher un message de déconnexion
+        function showLogoutMessage() {
+            const message = document.createElement('div');
+            message.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+            message.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>Déconnexion réussie</span>
+                </div>
+            `;
+            
+            document.body.appendChild(message);
+            debugLog('💬 Message de confirmation affiché');
+            
+            setTimeout(() => {
+                if (message.parentNode) {
+                    message.parentNode.removeChild(message);
+                    debugLog('💬 Message de confirmation supprimé');
+                }
+            }, 3000);
+        }
+
+        // Fonction pour remettre l'état connecté
+        function resetToConnected() {
+            debugLog('🔄 Remise à l\'état connecté...');
+            location.reload();
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            debugLog('🚀 Test simple de déconnexion initialisé');
+            debugLog('📋 Cliquez sur "Tester Déconnexion" pour voir la transformation');
+        });
+    </script>
+</body>
+</html>

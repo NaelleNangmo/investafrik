@@ -2542,3 +2542,2185 @@ Traceback (most recent call last):
 django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
 Bad Request: /messaging/
 Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /stats/platform/
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /admin/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/dashboard/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/logout/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /admin/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/dashboard/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/profile/
+Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/logout/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/dashboard/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/profile/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /projects/my-projects/
+Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 875, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+TypeError: 'AnonymousUser' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = getattr(current, bit)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'email'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'email'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1059, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 731, in resolve
+    arg_vals.append(arg.resolve(context))
+                    ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 842, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 898, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [email] in <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x0000019C59823B60>>
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /favicon.ico
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 875, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+TypeError: 'AnonymousUser' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = getattr(current, bit)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'email'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'email'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1059, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 731, in resolve
+    arg_vals.append(arg.resolve(context))
+                    ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 842, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 898, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [email] in <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x0000024C1F126CF0>>
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 875, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+TypeError: 'AnonymousUser' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = getattr(current, bit)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'email'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'email'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1059, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 731, in resolve
+    arg_vals.append(arg.resolve(context))
+                    ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 842, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 898, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [email] in <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x0000024C1F5B8550>>
+Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Unauthorized: /api/auth/login/
+Unauthorized: /api/auth/login/
+Unauthorized: /api/auth/login/
+Unauthorized: /api/auth/login/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /api/auth/login/
+Watching for file changes with StatReloader
+D:\Cours-CS2I\Python\inverstaf\investafrik\investafrik\settings\base.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /auth/dashboard/investisseur/
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Cours-CS2I\Python\inverstaf\investafrik\apps\accounts\views.py", line 316, in dispatch
+    if request.user.user_type != 'investisseur':
+       ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'user_type'
+D:\Cours-CS2I\Python\inverstaf\investafrik\apps\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /api/auth/login/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /api/auth/login/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/logout/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/dashboard/
+Watching for file changes with StatReloader
+Not Found: /accounts/login/
+D:\Cours-CS2I\Python\inverstaf\investafrik\investafrik\settings\base.py changed, reloading.
+D:\Cours-CS2I\Python\inverstaf\investafrik\investafrik\settings\base.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\Cours-CS2I\Python\inverstaf\investafrik\apps\accounts\views.py changed, reloading.
+D:\Cours-CS2I\Python\inverstaf\investafrik\apps\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/login/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/login/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /
+Watching for file changes with StatReloader
+Not Found: /accounts/login/
+Not Found: /accounts/login/
+Not Found: /accounts/login/
+Not Found: /accounts/login
+Not Found: /stats/platform/
+Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Internal Server Error: /auth/login/
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 875, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+TypeError: 'AnonymousUser' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = getattr(current, bit)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'email'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'email'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1059, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 731, in resolve
+    arg_vals.append(arg.resolve(context))
+                    ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 842, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 898, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [email] in <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x0000021685E91260>>
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 875, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+TypeError: 'AnonymousUser' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = getattr(current, bit)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'email'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'email'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1059, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 731, in resolve
+    arg_vals.append(arg.resolve(context))
+                    ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 842, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 898, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [email] in <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x000002312BEBAE40>>
+Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /
+Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Unauthorized: /api/auth/login/
+Unauthorized: /api/projects/
+Unauthorized: /api/projects/
+Unauthorized: /api/projects/
+Unauthorized: /api/projects/
+Unauthorized: /api/investments/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/investments/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/projects/
+Unauthorized: /api/investments/
+Unauthorized: /api/auth/profile/
+Not Found: /stats/platform/
+Unauthorized: /api/auth/login/
+Not Found: /stats/platform/
+Unauthorized: /api/auth/login/
+Unauthorized: /api/auth/profile/
+Unauthorized: /api/projects/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/auth/users/
+Unauthorized: /api/auth/users/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/messaging/conversations/
+D:\Cours-CS2I\Python\inverstaf\investafrik\apps\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\Cours-CS2I\Python\inverstaf\investafrik\apps\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/messaging/conversations/
+D:\Cours-CS2I\Python\inverstaf\investafrik\apps\projects\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\Cours-CS2I\Python\inverstaf\investafrik\apps\projects\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\Cours-CS2I\Python\inverstaf\investafrik\apps\investments\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\Cours-CS2I\Python\inverstaf\investafrik\apps\messaging\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\Cours-CS2I\Python\inverstaf\investafrik\apps\investments\frontend_urls.py changed, reloading.
+Watching for file changes with StatReloader
+D:\Cours-CS2I\Python\inverstaf\investafrik\apps\messaging\frontend_urls.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/messaging/conversations/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/dashboard/investisseur/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/profile/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /projects/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /investments/my-investments/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /messaging/conversations/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/dashboard/porteur/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/profile/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /projects/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /projects/my-projects/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /messaging/conversations/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/profile/
+Unauthorized: /api/messaging/conversations/
+Watching for file changes with StatReloader
+Unauthorized: /api/messaging/conversations/
+Not Found: /stats/platform/
+Unauthorized: /api/messaging/conversations/
+Internal Server Error: /investments/my-investments/
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Cours-CS2I\Python\inverstaf\investafrik\apps\investments\views.py", line 47, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "D:\Cours-CS2I\Python\inverstaf\investafrik\apps\investments\views.py", line 55, in get_context_data
+    ).select_related('project', 'project__owner').order_by('-created_at')
+                                                  ~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1701, in order_by
+    obj.query.add_ordering(*field_names)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\query.py", line 2253, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\query.py", line 1772, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'created_at' into field. Choices are: amount, id, invested_at, investor, investor_id, ip_address, message, notifications, payment_completed_at, payment_method, payment_provider, payment_reference, payment_status, project, project_id, refunded_at, reward_choice, transaction_id, user_agent
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /projects/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/dashboard/investisseur/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /investments/my-investments/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/profile/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /messaging/conversations/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/dashboard/porteur/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /projects/my-projects/
+Internal Server Error: /investments/my-investments/
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Cours-CS2I\Python\inverstaf\investafrik\apps\investments\views.py", line 47, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "D:\Cours-CS2I\Python\inverstaf\investafrik\apps\investments\views.py", line 55, in get_context_data
+    ).select_related('project', 'project__owner').order_by('-created_at')
+                                                  ~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1701, in order_by
+    obj.query.add_ordering(*field_names)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\query.py", line 2253, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\query.py", line 1772, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'created_at' into field. Choices are: amount, id, invested_at, investor, investor_id, ip_address, message, notifications, payment_completed_at, payment_method, payment_provider, payment_reference, payment_status, project, project_id, refunded_at, reward_choice, transaction_id, user_agent
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/projects/
+D:\Cours-CS2I\Python\inverstaf\investafrik\investafrik\settings\base.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/messaging/conversations/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /projects/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/dashboard/investisseur/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /investments/my-investments/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/profile/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /messaging/conversations/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /auth/dashboard/porteur/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /projects/my-projects/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/auth/users/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/messaging/conversations/
+Not Found: /stats/platform/
+Unauthorized: /api/auth/login/
+Internal Server Error: /auth/dashboard/investisseur/
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Cours-CS2I\Python\inverstaf\investafrik\apps\accounts\views.py", line 397, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "D:\Cours-CS2I\Python\inverstaf\investafrik\apps\accounts\views.py", line 421, in get_context_data
+    recent_investments = user_investments.select_related('project').order_by('-created_at')[:5]
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1701, in order_by
+    obj.query.add_ordering(*field_names)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\query.py", line 2253, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\query.py", line 1772, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'created_at' into field. Choices are: amount, id, invested_at, investor, investor_id, ip_address, message, notifications, payment_completed_at, payment_method, payment_provider, payment_reference, payment_status, project, project_id, refunded_at, reward_choice, transaction_id, user_agent
+Watching for file changes with StatReloader
+Internal Server Error: /auth/dashboard/investisseur/
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Cours-CS2I\Python\inverstaf\investafrik\apps\accounts\views.py", line 397, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "D:\Cours-CS2I\Python\inverstaf\investafrik\apps\accounts\views.py", line 421, in get_context_data
+    recent_investments = user_investments.select_related('project').order_by('-created_at')[:5]
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1701, in order_by
+    obj.query.add_ordering(*field_names)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\query.py", line 2253, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\query.py", line 1772, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'created_at' into field. Choices are: amount, id, invested_at, investor, investor_id, ip_address, message, notifications, payment_completed_at, payment_method, payment_provider, payment_reference, payment_status, project, project_id, refunded_at, reward_choice, transaction_id, user_agent
+Forbidden (CSRF token from POST incorrect.): /auth/login/
+Internal Server Error: /auth/dashboard/investisseur/
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Cours-CS2I\Python\inverstaf\investafrik\apps\accounts\views.py", line 397, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "D:\Cours-CS2I\Python\inverstaf\investafrik\apps\accounts\views.py", line 421, in get_context_data
+    recent_investments = user_investments.select_related('project').order_by('-created_at')[:5]
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1701, in order_by
+    obj.query.add_ordering(*field_names)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\query.py", line 2253, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\query.py", line 1772, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'created_at' into field. Choices are: amount, id, invested_at, investor, investor_id, ip_address, message, notifications, payment_completed_at, payment_method, payment_provider, payment_reference, payment_status, project, project_id, refunded_at, reward_choice, transaction_id, user_agent
+Internal Server Error: /investments/my-investments/
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Cours-CS2I\Python\inverstaf\investafrik\apps\investments\views.py", line 47, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "D:\Cours-CS2I\Python\inverstaf\investafrik\apps\investments\views.py", line 55, in get_context_data
+    ).select_related('project', 'project__owner').order_by('-created_at')
+                                                  ~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1701, in order_by
+    obj.query.add_ordering(*field_names)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\query.py", line 2253, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\query.py", line 1772, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'created_at' into field. Choices are: amount, id, invested_at, investor, investor_id, ip_address, message, notifications, payment_completed_at, payment_method, payment_provider, payment_reference, payment_status, project, project_id, refunded_at, reward_choice, transaction_id, user_agent
+Unauthorized: /api/categories/
+Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Unauthorized: /api/investments/
+Unauthorized: /api/projects/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/auth/profile/
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+Unauthorized: /api/investments/
+Unauthorized: /api/projects/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/auth/users/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/messaging/conversations/
+Watching for file changes with StatReloader
+Unauthorized: /api/messaging/conversations/
+Unauthorized: /api/messaging/conversations/
+Not Found: /stats/platform/
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+D:\Cours-CS2I\Python\inverstaf\investafrik\apps\messaging\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\Cours-CS2I\Python\inverstaf\investafrik\apps\messaging\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\Cours-CS2I\Python\inverstaf\investafrik\apps\messaging\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /messaging/new/
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "D:\Cours-CS2I\Python\inverstaf\investafrik\apps\messaging\views.py", line 231, in post
+    return redirect(f'/messaging/conversations/{conversation.id}/')
+           ^^^^^^^^
+NameError: name 'redirect' is not defined
+D:\Cours-CS2I\Python\inverstaf\investafrik\apps\messaging\views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /stats/platform/
+Unauthorized: /api/auth/login/
+Unauthorized: /api/projects/
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Unauthorized: /api/projects/
+Unauthorized: /api/auth/profile/
+Unauthorized: /api/auth/profile/
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Unauthorized: /api/auth/profile/
+Not Found: /categories/
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Unauthorized: /api/projects/farmtech-solutions-agriculture-intelligente/
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Unauthorized: /api/projects/afro-fashion-hub/
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Unauthorized: /api/projects/afro-fashion-hub/
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Unauthorized: /api/projects/greenenergy-cote-divoire/
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Unauthorized: /api/projects/afro-fashion-hub/
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Unauthorized: /api/projects/afro-fashion-hub/
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Unauthorized: /api/projects/afro-fashion-hub/
+Not Found: /media/https:/images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop
+Not Found: /media/https:/images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /projects/afro-fashion-hub/
+Watching for file changes with StatReloader
+Internal Server Error: /projects/ecole-numerique-de-yaounde/
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'profile' with arguments '(UUID('cd9cd107-1cc9-42c7-855b-927c8ede2ece'),)' not found. 1 pattern(s) tried: ['auth/profile/\\Z']
+Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Internal Server Error: /projects/
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 961, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 861, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 961, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 481, in parse
+    raise self.error(token, e)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 479, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 597, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 694, in __init__
+    self.args_check(filter_name, filter_func, args)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 756, in args_check
+    raise TemplateSyntaxError(
+        "%s requires %d arguments, %d provided" % (name, alen - dlen, plen)
+    )
+django.template.exceptions.TemplateSyntaxError: default requires 2 arguments, 1 provided
+Internal Server Error: /projects/
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 961, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 861, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 1499, in do_with
+    nodelist = parser.parse(("endwith",))
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 1490, in do_with
+    extra_context = token_kwargs(remaining_bits, parser, support_legacy=True)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1111, in token_kwargs
+    kwargs[key] = parser.compile_filter(value)
+                  ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 597, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 698, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: ':"#CE1126,#FCD116,#007A5E,#000000,#006B3F,#D21034,#FCD116"' from 'cycle:"#CE1126,#FCD116,#007A5E,#000000,#006B3F,#D21034,#FCD116"'
+Not Found: /categories/
+D:\Cours-CS2I\Python\inverstaf\investafrik\apps\projects\views.py changed, reloading.
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /projects/create/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /projects/create/
+D:\Cours-CS2I\Python\inverstaf\investafrik\apps\projects\views.py changed, reloading.
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /projects/create/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /projects/create/
+Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Bad Request: /projects/afro-fashion-hub/
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Watching for file changes with StatReloader
+Not Found: /stats/platform/
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NAELLE NOUTONG\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'projects_list' not found. 'projects_list' is not a valid view function or pattern name.
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+Not Found: /stats/platform/
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+Not Found: /stats/platform/
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+Not Found: /stats/platform/
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+Not Found: /stats/platform/
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+Not Found: /stats/platform/
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+Not Found: /stats/platform/
+Not Found: /stats/platform/
+Unauthorized: /api/auth/login/

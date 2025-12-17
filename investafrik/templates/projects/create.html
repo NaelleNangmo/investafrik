@@ -12,6 +12,20 @@
             <p class="text-gray-600 mt-2">Présentez votre idée et commencez à lever des fonds</p>
         </div>
 
+        <!-- Messages -->
+        {% if messages %}
+        <div class="mb-6">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} mb-3 p-4 rounded-lg {% if message.tags == 'error' %}bg-red-50 border border-red-200 text-red-700{% elif message.tags == 'success' %}bg-green-50 border border-green-200 text-green-700{% elif message.tags == 'warning' %}bg-yellow-50 border border-yellow-200 text-yellow-700{% else %}bg-blue-50 border border-blue-200 text-blue-700{% endif %}">
+                <div class="flex items-center">
+                    <i class="fas {% if message.tags == 'error' %}fa-exclamation-circle{% elif message.tags == 'success' %}fa-check-circle{% elif message.tags == 'warning' %}fa-exclamation-triangle{% else %}fa-info-circle{% endif %} mr-2"></i>
+                    {{ message }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
         <!-- Progress Steps -->
         <div class="mb-8">
             <div class="flex items-center justify-between">
@@ -33,7 +47,8 @@
         </div>
 
         <!-- Form -->
-        <form id="projectForm" class="bg-white rounded-lg shadow p-6">
+        <form id="projectForm" method="post" enctype="multipart/form-data" class="bg-white rounded-lg shadow p-6">
+            {% csrf_token %}
             <!-- Step 1: Basic Information -->
             <div id="step1" class="step">
                 <h2 class="text-xl font-semibold text-gray-900 mb-6">Informations de Base</h2>
@@ -42,51 +57,55 @@
                     <div class="md:col-span-2">
                         <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Titre du projet *</label>
                         <input type="text" id="title" name="title" required 
-                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-                               placeholder="Ex: Application mobile pour l'agriculture intelligente">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                               placeholder="Ex: Application mobile pour l'agriculture intelligente" value="{{ request.POST.title|default:'' }}">
                     </div>
 
                     <div>
                         <label for="category" class="block text-sm font-medium text-gray-700 mb-2">Catégorie *</label>
                         <select id="category" name="category" required 
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
                             <option value="">Sélectionnez une catégorie</option>
+                            {% for category in categories %}
+                            <option value="{{ category.id }}" {% if request.POST.category == category.id|stringformat:"s" %}selected{% endif %}>{{ category.name }}</option>
+                            {% endfor %}
                         </select>
                     </div>
 
                     <div>
                         <label for="country" class="block text-sm font-medium text-gray-700 mb-2">Pays *</label>
                         <select id="country" name="country" required 
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
                             <option value="">Sélectionnez un pays</option>
-                            <option value="CM">Cameroun</option>
-                            <option value="SN">Sénégal</option>
-                            <option value="CI">Côte d'Ivoire</option>
-                            <option value="BJ">Bénin</option>
-                            <option value="TG">Togo</option>
-                            <option value="BF">Burkina Faso</option>
-                            <option value="ML">Mali</option>
-                            <option value="NE">Niger</option>
-                            <option value="GN">Guinée</option>
-                            <option value="GH">Ghana</option>
-                            <option value="NG">Nigeria</option>
-                            <option value="KE">Kenya</option>
+                            <option value="CM" {% if request.POST.country == "CM" %}selected{% endif %}>Cameroun</option>
+                            <option value="SN" {% if request.POST.country == "SN" %}selected{% endif %}>Sénégal</option>
+                            <option value="CI" {% if request.POST.country == "CI" %}selected{% endif %}>Côte d'Ivoire</option>
+                            <option value="BJ" {% if request.POST.country == "BJ" %}selected{% endif %}>Bénin</option>
+                            <option value="TG" {% if request.POST.country == "TG" %}selected{% endif %}>Togo</option>
+                            <option value="BF" {% if request.POST.country == "BF" %}selected{% endif %}>Burkina Faso</option>
+                            <option value="ML" {% if request.POST.country == "ML" %}selected{% endif %}>Mali</option>
+                            <option value="NE" {% if request.POST.country == "NE" %}selected{% endif %}>Niger</option>
+                            <option value="GN" {% if request.POST.country == "GN" %}selected{% endif %}>Guinée</option>
+                            <option value="GH" {% if request.POST.country == "GH" %}selected{% endif %}>Ghana</option>
+                            <option value="NG" {% if request.POST.country == "NG" %}selected{% endif %}>Nigeria</option>
+                            <option value="KE" {% if request.POST.country == "KE" %}selected{% endif %}>Kenya</option>
                         </select>
                     </div>
 
                     <div class="md:col-span-2">
                         <label for="short_description" class="block text-sm font-medium text-gray-700 mb-2">Description courte *</label>
-                        <textarea id="short_description" name="short_description" required rows="3"
-                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-                                  placeholder="Résumez votre projet en quelques phrases (max 200 caractères)"></textarea>
+                        <textarea id="short_description" name="short_description" required rows="3" maxlength="200"
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                  placeholder="Résumez votre projet en quelques phrases (max 200 caractères)">{{ request.POST.short_description|default:'' }}</textarea>
                         <p class="text-sm text-gray-500 mt-1">0/200 caractères</p>
                     </div>
 
                     <div class="md:col-span-2">
                         <label for="full_description" class="block text-sm font-medium text-gray-700 mb-2">Description complète *</label>
-                        <div id="editor-container" class="border border-gray-300 rounded-md">
-                            <div id="editor" style="height: 300px;"></div>
-                        </div>
+                        <textarea id="full_description" name="full_description" required rows="8"
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                  placeholder="Décrivez votre projet en détail (minimum 50 caractères)...">{{ request.POST.full_description|default:'' }}</textarea>
+                        <p class="text-sm text-gray-500 mt-1">Minimum 50 caractères</p>
                     </div>
                 </div>
 
@@ -104,38 +123,38 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="goal_amount" class="block text-sm font-medium text-gray-700 mb-2">Objectif de financement (FCFA) *</label>
-                        <input type="number" id="goal_amount" name="goal_amount" required min="100000"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-                               placeholder="Ex: 5000000">
+                        <input type="number" id="goal_amount" name="goal_amount" required min="100000" step="1000"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                               placeholder="Ex: 5000000" value="{{ request.POST.goal_amount|default:'' }}">
                         <p class="text-sm text-gray-500 mt-1">Minimum: 100,000 FCFA</p>
                     </div>
 
                     <div>
                         <label for="duration" class="block text-sm font-medium text-gray-700 mb-2">Durée de la campagne (jours) *</label>
                         <select id="duration" name="duration" required 
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
                             <option value="">Sélectionnez la durée</option>
-                            <option value="30">30 jours</option>
-                            <option value="45">45 jours</option>
-                            <option value="60">60 jours</option>
-                            <option value="90">90 jours</option>
+                            <option value="30" {% if request.POST.duration == "30" %}selected{% endif %}>30 jours</option>
+                            <option value="45" {% if request.POST.duration == "45" %}selected{% endif %}>45 jours</option>
+                            <option value="60" {% if request.POST.duration == "60" %}selected{% endif %}>60 jours</option>
+                            <option value="90" {% if request.POST.duration == "90" %}selected{% endif %}>90 jours</option>
                         </select>
                     </div>
 
                     <div class="md:col-span-2">
-                        <label class="block text-sm font-medium text-gray-700 mb-4">Répartition du budget</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-4">Répartition du budget (optionnel)</label>
                         <div id="budget-breakdown" class="space-y-3">
                             <div class="flex items-center space-x-3">
-                                <input type="text" placeholder="Poste de dépense" 
+                                <input type="text" name="budget_item[]" placeholder="Poste de dépense" 
                                        class="flex-1 px-3 py-2 border border-gray-300 rounded-md">
-                                <input type="number" placeholder="Montant (FCFA)" 
+                                <input type="number" name="budget_amount[]" placeholder="Montant (FCFA)" 
                                        class="w-32 px-3 py-2 border border-gray-300 rounded-md">
-                                <button type="button" class="text-red-600 hover:text-red-700">
+                                <button type="button" onclick="removeBudgetItem(this)" class="text-red-600 hover:text-red-700">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
                         </div>
-                        <button type="button" onclick="addBudgetItem()" class="mt-3 text-primary-600 hover:text-primary-700 text-sm">
+                        <button type="button" onclick="addBudgetItem()" class="mt-3 text-orange-600 hover:text-orange-700 text-sm">
                             <i class="fas fa-plus mr-1"></i>Ajouter un poste
                         </button>
                     </div>
@@ -177,8 +196,8 @@
                     <div>
                         <label for="video_url" class="block text-sm font-medium text-gray-700 mb-2">Vidéo de présentation (optionnel)</label>
                         <input type="url" id="video_url" name="video_url"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-                               placeholder="https://youtube.com/watch?v=...">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                               placeholder="https://youtube.com/watch?v=..." value="{{ request.POST.video_url|default:'' }}">
                         <p class="text-sm text-gray-500 mt-1">URL YouTube ou Vimeo</p>
                     </div>
 
@@ -186,11 +205,11 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2">Statut de publication</label>
                         <div class="space-y-2">
                             <label class="flex items-center">
-                                <input type="radio" name="status" value="draft" checked class="mr-2">
+                                <input type="radio" name="status" value="draft" {% if request.POST.status == "draft" or not request.POST.status %}checked{% endif %} class="mr-2">
                                 <span>Brouillon - Sauvegarder sans publier</span>
                             </label>
                             <label class="flex items-center">
-                                <input type="radio" name="status" value="pending" class="mr-2">
+                                <input type="radio" name="status" value="pending" {% if request.POST.status == "pending" %}checked{% endif %} class="mr-2">
                                 <span>Soumettre pour validation - Publier après approbation</span>
                             </label>
                         </div>
@@ -212,75 +231,48 @@
 
 <script>
 let currentStep = 1;
-let quill;
 
-// Initialize Quill editor
 document.addEventListener('DOMContentLoaded', function() {
-    quill = new Quill('#editor', {
-        theme: 'snow',
-        placeholder: 'Décrivez votre projet en détail...',
-        modules: {
-            toolbar: [
-                ['bold', 'italic', 'underline'],
-                ['link'],
-                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                ['clean']
-            ]
-        }
-    });
-
-    loadCategories();
     setupFormHandlers();
+    updateProgressBar();
 });
-
-async function loadCategories() {
-    try {
-        const response = await api.request('/categories/');
-        if (response.ok) {
-            const categories = await response.json();
-            const select = document.getElementById('category');
-            categories.forEach(category => {
-                const option = document.createElement('option');
-                option.value = category.id;
-                option.textContent = category.name;
-                select.appendChild(option);
-            });
-        }
-    } catch (error) {
-        console.error('Error loading categories:', error);
-    }
-}
 
 function setupFormHandlers() {
     // Character counter for short description
     const shortDesc = document.getElementById('short_description');
+    const counter = shortDesc.nextElementSibling;
+    
     shortDesc.addEventListener('input', function() {
         const count = this.value.length;
-        const counter = this.nextElementSibling;
         counter.textContent = `${count}/200 caractères`;
         if (count > 200) {
             counter.classList.add('text-red-500');
+            counter.classList.remove('text-gray-500');
         } else {
             counter.classList.remove('text-red-500');
+            counter.classList.add('text-gray-500');
         }
     });
+    
+    // Trigger initial count
+    shortDesc.dispatchEvent(new Event('input'));
 
     // Image upload handler
-    document.getElementById('featured_image').addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('preview-img').src = e.target.result;
-                document.getElementById('image-preview').classList.remove('hidden');
-                document.getElementById('image-upload').classList.add('hidden');
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-
-    // Form submission
-    document.getElementById('projectForm').addEventListener('submit', handleSubmit);
+    const imageInput = document.getElementById('featured_image');
+    if (imageInput) {
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('preview-img').src = e.target.result;
+                    document.getElementById('image-preview').classList.remove('hidden');
+                    document.getElementById('image-upload').classList.add('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
 }
 
 function nextStep() {
@@ -301,26 +293,28 @@ function prevStep() {
 
 function updateProgressBar() {
     // Update progress indicators
-    for (let i = 1; i <= 3; i++) {
-        const step = document.querySelector(`.flex:nth-child(${i*2-1}) .w-8`);
-        const text = document.querySelector(`.flex:nth-child(${i*2-1}) span`);
+    const steps = document.querySelectorAll('.flex.items-center');
+    
+    steps.forEach((stepElement, index) => {
+        const stepNumber = index + 1;
+        const circle = stepElement.querySelector('.w-8');
+        const text = stepElement.querySelector('span');
         
-        if (i <= currentStep) {
-            step.classList.remove('bg-gray-200', 'text-gray-600');
-            step.classList.add('bg-primary-600', 'text-white');
+        if (stepNumber <= currentStep) {
+            circle.classList.remove('bg-gray-200', 'text-gray-600');
+            circle.classList.add('bg-orange-600', 'text-white');
             text.classList.remove('text-gray-600');
-            text.classList.add('text-primary-600');
+            text.classList.add('text-orange-600');
         } else {
-            step.classList.remove('bg-primary-600', 'text-white');
-            step.classList.add('bg-gray-200', 'text-gray-600');
-            text.classList.remove('text-primary-600');
+            circle.classList.remove('bg-orange-600', 'text-white');
+            circle.classList.add('bg-gray-200', 'text-gray-600');
+            text.classList.remove('text-orange-600');
             text.classList.add('text-gray-600');
         }
-    }
+    });
 }
 
 function validateStep(step) {
-    const form = document.getElementById('projectForm');
     const stepDiv = document.getElementById(`step${step}`);
     const requiredFields = stepDiv.querySelectorAll('[required]');
     
@@ -334,9 +328,16 @@ function validateStep(step) {
         }
     });
 
-    if (step === 1 && quill.getText().trim().length < 50) {
-        notifications.show('La description complète doit contenir au moins 50 caractères', 'error');
-        isValid = false;
+    // Validation spéciale pour l'étape 1
+    if (step === 1) {
+        const fullDesc = document.getElementById('full_description');
+        if (fullDesc.value.trim().length < 50) {
+            fullDesc.classList.add('border-red-500');
+            alert('La description complète doit contenir au moins 50 caractères');
+            isValid = false;
+        } else {
+            fullDesc.classList.remove('border-red-500');
+        }
     }
 
     return isValid;
@@ -347,15 +348,19 @@ function addBudgetItem() {
     const div = document.createElement('div');
     div.className = 'flex items-center space-x-3';
     div.innerHTML = `
-        <input type="text" placeholder="Poste de dépense" 
+        <input type="text" name="budget_item[]" placeholder="Poste de dépense" 
                class="flex-1 px-3 py-2 border border-gray-300 rounded-md">
-        <input type="number" placeholder="Montant (FCFA)" 
+        <input type="number" name="budget_amount[]" placeholder="Montant (FCFA)" 
                class="w-32 px-3 py-2 border border-gray-300 rounded-md">
-        <button type="button" onclick="this.parentElement.remove()" class="text-red-600 hover:text-red-700">
+        <button type="button" onclick="removeBudgetItem(this)" class="text-red-600 hover:text-red-700">
             <i class="fas fa-trash"></i>
         </button>
     `;
     container.appendChild(div);
+}
+
+function removeBudgetItem(button) {
+    button.parentElement.remove();
 }
 
 function removeImage() {
@@ -363,84 +368,5 @@ function removeImage() {
     document.getElementById('image-preview').classList.add('hidden');
     document.getElementById('image-upload').classList.remove('hidden');
 }
-
-async function handleSubmit(e) {
-    e.preventDefault();
-    
-    if (!validateStep(3)) {
-        return;
-    }
-
-    const formData = new FormData();
-    const form = e.target;
-
-    // Basic fields
-    formData.append('title', form.title.value);
-    formData.append('category', form.category.value);
-    formData.append('country', form.country.value);
-    formData.append('short_description', form.short_description.value);
-    formData.append('full_description', quill.root.innerHTML);
-    formData.append('goal_amount', form.goal_amount.value);
-    formData.append('status', form.status.value);
-
-    // Calculate dates
-    const startDate = new Date();
-    const endDate = new Date();
-    endDate.setDate(startDate.getDate() + parseInt(form.duration.value));
-    
-    formData.append('start_date', startDate.toISOString().split('T')[0]);
-    formData.append('end_date', endDate.toISOString().split('T')[0]);
-
-    // Image
-    if (form.featured_image.files[0]) {
-        formData.append('featured_image', form.featured_image.files[0]);
-    }
-
-    // Video URL
-    if (form.video_url.value) {
-        formData.append('video_url', form.video_url.value);
-    }
-
-    // Budget breakdown
-    const budgetItems = [];
-    const budgetRows = document.querySelectorAll('#budget-breakdown .flex');
-    budgetRows.forEach(row => {
-        const inputs = row.querySelectorAll('input');
-        if (inputs[0].value && inputs[1].value) {
-            budgetItems.push({
-                item: inputs[0].value,
-                amount: parseFloat(inputs[1].value)
-            });
-        }
-    });
-    formData.append('budget_breakdown', JSON.stringify(budgetItems));
-
-    try {
-        const response = await api.request('/projects/', {
-            method: 'POST',
-            body: formData
-        });
-
-        if (response.ok) {
-            const project = await response.json();
-            notifications.show('Projet créé avec succès !', 'success');
-            setTimeout(() => {
-                window.location.href = `/projects/${project.id}/`;
-            }, 2000);
-        } else {
-            const error = await response.json();
-            notifications.show('Erreur lors de la création du projet', 'error');
-            console.error('Error:', error);
-        }
-    } catch (error) {
-        notifications.show('Erreur de connexion', 'error');
-        console.error('Error:', error);
-    }
-}
 </script>
-
-<!-- Quill CSS -->
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-<!-- Quill JS -->
-<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 {% endblock %}

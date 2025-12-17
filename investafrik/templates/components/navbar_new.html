@@ -1,0 +1,246 @@
+{% load static %}
+<nav class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="{% url 'home' %}" class="flex items-center">
+                    <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=40&h=40&fit=crop&crop=center" 
+                         alt="InvestAfrik" class="h-8 w-8 rounded mr-2">
+                    <span class="text-xl font-bold text-gray-900">InvestAfrik</span>
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+                <!-- Navigation publique (toujours visible) -->
+                <a href="{% url 'projects:list' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                    Projets
+                </a>
+                
+                <!-- Navigation authentifiée (seulement si connecté) -->
+                {% if user.is_authenticated %}
+                    {% if user.user_type == 'porteur' %}
+                        <a href="{% url 'projects:my_projects' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                            <i class="fas fa-folder mr-1"></i>Mes Projets
+                        </a>
+                    {% elif user.user_type == 'investisseur' %}
+                        <a href="{% url 'investments:my_investments' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                            <i class="fas fa-chart-line mr-1"></i>Mes Investissements
+                        </a>
+                    {% endif %}
+                    <a href="{% url 'messaging:conversations' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                        <i class="fas fa-comments mr-1"></i>Messages
+                    </a>
+                {% endif %}
+                
+                <a href="/how-it-works/" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                    Comment ça marche
+                </a>
+                <a href="/about/" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                    À propos
+                </a>
+            </div>
+            
+            <!-- Boutons d'authentification Desktop -->
+            <div class="hidden md:flex items-center space-x-4">
+                {% if user.is_authenticated %}
+                    <!-- Menu utilisateur connecté -->
+                    <div class="relative">
+                        <button onclick="toggleUserMenu()" class="flex items-center space-x-2 text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                            <i class="fas fa-user-circle text-lg"></i>
+                            <span>{{ user.get_short_name|default:user.first_name|default:user.email }}</span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div id="user-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-100">
+                            <a href="{% url 'accounts:dashboard' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                            </a>
+                            <a href="{% url 'accounts:profile' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-user mr-2"></i>Mon Profil
+                            </a>
+                            <hr class="my-1 border-gray-200">
+                            <form method="POST" action="{% url 'accounts:logout' %}" class="m-0">
+                                {% csrf_token %}
+                                <button type="submit" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors">
+                                    <i class="fas fa-sign-out-alt mr-2"></i>Déconnexion
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                {% else %}
+                    <!-- Boutons pour utilisateur anonyme -->
+                    <a href="{% url 'accounts:login' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                        Connexion
+                    </a>
+                    <a href="{% url 'accounts:register' %}" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                        Inscription
+                    </a>
+                {% endif %}
+            </div>
+            
+            <!-- Bouton menu mobile -->
+            <div class="md:hidden">
+                <button type="button" onclick="toggleMobileMenu()" class="text-gray-700 hover:text-primary-600 focus:outline-none focus:text-primary-600">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4">
+            <div class="flex flex-col space-y-2">
+                <!-- Navigation publique mobile -->
+                <a href="{% url 'projects:list' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                    Projets
+                </a>
+                
+                <!-- Navigation authentifiée mobile -->
+                {% if user.is_authenticated %}
+                    {% if user.user_type == 'porteur' %}
+                        <a href="{% url 'projects:my_projects' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                            <i class="fas fa-folder mr-1"></i>Mes Projets
+                        </a>
+                    {% elif user.user_type == 'investisseur' %}
+                        <a href="{% url 'investments:my_investments' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                            <i class="fas fa-chart-line mr-1"></i>Mes Investissements
+                        </a>
+                    {% endif %}
+                    <a href="{% url 'messaging:conversations' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                        <i class="fas fa-comments mr-1"></i>Messages
+                    </a>
+                    <a href="{% url 'accounts:dashboard' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                        <i class="fas fa-tachometer-alt mr-1"></i>Dashboard
+                    </a>
+                    <a href="{% url 'accounts:profile' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                        <i class="fas fa-user mr-1"></i>Mon Profil
+                    </a>
+                {% endif %}
+                
+                <a href="/how-it-works/" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                    Comment ça marche
+                </a>
+                <a href="/about/" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                    À propos
+                </a>
+                
+                <!-- Boutons d'authentification mobile -->
+                <div class="border-t pt-2 mt-2">
+                    {% if user.is_authenticated %}
+                        <form method="POST" action="{% url 'accounts:logout' %}" class="m-0">
+                            {% csrf_token %}
+                            <button type="submit" class="w-full text-left text-red-600 hover:text-red-700 px-3 py-2 text-sm font-medium transition-colors">
+                                <i class="fas fa-sign-out-alt mr-1"></i>Déconnexion
+                            </button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'accounts:login' %}" class="block text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                            Connexion
+                        </a>
+                        <a href="{% url 'accounts:register' %}" class="block bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors text-center mt-2">
+                            Inscription
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Debug Info (à supprimer en production) -->
+<div class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 text-xs" style="position: fixed; top: 0; left: 0; z-index: 9999;">
+    <strong>DEBUG:</strong> 
+    User: {{ user|default:"None" }} | 
+    Authenticated: {{ user.is_authenticated|yesno:"YES,NO" }} | 
+    Type: {{ user.user_type|default:"N/A" }} | 
+    Anonymous: {{ user.is_anonymous|yesno:"YES,NO" }}
+</div>
+
+<script>
+// Variables globales pour debug
+window.navbarDebug = {
+    user: '{{ user|default:"None" }}',
+    isAuthenticated: {{ user.is_authenticated|yesno:"true,false" }},
+    userType: '{{ user.user_type|default:"N/A" }}',
+    isAnonymous: {{ user.is_anonymous|yesno:"true,false" }}
+};
+
+console.log('🔍 NAVBAR DEBUG INFO:', window.navbarDebug);
+
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    if (menu) {
+        menu.classList.toggle('hidden');
+        console.log('📱 Menu mobile toggled:', !menu.classList.contains('hidden'));
+    }
+}
+
+function toggleUserMenu() {
+    const dropdown = document.getElementById('user-dropdown');
+    if (dropdown) {
+        dropdown.classList.toggle('hidden');
+        console.log('👤 Menu utilisateur toggled:', !dropdown.classList.contains('hidden'));
+    }
+}
+
+// Fermer le dropdown quand on clique ailleurs
+document.addEventListener('click', function(event) {
+    const userButton = document.querySelector('[onclick="toggleUserMenu()"]');
+    const dropdown = document.getElementById('user-dropdown');
+    
+    if (userButton && dropdown && !userButton.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.classList.add('hidden');
+    }
+});
+
+// Vérification au chargement de la page
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Navbar chargée');
+    console.log('📊 État utilisateur:', window.navbarDebug);
+    
+    // Vérifier la présence des éléments
+    const guestButtons = document.querySelector('a[href*="login"]');
+    const userMenu = document.querySelector('[onclick="toggleUserMenu()"]');
+    
+    console.log('🔍 Éléments trouvés:');
+    console.log('   - Boutons guest:', !!guestButtons);
+    console.log('   - Menu utilisateur:', !!userMenu);
+    
+    if (window.navbarDebug.isAuthenticated) {
+        if (!userMenu) {
+            console.error('❌ ERREUR: Utilisateur connecté mais pas de menu utilisateur!');
+        } else {
+            console.log('✅ Menu utilisateur présent pour utilisateur connecté');
+        }
+    } else {
+        if (!guestButtons) {
+            console.error('❌ ERREUR: Utilisateur anonyme mais pas de boutons guest!');
+        } else {
+            console.log('✅ Boutons guest présents pour utilisateur anonyme');
+        }
+    }
+});
+</script>
+
+<style>
+/* Animation pour le dropdown */
+#user-dropdown {
+    animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Style pour les boutons */
+.btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors;
+}
+</style>

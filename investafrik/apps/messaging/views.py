@@ -97,3 +97,141 @@ class ConversationViewSet(viewsets.ModelViewSet):
         conversation = self.get_object()
         conversation.mark_as_read_for_user(request.user)
         return Response({'message': 'Conversation marquée comme lue'})
+
+
+# Frontend Views
+from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
+
+
+class ConversationsPageView(LoginRequiredMixin, TemplateView):
+    """Page des conversations."""
+    template_name = 'messaging/conversations.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        # Récupérer les conversations de l'utilisateur
+        user = self.request.user
+        conversations = Conversation.objects.filter(
+            models.Q(participant_1=user) | models.Q(participant_2=user)
+        ).select_related('participant_1', 'participant_2').order_by('-last_message_at')
+        
+        # Récupérer tous les utilisateurs pour démarrer de nouvelles conversations
+        from apps.accounts.models import User
+        all_users = User.objects.exclude(id=user.id).filter(is_active=True)
+        
+        # Compter les messages non lus
+        unread_count = 0
+        for conversation in conversations:
+            unread_count += conversation.get_unread_count_for_user(user)
+        
+        # Conversation sélectionnée (si spécifiée dans l'URL)
+        selected_conversation = None
+        conversation_id = self.request.GET.get('conversation')
+        if conversation_id:
+            try:
+                selected_conversation = conversations.get(id=conversation_id)
+            except Conversation.DoesNotExist:
+                pass
+        
+        # Messages de la conversation sélectionnée
+        messages = []
+        if selected_conversation:
+            messages = selected_conversation.messages.filter(is_deleted=False).select_related('sender').order_by('sent_at')
+        
+        context.update({
+            'conversations': conversations,
+            'all_users': all_users,
+            'unread_count': unread_count,
+            'selected_conversation': selected_conversation,
+            'messages': messages,
+        })
+        
+        return context
+
+
+class ConversationDetailView(LoginRequiredMixin, TemplateView):
+    """Vue pour une conversation spécifique."""
+    template_name = 'messaging/conversation_detail.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        conversation_id = kwargs.get('conversation_id')
+        user = self.request.user
+        
+        try:
+            conversation = Conversation.objects.filter(
+                models.Q(participant_1=user) | models.Q(participant_2=user)
+            ).get(id=conversation_id)
+            
+            # Messages de la conversation
+            messages = conversation.messages.filter(is_deleted=False).select_related('sender').order_by('sent_at')
+            
+            # Marquer comme lu
+            conversation.mark_as_read_for_user(user)
+            
+            context.update({
+                'conversation': conversation,
+                'messages': messages,
+                'other_user': conversation.participant_2 if conversation.participant_1 == user else conversation.participant_1,
+            })
+            
+        except Conversation.DoesNotExist:
+            context['error'] = 'Conversation non trouvée'
+        
+        return context
+    
+    def post(self, request, *args, **kwargs):
+        """Envoyer un message."""
+        conversation_id = kwargs.get('conversation_id')
+        content = request.POST.get('content', '').strip()
+        
+        if not content:
+            return redirect(f'/messaging/conversations/{conversation_id}/')
+        
+        try:
+            conversation = Conversation.objects.filter(
+                models.Q(participant_1=request.user) | models.Q(participant_2=request.user)
+            ).get(id=conversation_id)
+            
+            # Créer le message
+            Message.objects.create(
+                conversation=conversation,
+                sender=request.user,
+                content=content
+            )
+            
+        except Conversation.DoesNotExist:
+            pass
+        
+        return redirect(f'/messaging/conversations/{conversation_id}/')
+
+
+class NewConversationView(LoginRequiredMixin, TemplateView):
+    """Créer une nouvelle conversation."""
+    
+    def post(self, request, *args, **kwargs):
+        """Créer une nouvelle conversation."""
+        participant_2_id = request.POST.get('participant_2')
+        
+        if not participant_2_id:
+            return redirect('/messaging/conversations/')
+        
+        try:
+            from apps.accounts.models import User
+            participant_2 = User.objects.get(id=participant_2_id)
+            
+            # Créer ou récupérer la conversation
+            conversation, created = Conversation.get_or_create_conversation(
+                request.user, participant_2
+            )
+            
+            return redirect(f'/messaging/conversations/{conversation.id}/')
+            
+        except User.DoesNotExist:
+            pass
+        
+        return redirect('/messaging/conversations/')

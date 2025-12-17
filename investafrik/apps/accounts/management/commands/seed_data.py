@@ -184,8 +184,7 @@ class Command(BaseCommand):
                 'start_date': date.today() - timedelta(days=15),
                 'end_date': date.today() + timedelta(days=45),
                 'status': 'active',
-                'category_name': 'Agriculture & Agrobusiness',
-                'featured_image': 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop'
+                'category_name': 'Agriculture & Agrobusiness'
             },
             {
                 'title': 'Ferme Aquaponique Moderne',

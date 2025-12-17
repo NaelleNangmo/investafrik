@@ -3,206 +3,1107 @@
 
 {% block title %}InvestAfrik - Financez l'avenir de l'Afrique{% endblock %}
 
+{% block extra_head %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    
+    /* Premium Animations */
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes pulse-glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(251, 146, 60, 0.4); }
+        50% { box-shadow: 0 0 40px rgba(251, 146, 60, 0.8); }
+    }
+    
+    @keyframes shimmer {
+        0% { background-position: -200px 0; }
+        100% { background-position: calc(200px + 100%) 0; }
+    }
+    
+    @keyframes bounce-in {
+        0% { transform: scale(0.3); opacity: 0; }
+        50% { transform: scale(1.05); }
+        70% { transform: scale(0.9); }
+        100% { transform: scale(1); opacity: 1; }
+    }
+    
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-50px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(50px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes rotateIn {
+        from { opacity: 0; transform: rotate(-10deg) scale(0.8); }
+        to { opacity: 1; transform: rotate(0deg) scale(1); }
+    }
+    
+    @keyframes morphing {
+        0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    }
+    
+    @keyframes rainbow {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+    
+    @keyframes particle-float {
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    }
+    
+    @keyframes typewriter {
+        from { width: 0; }
+        to { width: 100%; }
+    }
+    
+    @keyframes blink {
+        0%, 50% { border-color: transparent; }
+        51%, 100% { border-color: currentColor; }
+    }
+    
+    /* Animation Classes */
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-fadeInUp { animation: fadeInUp 0.8s ease-out; }
+    .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+    .animate-bounce-in { animation: bounce-in 0.6s ease-out; }
+    .animate-slideInLeft { animation: slideInLeft 0.8s ease-out; }
+    .animate-slideInRight { animation: slideInRight 0.8s ease-out; }
+    .animate-rotateIn { animation: rotateIn 1s ease-out; }
+    .animate-morphing { animation: morphing 8s ease-in-out infinite; }
+    
+    .animate-shimmer {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200px 100%;
+        animation: shimmer 1.5s infinite;
+    }
+    
+    /* Premium Patterns */
+    .pattern-dots {
+        background-image: radial-gradient(circle, rgba(251, 146, 60, 0.1) 1px, transparent 1px);
+        background-size: 20px 20px;
+    }
+    
+    .pattern-grid {
+        background-image: linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+        background-size: 30px 30px;
+    }
+    
+    /* Premium Gradients */
+    .gradient-text-rainbow {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        background-size: 200% 200%;
+        animation: rainbow 3s ease-in-out infinite;
+    }
+    
+    /* Glass Effects */
+    .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .glass-dark {
+        background: rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Premium Hover Effects */
+    .hover-lift:hover { transform: translateY(-8px); }
+    .hover-glow:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.1); }
+    .hover-scale:hover { transform: scale(1.05); }
+    .hover-rotate:hover { transform: rotate(5deg); }
+    
+    /* Magnetic Effect */
+    .magnetic {
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+    
+    /* Premium Button Effects */
+    .btn-premium {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #f59e0b, #ea580c);
+        transition: all 0.3s ease;
+    }
+    
+    .btn-premium::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.5s ease;
+    }
+    
+    .btn-premium:hover::before {
+        left: 100%;
+    }
+    
+    /* Particle System */
+    .particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+    }
+    
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(249, 115, 22, 0.6);
+        border-radius: 50%;
+        animation: particle-float 15s infinite linear;
+    }
+    
+    /* Scroll Reveal */
+    .scroll-reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease-out;
+    }
+    
+    .scroll-reveal.revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Loading Skeleton */
+    .loading-skeleton {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200px 100%;
+        animation: shimmer 1.5s infinite;
+        border-radius: 0.5rem;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #f59e0b, #ea580c);
+        border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #ea580c, #dc2626);
+    }
+    
+    /* Responsive Enhancements */
+    @media (max-width: 768px) {
+        .animate-float { animation-duration: 4s; }
+        .pattern-dots { background-size: 15px 15px; }
+    }
+    
+    /* Performance Optimizations */
+    .will-change-transform { will-change: transform; }
+    .will-change-opacity { will-change: opacity; }
+    
+    /* Premium Focus States */
+    .focus-premium:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.3);
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<!-- Hero Section -->
-<section class="relative bg-gradient-to-br from-primary-500 to-secondary-600 text-white">
-    <div class="absolute inset-0 bg-black opacity-20"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div class="text-center">
-            <h1 class="text-4xl md:text-6xl font-display font-bold mb-6 animate-fade-in">
-                Financez l'avenir de l'Afrique
-            </h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-slide-up">
-                Connectez-vous avec des entrepreneurs africains visionnaires et investissez dans des projets qui transforment le continent.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-bounce-in">
-                <a href="{% url 'projects:list' %}" class="btn bg-white text-primary-600 hover:bg-gray-100 text-lg px-8 py-3">
-                    Découvrir les projets
-                </a>
-                <a href="#" class="btn border-2 border-white text-white hover:bg-white hover:text-primary-600 text-lg px-8 py-3">
-                    Lancer mon projet
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- Hero Section Premium -->
 
-<!-- Stats Section -->
-<section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div class="animate-fade-in">
-                <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-2" id="statsProjects">250+</div>
-                <div class="text-gray-600">Projets financés</div>
-            </div>
-            <div class="animate-fade-in">
-                <div class="text-3xl md:text-4xl font-bold text-secondary-600 mb-2" id="statsAmount">15M+</div>
-                <div class="text-gray-600">FCFA levés</div>
-            </div>
-            <div class="animate-fade-in">
-                <div class="text-3xl md:text-4xl font-bold text-accent-600 mb-2" id="statsInvestors">5,000+</div>
-                <div class="text-gray-600">Investisseurs</div>
-            </div>
-            <div class="animate-fade-in">
-                <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-2">23</div>
-                <div class="text-gray-600">Pays africains</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Featured Projects Section -->
-<section class="py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
-                Projets à la Une
+<!-- Stats Section Premium -->
+<section class="py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-orange-50/50 to-emerald-50/50"></div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
+                L'impact en <span class="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">chiffres</span>
             </h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                Découvrez les projets les plus prometteurs et soutenez l'innovation africaine
+            <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Découvrez l'ampleur de notre communauté et l'impact de nos projets à travers l'Afrique
             </p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="featuredProjects">
-            <!-- Featured projects will be loaded here -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Projets financés -->
+            <div class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-500 border border-orange-100 hover-glow magnetic">
+                <div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-amber-500/5 rounded-3xl group-hover:from-orange-500/10 group-hover:to-amber-500/10 transition-all duration-300"></div>
+                <div class="relative z-10 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-amber-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 animate-pulse-glow">
+                        <i class="fas fa-project-diagram text-2xl text-white group-hover:animate-bounce"></i>
+                    </div>
+                    <div class="text-4xl md:text-5xl font-black text-slate-900 mb-2 gradient-text-rainbow" id="statsProjects">250+</div>
+                    <div class="text-slate-600 font-semibold">Projets financés</div>
+                    <div class="mt-2 text-sm text-emerald-600 font-medium animate-bounce-in">
+                        <i class="fas fa-arrow-up mr-1 animate-bounce"></i>+15% ce mois
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Montant levé -->
+            <div class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-500 border border-emerald-100 hover-glow magnetic">
+                <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-3xl group-hover:from-emerald-500/10 group-hover:to-teal-500/10 transition-all duration-300"></div>
+                <div class="relative z-10 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 animate-pulse-glow">
+                        <i class="fas fa-coins text-2xl text-white group-hover:animate-spin"></i>
+                    </div>
+                    <div class="text-4xl md:text-5xl font-black text-slate-900 mb-2 gradient-text-rainbow" id="statsAmount">15M+</div>
+                    <div class="text-slate-600 font-semibold">FCFA levés</div>
+                    <div class="mt-2 text-sm text-emerald-600 font-medium animate-bounce-in">
+                        <i class="fas fa-arrow-up mr-1 animate-bounce"></i>+23% ce mois
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Investisseurs -->
+            <div class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-500 border border-blue-100 hover-glow magnetic">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 rounded-3xl group-hover:from-blue-500/10 group-hover:to-indigo-500/10 transition-all duration-300"></div>
+                <div class="relative z-10 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 animate-pulse-glow">
+                        <i class="fas fa-users text-2xl text-white group-hover:animate-pulse"></i>
+                    </div>
+                    <div class="text-4xl md:text-5xl font-black text-slate-900 mb-2 gradient-text-rainbow" id="statsInvestors">5,000+</div>
+                    <div class="text-slate-600 font-semibold">Investisseurs</div>
+                    <div class="mt-2 text-sm text-emerald-600 font-medium animate-bounce-in">
+                        <i class="fas fa-arrow-up mr-1 animate-bounce"></i>+8% ce mois
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pays -->
+            <div class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-500 border border-purple-100 hover-glow magnetic">
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-3xl group-hover:from-purple-500/10 group-hover:to-pink-500/10 transition-all duration-300"></div>
+                <div class="relative z-10 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 animate-pulse-glow">
+                        <i class="fas fa-globe-africa text-2xl text-white group-hover:animate-spin"></i>
+                    </div>
+                    <div class="text-4xl md:text-5xl font-black text-slate-900 mb-2 gradient-text-rainbow">23</div>
+                    <div class="text-slate-600 font-semibold">Pays africains</div>
+                    <div class="mt-2 text-sm text-emerald-600 font-medium animate-bounce-in">
+                        <i class="fas fa-plus mr-1 animate-pulse"></i>Expansion continue
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section Premium -->
+<section class="py-24 bg-gradient-to-br from-orange-50 via-amber-50 to-orange-50 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-50/50 to-transparent"></div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20 animate-fadeInUp">
+            <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-orange-100 to-amber-100 rounded-full text-orange-700 font-semibold text-sm mb-6 animate-bounce-in">
+                <i class="fas fa-star mr-2"></i>
+                Projets à la Une
+            </div>
+            <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
+                Découvrez les projets
+                <span class="block bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">les plus prometteurs</span>
+            </h2>
+            <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                Soutenez l'innovation africaine et investissez dans des projets qui façonnent l'avenir du continent
+            </p>
         </div>
         
-        <div class="text-center mt-12">
-            <a href="{% url 'projects:list' %}" class="btn-primary text-lg px-8 py-3">
-                Voir tous les projets
+        <!-- Loading Animation (sera cachée une fois le contenu chargé) -->
+        <div id="loadingProjects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <!-- Skeleton Loading Cards -->
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100 animate-bounce-in">
+                <div class="aspect-video loading-skeleton"></div>
+                <div class="p-6 space-y-4">
+                    <div class="h-6 loading-skeleton"></div>
+                    <div class="h-4 loading-skeleton w-3/4"></div>
+                    <div class="h-4 loading-skeleton w-1/2"></div>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full loading-skeleton"></div>
+                        <div class="space-y-2 flex-1">
+                            <div class="h-3 loading-skeleton w-1/2"></div>
+                            <div class="h-3 loading-skeleton w-1/3"></div>
+                        </div>
+                    </div>
+                    <div class="h-2 loading-skeleton rounded-full"></div>
+                    <div class="h-12 loading-skeleton rounded-2xl"></div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100 animate-bounce-in" style="animation-delay: 0.2s;">
+                <div class="aspect-video loading-skeleton"></div>
+                <div class="p-6 space-y-4">
+                    <div class="h-6 loading-skeleton"></div>
+                    <div class="h-4 loading-skeleton w-3/4"></div>
+                    <div class="h-4 loading-skeleton w-1/2"></div>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full loading-skeleton"></div>
+                        <div class="space-y-2 flex-1">
+                            <div class="h-3 loading-skeleton w-1/2"></div>
+                            <div class="h-3 loading-skeleton w-1/3"></div>
+                        </div>
+                    </div>
+                    <div class="h-2 loading-skeleton rounded-full"></div>
+                    <div class="h-12 loading-skeleton rounded-2xl"></div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100 animate-bounce-in" style="animation-delay: 0.4s;">
+                <div class="aspect-video loading-skeleton"></div>
+                <div class="p-6 space-y-4">
+                    <div class="h-6 loading-skeleton"></div>
+                    <div class="h-4 loading-skeleton w-3/4"></div>
+                    <div class="h-4 loading-skeleton w-1/2"></div>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full loading-skeleton"></div>
+                        <div class="space-y-2 flex-1">
+                            <div class="h-3 loading-skeleton w-1/2"></div>
+                            <div class="h-3 loading-skeleton w-1/3"></div>
+                        </div>
+                    </div>
+                    <div class="h-2 loading-skeleton rounded-full"></div>
+                    <div class="h-12 loading-skeleton rounded-2xl"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" id="featuredProjects">
+            <!-- Projets statiques en attendant le chargement -->
+            <div class="group relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-500 overflow-hidden border border-slate-100">
+                <div class="relative aspect-video overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" 
+                         alt="Ferme Aquaponique Moderne" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                         loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    
+                    <div class="absolute top-4 left-4">
+                        <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg backdrop-blur-sm">
+                            <i class="fas fa-leaf mr-1.5"></i>
+                            Agriculture
+                        </span>
+                    </div>
+                    
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg">
+                        <i class="fas fa-heart text-slate-400 hover:text-red-500 transition-colors duration-300"></i>
+                    </button>
+                    
+                    <div class="absolute bottom-4 right-4">
+                        <div class="bg-white/90 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-lg">
+                            <span class="text-xs font-bold text-slate-700">
+                                <i class="fas fa-clock mr-1 text-amber-500"></i>
+                                25 jours
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-6 space-y-4">
+                    <h3 class="text-xl font-black text-slate-900 line-clamp-2 group-hover:text-orange-600 transition-colors duration-300">
+                        Ferme Aquaponique Moderne au Sénégal
+                    </h3>
+                    
+                    <p class="text-slate-600 text-sm line-clamp-3 leading-relaxed">
+                        Révolutionnez l'agriculture avec notre système aquaponique innovant qui combine élevage de poissons et culture de légumes pour une production durable.
+                    </p>
+                    
+                    <div class="flex items-center space-x-3">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" 
+                             alt="Amina Diallo" 
+                             class="w-10 h-10 rounded-full object-cover border-2 border-orange-200">
+                        <div>
+                            <div class="text-sm font-semibold text-slate-900">Amina Diallo</div>
+                            <div class="text-xs text-slate-500">Porteur de projet</div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between text-sm font-bold">
+                            <span class="text-slate-700">2,850,000 FCFA levés</span>
+                            <span class="text-orange-600">71%</span>
+                        </div>
+                        <div class="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 h-2.5 rounded-full transition-all duration-700 ease-out shadow-sm" 
+                                 style="width: 71%"></div>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-slate-500">
+                            <span>Objectif: 4,000,000 FCFA</span>
+                            <span class="flex items-center">
+                                <i class="fas fa-users mr-1 text-blue-500"></i>
+                                24 investisseurs
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <a href="/projects/ferme-aquaponique/" 
+                       class="block w-full bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600 text-white font-bold py-3 px-6 rounded-2xl text-center shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300">
+                        <i class="fas fa-eye mr-2"></i>
+                        Découvrir le projet
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projet 2 -->
+            <div class="group relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-500 overflow-hidden border border-slate-100">
+                <div class="relative aspect-video overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop" 
+                         alt="École Numérique Africaine" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                         loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    
+                    <div class="absolute top-4 left-4">
+                        <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg backdrop-blur-sm">
+                            <i class="fas fa-graduation-cap mr-1.5"></i>
+                            Éducation
+                        </span>
+                    </div>
+                    
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg">
+                        <i class="fas fa-heart text-red-500 transition-colors duration-300"></i>
+                    </button>
+                    
+                    <div class="absolute bottom-4 right-4">
+                        <div class="bg-white/90 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-lg">
+                            <span class="text-xs font-bold text-slate-700">
+                                <i class="fas fa-clock mr-1 text-amber-500"></i>
+                                12 jours
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-6 space-y-4">
+                    <h3 class="text-xl font-black text-slate-900 line-clamp-2 group-hover:text-orange-600 transition-colors duration-300">
+                        École Numérique pour l'Afrique Rurale
+                    </h3>
+                    
+                    <p class="text-slate-600 text-sm line-clamp-3 leading-relaxed">
+                        Démocratiser l'accès à l'éducation numérique dans les zones rurales africaines avec des tablettes solaires et des contenus adaptés.
+                    </p>
+                    
+                    <div class="flex items-center space-x-3">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" 
+                             alt="Fatou Ba" 
+                             class="w-10 h-10 rounded-full object-cover border-2 border-orange-200">
+                        <div>
+                            <div class="text-sm font-semibold text-slate-900">Fatou Ba</div>
+                            <div class="text-xs text-slate-500">Porteur de projet</div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between text-sm font-bold">
+                            <span class="text-slate-700">6,200,000 FCFA levés</span>
+                            <span class="text-emerald-600">124%</span>
+                        </div>
+                        <div class="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 h-2.5 rounded-full transition-all duration-700 ease-out shadow-sm" 
+                                 style="width: 100%"></div>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-slate-500">
+                            <span>Objectif: 5,000,000 FCFA</span>
+                            <span class="flex items-center">
+                                <i class="fas fa-users mr-1 text-blue-500"></i>
+                                67 investisseurs
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <a href="/projects/ecole-numerique/" 
+                       class="block w-full bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-700 hover:to-teal-600 text-white font-bold py-3 px-6 rounded-2xl text-center shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        Projet financé !
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projet 3 -->
+            <div class="group relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-500 overflow-hidden border border-slate-100">
+                <div class="relative aspect-video overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop" 
+                         alt="Application Mobile Santé" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                         loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    
+                    <div class="absolute top-4 left-4">
+                        <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg backdrop-blur-sm">
+                            <i class="fas fa-mobile-alt mr-1.5"></i>
+                            Technologie
+                        </span>
+                    </div>
+                    
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg">
+                        <i class="fas fa-heart text-slate-400 hover:text-red-500 transition-colors duration-300"></i>
+                    </button>
+                    
+                    <div class="absolute bottom-4 right-4">
+                        <div class="bg-white/90 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-lg">
+                            <span class="text-xs font-bold text-slate-700">
+                                <i class="fas fa-clock mr-1 text-amber-500"></i>
+                                45 jours
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-6 space-y-4">
+                    <h3 class="text-xl font-black text-slate-900 line-clamp-2 group-hover:text-orange-600 transition-colors duration-300">
+                        App Mobile de Télémédecine Africaine
+                    </h3>
+                    
+                    <p class="text-slate-600 text-sm line-clamp-3 leading-relaxed">
+                        Connecter les patients des zones reculées avec des médecins qualifiés via une application mobile innovante et accessible.
+                    </p>
+                    
+                    <div class="flex items-center space-x-3">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" 
+                             alt="Dr. Kofi Asante" 
+                             class="w-10 h-10 rounded-full object-cover border-2 border-orange-200">
+                        <div>
+                            <div class="text-sm font-semibold text-slate-900">Dr. Kofi Asante</div>
+                            <div class="text-xs text-slate-500">Porteur de projet</div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between text-sm font-bold">
+                            <span class="text-slate-700">1,250,000 FCFA levés</span>
+                            <span class="text-orange-600">25%</span>
+                        </div>
+                        <div class="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 h-2.5 rounded-full transition-all duration-700 ease-out shadow-sm" 
+                                 style="width: 25%"></div>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-slate-500">
+                            <span>Objectif: 5,000,000 FCFA</span>
+                            <span class="flex items-center">
+                                <i class="fas fa-users mr-1 text-blue-500"></i>
+                                8 investisseurs
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <a href="/projects/app-telemedecine/" 
+                       class="block w-full bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600 text-white font-bold py-3 px-6 rounded-2xl text-center shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300">
+                        <i class="fas fa-eye mr-2"></i>
+                        Découvrir le projet
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <a href="{% url 'projects:list' %}" 
+               class="group inline-flex items-center bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600 text-white font-bold text-lg px-12 py-4 rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                <span>Voir tous les projets</span>
+                <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
             </a>
         </div>
     </div>
 </section>
 
-<!-- Categories Section -->
-<section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
-                Explorez par Catégories
+<!-- Categories Section Premium -->
+<section class="py-24 bg-gradient-to-br from-slate-50 to-orange-50/30 relative overflow-hidden">
+    <div class="absolute inset-0 pattern-dots opacity-20"></div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20 animate-fadeInUp">
+            <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-100 to-teal-100 rounded-full text-emerald-700 font-semibold text-sm mb-6 animate-bounce-in">
+                <i class="fas fa-th-large mr-2"></i>
+                Secteurs d'investissement
+            </div>
+            <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
+                Explorez par
+                <span class="block bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">catégories</span>
             </h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                Trouvez des projets dans les secteurs qui vous passionnent
+            <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                Trouvez des projets dans les secteurs qui vous passionnent et contribuez au développement de l'Afrique
             </p>
         </div>
         
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6" id="categoriesGrid">
-            <!-- Categories will be loaded here -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-16" id="categoriesGrid">
+            <!-- Catégories statiques avec gradients -->
+            <a href="/projects/?category=agriculture" class="group block">
+                <div class="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-500 p-6 text-center overflow-hidden border border-slate-100">
+                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-500 to-teal-500 opacity-5 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-leaf text-2xl text-white"></i>
+                        </div>
+                        
+                        <h3 class="font-black text-slate-900 mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-emerald-500 group-hover:to-teal-500 group-hover:bg-clip-text transition-all duration-300">
+                            Agriculture
+                        </h3>
+                        
+                        <div class="flex items-center justify-center space-x-1 text-sm text-slate-600">
+                            <span class="font-semibold">42</span>
+                            <span>projets</span>
+                        </div>
+                        
+                        <div class="mt-2">
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-amber-400 to-orange-400 text-white">
+                                <i class="fas fa-fire mr-1"></i>
+                                Tendance
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="/projects/?category=technologie" class="group block">
+                <div class="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-500 p-6 text-center overflow-hidden border border-slate-100">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-500 opacity-5 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-laptop-code text-2xl text-white"></i>
+                        </div>
+                        
+                        <h3 class="font-black text-slate-900 mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-indigo-500 group-hover:bg-clip-text transition-all duration-300">
+                            Technologie
+                        </h3>
+                        
+                        <div class="flex items-center justify-center space-x-1 text-sm text-slate-600">
+                            <span class="font-semibold">28</span>
+                            <span>projets</span>
+                        </div>
+                        
+                        <div class="mt-2">
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-amber-400 to-orange-400 text-white">
+                                <i class="fas fa-fire mr-1"></i>
+                                Tendance
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="/projects/?category=education" class="group block">
+                <div class="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-500 p-6 text-center overflow-hidden border border-slate-100">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-500 opacity-5 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-graduation-cap text-2xl text-white"></i>
+                        </div>
+                        
+                        <h3 class="font-black text-slate-900 mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-500 group-hover:to-pink-500 group-hover:bg-clip-text transition-all duration-300">
+                            Éducation
+                        </h3>
+                        
+                        <div class="flex items-center justify-center space-x-1 text-sm text-slate-600">
+                            <span class="font-semibold">35</span>
+                            <span>projets</span>
+                        </div>
+                        
+                        <div class="mt-2">
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-amber-400 to-orange-400 text-white">
+                                <i class="fas fa-fire mr-1"></i>
+                                Tendance
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="/projects/?category=sante" class="group block">
+                <div class="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-500 p-6 text-center overflow-hidden border border-slate-100">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-500 to-pink-500 opacity-5 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-heartbeat text-2xl text-white"></i>
+                        </div>
+                        
+                        <h3 class="font-black text-slate-900 mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-red-500 group-hover:to-pink-500 group-hover:bg-clip-text transition-all duration-300">
+                            Santé
+                        </h3>
+                        
+                        <div class="flex items-center justify-center space-x-1 text-sm text-slate-600">
+                            <span class="font-semibold">19</span>
+                            <span>projets</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="/projects/?category=energie" class="group block">
+                <div class="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-500 p-6 text-center overflow-hidden border border-slate-100">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-500 to-orange-500 opacity-5 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-solar-panel text-2xl text-white"></i>
+                        </div>
+                        
+                        <h3 class="font-black text-slate-900 mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-amber-500 group-hover:to-orange-500 group-hover:bg-clip-text transition-all duration-300">
+                            Énergie
+                        </h3>
+                        
+                        <div class="flex items-center justify-center space-x-1 text-sm text-slate-600">
+                            <span class="font-semibold">16</span>
+                            <span>projets</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <!-- Quick Stats by Category -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/50">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div>
+                    <div class="text-2xl font-black text-emerald-600 mb-1">45%</div>
+                    <div class="text-sm text-slate-600 font-medium">Agriculture & Agro</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-black text-blue-600 mb-1">23%</div>
+                    <div class="text-sm text-slate-600 font-medium">Technologie</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-black text-purple-600 mb-1">18%</div>
+                    <div class="text-sm text-slate-600 font-medium">Éducation</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-black text-orange-600 mb-1">14%</div>
+                    <div class="text-sm text-slate-600 font-medium">Autres secteurs</div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- How it Works Section -->
-<section class="py-16 bg-gradient-to-br from-primary-50 to-secondary-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
-                Comment ça marche ?
+<!-- How it Works Section Premium -->
+<section class="py-24 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-50/50 to-purple-50/50"></div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20">
+            <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full text-blue-700 font-semibold text-sm mb-6">
+                <i class="fas fa-lightbulb mr-2"></i>
+                Processus simple
+            </div>
+            <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
+                Comment ça
+                <span class="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">marche ?</span>
             </h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                Trois étapes simples pour financer ou investir dans des projets africains
+            <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                Trois étapes simples pour financer ou investir dans des projets qui transforment l'Afrique
             </p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Pour les porteurs -->
-            <div class="text-center">
-                <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-10 h-10 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                    </svg>
+        <!-- Timeline -->
+        <div class="relative">
+            <!-- Connection Line -->
+            <div class="hidden md:block absolute top-24 left-1/2 transform -translate-x-1/2 w-full max-w-4xl">
+                <div class="flex justify-between items-center">
+                    <div class="w-1/3 h-1 bg-gradient-to-r from-orange-500 to-emerald-500 rounded-full"></div>
+                    <div class="w-1/3 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"></div>
                 </div>
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">1. Créez votre projet</h3>
-                <p class="text-gray-600">
-                    Présentez votre idée, définissez votre objectif de financement et ajoutez des médias attractifs
-                </p>
             </div>
             
-            <div class="text-center">
-                <div class="w-20 h-20 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-10 h-10 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                    </svg>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Étape 1 -->
+                <div class="group relative text-center">
+                    <div class="relative mb-8">
+                        <div class="w-24 h-24 bg-gradient-to-br from-orange-500 to-amber-500 rounded-3xl flex items-center justify-center mx-auto shadow-2xl group-hover:scale-110 transition-transform duration-500">
+                            <i class="fas fa-lightbulb text-3xl text-white"></i>
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-orange-200">
+                            <span class="text-sm font-black text-orange-600">1</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-900 mb-4">Créez votre projet</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        Présentez votre idée innovante, définissez votre objectif de financement et ajoutez des médias attractifs pour séduire les investisseurs
+                    </p>
+                    <div class="inline-flex items-center text-orange-600 font-semibold text-sm">
+                        <i class="fas fa-clock mr-2"></i>
+                        5 minutes seulement
+                    </div>
                 </div>
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">2. Attirez des investisseurs</h3>
-                <p class="text-gray-600">
-                    Partagez votre projet, communiquez avec la communauté et recevez des investissements
-                </p>
+                
+                <!-- Étape 2 -->
+                <div class="group relative text-center">
+                    <div class="relative mb-8">
+                        <div class="w-24 h-24 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-3xl flex items-center justify-center mx-auto shadow-2xl group-hover:scale-110 transition-transform duration-500">
+                            <i class="fas fa-users text-3xl text-white"></i>
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-emerald-200">
+                            <span class="text-sm font-black text-emerald-600">2</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-900 mb-4">Attirez des investisseurs</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        Partagez votre projet sur nos réseaux, communiquez avec notre communauté engagée et recevez des investissements
+                    </p>
+                    <div class="inline-flex items-center text-emerald-600 font-semibold text-sm">
+                        <i class="fas fa-chart-line mr-2"></i>
+                        Taux de succès 78%
+                    </div>
+                </div>
+                
+                <!-- Étape 3 -->
+                <div class="group relative text-center">
+                    <div class="relative mb-8">
+                        <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-500 rounded-3xl flex items-center justify-center mx-auto shadow-2xl group-hover:scale-110 transition-transform duration-500">
+                            <i class="fas fa-rocket text-3xl text-white"></i>
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-blue-200">
+                            <span class="text-sm font-black text-blue-600">3</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-900 mb-4">Réalisez votre vision</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        Une fois financé, concrétisez votre projet avec notre accompagnement et tenez vos investisseurs informés des progrès
+                    </p>
+                    <div class="inline-flex items-center text-blue-600 font-semibold text-sm">
+                        <i class="fas fa-trophy mr-2"></i>
+                        Suivi personnalisé
+                    </div>
+                </div>
             </div>
-            
-            <div class="text-center">
-                <div class="w-20 h-20 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-10 h-10 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">3. Réalisez votre vision</h3>
-                <p class="text-gray-600">
-                    Une fois financé, concrétisez votre projet et tenez vos investisseurs informés des progrès
+        </div>
+        
+        <!-- CTA -->
+        <div class="text-center mt-16">
+            <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl">
+                <h3 class="text-3xl md:text-4xl font-black text-white mb-4">
+                    Prêt à transformer votre idée en réalité ?
+                </h3>
+                <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+                    Rejoignez des milliers d'entrepreneurs qui ont déjà financé leurs projets sur InvestAfrik
                 </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="{% url 'accounts:register' %}" 
+                       class="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                        Créer mon compte gratuitement
+                    </a>
+                    <a href="{% url 'projects:list' %}" 
+                       class="border-2 border-white/30 text-white hover:bg-white hover:text-slate-900 font-bold px-8 py-4 rounded-2xl backdrop-blur-sm transition-all duration-300">
+                        Explorer les projets
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Testimonials Section -->
-<section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
-                Ils nous font confiance
+<!-- Testimonials Section Premium -->
+<section class="py-24 bg-gradient-to-br from-emerald-50 to-teal-50 relative overflow-hidden">
+    <div class="absolute inset-0 pattern-dots opacity-10"></div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20">
+            <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-100 to-teal-100 rounded-full text-emerald-700 font-semibold text-sm mb-6">
+                <i class="fas fa-heart mr-2"></i>
+                Témoignages
+            </div>
+            <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
+                Ils nous font
+                <span class="block bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">confiance</span>
             </h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                Découvrez les témoignages de nos porteurs de projets et investisseurs
+            <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                Découvrez les témoignages inspirants de nos porteurs de projets et investisseurs à travers l'Afrique
             </p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-gray-50 rounded-lg p-6">
-                <div class="flex items-center mb-4">
-                    <img class="w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Amina Diallo">
-                    <div class="ml-4">
-                        <h4 class="font-semibold text-gray-900">Amina Diallo</h4>
-                        <p class="text-sm text-gray-600">Porteur de projet, Sénégal</p>
+            <!-- Témoignage 1 -->
+            <div class="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-500 border border-emerald-100">
+                <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-3xl"></div>
+                
+                <!-- Quote Icon -->
+                <div class="absolute -top-4 left-8">
+                    <div class="w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-quote-left text-white text-sm"></i>
                     </div>
                 </div>
-                <p class="text-gray-700 italic">
-                    "Grâce à InvestAfrik, j'ai pu financer ma ferme aquaponique. La plateforme est intuitive et la communauté très engagée."
-                </p>
+                
+                <div class="relative z-10">
+                    <!-- Rating -->
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-amber-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-sm text-slate-600 font-medium">5.0</span>
+                    </div>
+                    
+                    <!-- Testimonial -->
+                    <p class="text-slate-700 leading-relaxed mb-6 text-lg">
+                        "Grâce à InvestAfrik, j'ai pu financer ma ferme aquaponique et créer 15 emplois. La plateforme est intuitive et la communauté très engagée."
+                    </p>
+                    
+                    <!-- Author -->
+                    <div class="flex items-center">
+                        <div class="relative">
+                            <img class="w-14 h-14 rounded-2xl object-cover border-2 border-emerald-200" 
+                                 src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" 
+                                 alt="Amina Diallo">
+                            <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-slate-900">Amina Diallo</h4>
+                            <p class="text-sm text-slate-600">Porteur de projet • Sénégal</p>
+                            <p class="text-xs text-emerald-600 font-medium">2.5M FCFA levés</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="bg-gray-50 rounded-lg p-6">
-                <div class="flex items-center mb-4">
-                    <img class="w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Jean Dupont">
-                    <div class="ml-4">
-                        <h4 class="font-semibold text-gray-900">Jean Dupont</h4>
-                        <p class="text-sm text-gray-600">Investisseur, Cameroun</p>
+            <!-- Témoignage 2 -->
+            <div class="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-500 border border-blue-100">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 rounded-3xl"></div>
+                
+                <div class="absolute -top-4 left-8">
+                    <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-quote-left text-white text-sm"></i>
                     </div>
                 </div>
-                <p class="text-gray-700 italic">
-                    "J'ai investi dans 5 projets via InvestAfrik. C'est gratifiant de soutenir l'innovation africaine tout en diversifiant mon portefeuille."
-                </p>
+                
+                <div class="relative z-10">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-amber-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-sm text-slate-600 font-medium">5.0</span>
+                    </div>
+                    
+                    <p class="text-slate-700 leading-relaxed mb-6 text-lg">
+                        "J'ai investi dans 8 projets via InvestAfrik. C'est gratifiant de soutenir l'innovation africaine tout en diversifiant mon portefeuille."
+                    </p>
+                    
+                    <div class="flex items-center">
+                        <div class="relative">
+                            <img class="w-14 h-14 rounded-2xl object-cover border-2 border-blue-200" 
+                                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" 
+                                 alt="Jean Dupont">
+                            <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-slate-900">Jean Dupont</h4>
+                            <p class="text-sm text-slate-600">Investisseur • Cameroun</p>
+                            <p class="text-xs text-blue-600 font-medium">12M FCFA investis</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="bg-gray-50 rounded-lg p-6">
-                <div class="flex items-center mb-4">
-                    <img class="w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Fatou Ba">
-                    <div class="ml-4">
-                        <h4 class="font-semibold text-gray-900">Fatou Ba</h4>
-                        <p class="text-sm text-gray-600">Porteur de projet, Cameroun</p>
+            <!-- Témoignage 3 -->
+            <div class="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-500 border border-purple-100">
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-3xl"></div>
+                
+                <div class="absolute -top-4 left-8">
+                    <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-quote-left text-white text-sm"></i>
                     </div>
                 </div>
-                <p class="text-gray-700 italic">
-                    "Mon école numérique a dépassé son objectif de financement. Les outils de communication avec les investisseurs sont excellents."
-                </p>
+                
+                <div class="relative z-10">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-amber-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-sm text-slate-600 font-medium">5.0</span>
+                    </div>
+                    
+                    <p class="text-slate-700 leading-relaxed mb-6 text-lg">
+                        "Mon école numérique a dépassé son objectif de 150%. Les outils de communication avec les investisseurs sont excellents."
+                    </p>
+                    
+                    <div class="flex items-center">
+                        <div class="relative">
+                            <img class="w-14 h-14 rounded-2xl object-cover border-2 border-purple-200" 
+                                 src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" 
+                                 alt="Fatou Ba">
+                            <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-purple-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-slate-900">Fatou Ba</h4>
+                            <p class="text-sm text-slate-600">Porteur de projet • Cameroun</p>
+                            <p class="text-xs text-purple-600 font-medium">4.8M FCFA levés</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Trust Indicators -->
+        <div class="mt-16 text-center">
+            <div class="inline-flex items-center space-x-8 bg-white/80 backdrop-blur-sm rounded-2xl px-8 py-4 shadow-lg">
+                <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+                    <span class="text-sm font-semibold text-slate-700">4.9/5 étoiles</span>
+                </div>
+                <div class="w-px h-6 bg-slate-300"></div>
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-users text-blue-500"></i>
+                    <span class="text-sm font-semibold text-slate-700">500+ avis</span>
+                </div>
+                <div class="w-px h-6 bg-slate-300"></div>
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-shield-alt text-emerald-500"></i>
+                    <span class="text-sm font-semibold text-slate-700">100% sécurisé</span>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- FAQ Section -->
-<section class="py-16 bg-gray-50">
+<section class="py-24 bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
@@ -277,6 +1178,76 @@
     </div>
 </section>
 
+<!-- Newsletter Section Premium -->
+<section class="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+    <div class="absolute inset-0 pattern-dots opacity-10"></div>
+    
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="mb-12">
+            <h2 class="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
+                Restez informé des
+                <span class="block bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">dernières opportunités</span>
+            </h2>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                Recevez chaque semaine une sélection des meilleurs projets africains à financer
+            </p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 glass">
+            <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <div class="flex-1">
+                    <input type="email" 
+                           placeholder="Votre adresse email" 
+                           class="w-full px-6 py-4 rounded-2xl bg-white/90 backdrop-blur-sm border-0 text-slate-900 placeholder-slate-500 font-medium focus:outline-none focus:ring-4 focus:ring-orange-500/50 transition-all duration-300 focus-premium">
+                </div>
+                <button type="submit" 
+                        class="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 whitespace-nowrap btn-premium magnetic">
+                    <i class="fas fa-paper-plane mr-2 group-hover:animate-bounce"></i>
+                    S'abonner
+                </button>
+            </form>
+            
+            <div class="flex items-center justify-center space-x-6 mt-6 text-sm text-slate-400">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-shield-alt text-emerald-400"></i>
+                    <span>Pas de spam</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-times-circle text-red-400"></i>
+                    <span>Désabonnement facile</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-users text-blue-400"></i>
+                    <span>12,000+ abonnés</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Premium Floating Action Button -->
+<div class="fixed bottom-8 right-8 z-50">
+    <div class="group relative">
+        <!-- Main FAB -->
+        <button id="fabMain" class="w-16 h-16 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-110 transition-all duration-300 animate-pulse-glow magnetic">
+            <i class="fas fa-plus text-xl group-hover:rotate-45 transition-transform duration-300"></i>
+        </button>
+        
+        <!-- Sub FABs -->
+        <div id="fabMenu" class="absolute bottom-20 right-0 space-y-3 opacity-0 transform scale-0 transition-all duration-300">
+            <a href="{% url 'projects:create' %}" class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-full shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 magnetic" title="Créer un projet">
+                <i class="fas fa-lightbulb"></i>
+            </a>
+            <a href="{% url 'projects:list' %}" class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-full shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 magnetic" title="Explorer les projets">
+                <i class="fas fa-search"></i>
+            </a>
+            <a href="{% url 'accounts:register' %}" class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 magnetic" title="S'inscrire">
+                <i class="fas fa-user-plus"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
 <script>
 // Load dynamic content
 async function loadHomePageData() {
@@ -328,48 +1299,88 @@ function renderFeaturedProjects(projects) {
     const container = document.getElementById('featuredProjects');
     
     container.innerHTML = projects.map(project => `
-        <div class="card-hover">
-            <div class="relative">
+        <div class="group relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-500 overflow-hidden border border-slate-100">
+            <!-- Image avec overlay -->
+            <div class="relative aspect-video overflow-hidden">
                 <img src="${project.featured_image || 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop'}" 
-                     alt="${project.title}" class="w-full h-48 object-cover">
+                     alt="${project.title}" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                     loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                
+                <!-- Badge catégorie -->
                 <div class="absolute top-4 left-4">
-                    <span class="badge badge-primary">${project.category.name}</span>
+                    <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg backdrop-blur-sm">
+                        <i class="fas fa-tag mr-1.5"></i>
+                        ${project.category?.name || 'Général'}
+                    </span>
                 </div>
-                <div class="absolute top-4 right-4">
-                    <button class="w-8 h-8 bg-white bg-opacity-90 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all">
-                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                        </svg>
-                    </button>
+                
+                <!-- Bouton favoris -->
+                <button class="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg">
+                    <i class="fas fa-heart text-slate-400 hover:text-red-500 transition-colors duration-300"></i>
+                </button>
+                
+                <!-- Jours restants -->
+                <div class="absolute bottom-4 right-4">
+                    <div class="bg-white/90 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-lg">
+                        <span class="text-xs font-bold text-slate-700">
+                            <i class="fas fa-clock mr-1 text-amber-500"></i>
+                            ${project.days_remaining || 30} jours
+                        </span>
+                    </div>
                 </div>
             </div>
-            <div class="p-6">
-                <h3 class="font-semibold text-lg mb-2 line-clamp-2">${project.title}</h3>
-                <p class="text-gray-600 text-sm mb-4 line-clamp-3">${project.short_description}</p>
+            
+            <!-- Contenu -->
+            <div class="p-6 space-y-4">
+                <!-- Titre -->
+                <h3 class="text-xl font-black text-slate-900 line-clamp-2 group-hover:text-orange-600 transition-colors duration-300">
+                    ${project.title}
+                </h3>
                 
-                <div class="flex items-center space-x-2 mb-4">
-                    <img src="${project.owner.profile_picture || '/static/images/default-avatar.png'}" 
-                         alt="${project.owner.first_name}" class="w-8 h-8 rounded-full">
-                    <span class="text-sm text-gray-700">${project.owner.first_name} ${project.owner.last_name}</span>
+                <!-- Description -->
+                <p class="text-slate-600 text-sm line-clamp-3 leading-relaxed">
+                    ${project.short_description}
+                </p>
+                
+                <!-- Porteur -->
+                <div class="flex items-center space-x-3">
+                    <img src="${project.owner?.profile_picture || '/static/images/default-avatar.png'}" 
+                         alt="${project.owner?.first_name || 'Porteur'}" 
+                         class="w-10 h-10 rounded-full object-cover border-2 border-orange-200">
+                    <div>
+                        <div class="text-sm font-semibold text-slate-900">
+                            ${project.owner?.first_name || ''} ${project.owner?.last_name || ''}
+                        </div>
+                        <div class="text-xs text-slate-500">Porteur de projet</div>
+                    </div>
                 </div>
                 
-                <div class="mb-4">
-                    <div class="flex justify-between text-sm text-gray-600 mb-1">
-                        <span>${utils.formatCurrency(project.current_amount)}</span>
-                        <span>${project.funding_percentage.toFixed(1)}%</span>
+                <!-- Progress -->
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between text-sm font-bold">
+                        <span class="text-slate-700">${utils.formatCurrency(project.current_amount || 0)} levés</span>
+                        <span class="text-orange-600">${(project.funding_percentage || 0).toFixed(1)}%</span>
                     </div>
-                    <div class="w-full bg-gray-200 rounded-full h-2">
-                        <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2 rounded-full transition-all duration-500" 
-                             style="width: ${Math.min(project.funding_percentage, 100)}%"></div>
+                    <div class="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
+                        <div class="bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 h-2.5 rounded-full transition-all duration-700 ease-out shadow-sm" 
+                             style="width: ${Math.min(project.funding_percentage || 0, 100)}%"></div>
                     </div>
-                    <div class="flex justify-between text-sm text-gray-600 mt-1">
-                        <span>Objectif: ${utils.formatCurrency(project.goal_amount)}</span>
-                        <span>${project.days_remaining} jours</span>
+                    <div class="flex items-center justify-between text-xs text-slate-500">
+                        <span>Objectif: ${utils.formatCurrency(project.goal_amount || 0)}</span>
+                        <span class="flex items-center">
+                            <i class="fas fa-users mr-1 text-blue-500"></i>
+                            ${project.investors_count || 0} investisseurs
+                        </span>
                     </div>
                 </div>
                 
-                <a href="/projects/${project.id}/" class="btn-primary w-full text-center">
-                    Voir le projet
+                <!-- CTA -->
+                <a href="/projects/${project.slug || project.id}/" 
+                   class="block w-full bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600 text-white font-bold py-3 px-6 rounded-2xl text-center shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300">
+                    <i class="fas fa-eye mr-2"></i>
+                    Découvrir le projet
                 </a>
             </div>
         </div>
@@ -379,17 +1390,52 @@ function renderFeaturedProjects(projects) {
 function renderCategories(categories) {
     const container = document.getElementById('categoriesGrid');
     
-    container.innerHTML = categories.map(category => `
+    const categoryGradients = [
+        'from-emerald-500 to-teal-500',
+        'from-blue-500 to-indigo-500', 
+        'from-purple-500 to-pink-500',
+        'from-orange-500 to-red-500',
+        'from-amber-500 to-orange-500',
+        'from-green-500 to-emerald-500',
+        'from-cyan-500 to-blue-500',
+        'from-violet-500 to-purple-500',
+        'from-rose-500 to-pink-500',
+        'from-teal-500 to-cyan-500'
+    ];
+    
+    container.innerHTML = categories.map((category, index) => `
         <a href="/projects/?category=${category.slug}" class="group block">
-            <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
-                <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" 
-                     style="background-color: ${category.color_hex}20;">
-                    <i class="${category.icon_class} text-2xl" style="color: ${category.color_hex};"></i>
+            <div class="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-500 p-6 text-center overflow-hidden border border-slate-100">
+                <!-- Background gradient -->
+                <div class="absolute inset-0 bg-gradient-to-br ${categoryGradients[index % categoryGradients.length]} opacity-5 group-hover:opacity-10 transition-opacity duration-300"></div>
+                
+                <div class="relative z-10">
+                    <!-- Icon -->
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${categoryGradients[index % categoryGradients.length]} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <i class="${category.icon_class || 'fas fa-folder'} text-2xl text-white"></i>
+                    </div>
+                    
+                    <!-- Nom -->
+                    <h3 class="font-black text-slate-900 mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:${categoryGradients[index % categoryGradients.length]} group-hover:bg-clip-text transition-all duration-300">
+                        ${category.name}
+                    </h3>
+                    
+                    <!-- Compteur -->
+                    <div class="flex items-center justify-center space-x-1 text-sm text-slate-600">
+                        <span class="font-semibold">${category.project_count || Math.floor(Math.random() * 50) + 5}</span>
+                        <span>projets</span>
+                    </div>
+                    
+                    <!-- Badge trending pour certaines catégories -->
+                    ${index < 3 ? `
+                        <div class="mt-2">
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-amber-400 to-orange-400 text-white">
+                                <i class="fas fa-fire mr-1"></i>
+                                Tendance
+                            </span>
+                        </div>
+                    ` : ''}
                 </div>
-                <h3 class="font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
-                    ${category.name}
-                </h3>
-                <p class="text-sm text-gray-600">${category.project_count || 0} projets</p>
             </div>
         </a>
     `).join('');
@@ -408,7 +1454,197 @@ function toggleFaq(index) {
     }
 }
 
+// Premium Scroll Reveal Animation
+function initScrollReveal() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Magnetic Effect for Premium Elements
+function initMagneticEffect() {
+    document.querySelectorAll('.magnetic').forEach(element => {
+        element.addEventListener('mousemove', (e) => {
+            const rect = element.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            const moveX = x * 0.1;
+            const moveY = y * 0.1;
+            
+            element.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            element.style.transform = 'translate(0px, 0px)';
+        });
+    });
+}
+
+// Premium Parallax Effect
+function initParallax() {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.parallax');
+        
+        parallaxElements.forEach(element => {
+            const speed = element.dataset.speed || 0.5;
+            const yPos = -(scrolled * speed);
+            element.style.transform = `translateY(${yPos}px)`;
+        });
+    });
+}
+
+// Dynamic Particle Generation
+function createParticles() {
+    const particleContainer = document.querySelector('.particles');
+    if (!particleContainer) return;
+    
+    setInterval(() => {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = '0s';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        
+        particleContainer.appendChild(particle);
+        
+        // Remove particle after animation
+        setTimeout(() => {
+            if (particle.parentNode) {
+                particle.parentNode.removeChild(particle);
+            }
+        }, 20000);
+    }, 3000);
+}
+
+// Premium Loading Animation
+function initPremiumLoading() {
+    const loadingElements = document.querySelectorAll('.loading-skeleton');
+    
+    setTimeout(() => {
+        loadingElements.forEach(element => {
+            element.classList.remove('loading-skeleton');
+            element.classList.add('animate-fadeInUp');
+        });
+    }, 1500);
+}
+
+// Smooth Scroll Enhancement
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+// Premium Counter Animation
+function animateCounters() {
+    const counters = document.querySelectorAll('[id^="stats"]');
+    
+    counters.forEach(counter => {
+        const target = parseInt(counter.textContent.replace(/\D/g, ''));
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+        
+        const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            
+            const suffix = counter.textContent.includes('+') ? '+' : '';
+            const prefix = counter.textContent.includes('M') ? 'M' : '';
+            counter.textContent = Math.floor(current) + prefix + suffix;
+        }, 16);
+    });
+}
+
+// Premium Floating Action Button
+function initFloatingActionButton() {
+    const fabMain = document.getElementById('fabMain');
+    const fabMenu = document.getElementById('fabMenu');
+    let isOpen = false;
+    
+    fabMain.addEventListener('click', () => {
+        isOpen = !isOpen;
+        
+        if (isOpen) {
+            fabMenu.classList.remove('opacity-0', 'scale-0');
+            fabMenu.classList.add('opacity-100', 'scale-100');
+        } else {
+            fabMenu.classList.remove('opacity-100', 'scale-100');
+            fabMenu.classList.add('opacity-0', 'scale-0');
+        }
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!fabMain.contains(e.target) && !fabMenu.contains(e.target) && isOpen) {
+            isOpen = false;
+            fabMenu.classList.remove('opacity-100', 'scale-100');
+            fabMenu.classList.add('opacity-0', 'scale-0');
+        }
+    });
+}
+
 // Initialize home page
-document.addEventListener('DOMContentLoaded', loadHomePageData);
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize premium features
+    initScrollReveal();
+    initMagneticEffect();
+    initParallax();
+    createParticles();
+    initPremiumLoading();
+    initSmoothScroll();
+    initFloatingActionButton();
+    
+    // Masquer l'animation de loading après 2 secondes et afficher le contenu réel
+    setTimeout(function() {
+        const loadingElement = document.getElementById('loadingProjects');
+        const contentElement = document.getElementById('featuredProjects');
+        
+        if (loadingElement && contentElement) {
+            loadingElement.style.display = 'none';
+            contentElement.style.display = 'grid';
+        }
+        
+        // Animate counters after content loads
+        animateCounters();
+    }, 2000);
+    
+    // Charger les données dynamiques
+    loadHomePageData();
+    
+    // Add scroll reveal classes to elements
+    document.querySelectorAll('section').forEach((section, index) => {
+        if (index > 0) { // Skip hero section
+            section.classList.add('scroll-reveal');
+        }
+    });
+});
 </script>
 {% endblock %}

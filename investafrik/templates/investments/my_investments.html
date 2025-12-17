@@ -30,7 +30,7 @@
                     </div>
                     <div class="ml-4">
                         <p class="text-sm font-medium text-gray-600">Total Investi</p>
-                        <p class="text-2xl font-semibold text-gray-900" id="totalInvested">0 FCFA</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="totalInvested">{{ total_invested|floatformat:0 }} FCFA</p>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                     </div>
                     <div class="ml-4">
                         <p class="text-sm font-medium text-gray-600">Projets Financés</p>
-                        <p class="text-2xl font-semibold text-gray-900" id="successfulProjects">0</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="successfulProjects">{{ total_projects }}</p>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                     </div>
                     <div class="ml-4">
                         <p class="text-sm font-medium text-gray-600">En Cours</p>
-                        <p class="text-2xl font-semibold text-gray-900" id="activeInvestments">0</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="activeInvestments">{{ pending_count }}</p>
                     </div>
                 </div>
             </div>
@@ -116,225 +116,65 @@
             </div>
             
             <div id="investments-container" class="divide-y divide-gray-200">
-                <!-- Investments will be loaded here -->
-            </div>
-
-            <!-- Empty State -->
-            <div id="empty-state" class="hidden text-center py-12">
-                <i class="fas fa-hand-holding-usd text-gray-400 text-6xl mb-4"></i>
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">Aucun investissement</h3>
-                <p class="text-gray-600 mb-6">Vous n'avez pas encore investi dans des projets.</p>
-                <a href="{% url 'projects:list' %}" class="btn-primary">
-                    <i class="fas fa-search mr-2"></i>Découvrir des Projets
-                </a>
-            </div>
-
-            <!-- Loading State -->
-            <div id="loading-state" class="text-center py-12">
-                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-                <p class="text-gray-600 mt-2">Chargement de vos investissements...</p>
+                {% if investments %}
+                    {% for investment in investments %}
+                    <div class="p-6 hover:bg-gray-50 transition-colors">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0">
+                                    {% if investment.project.featured_image %}
+                                        <img src="{{ investment.project.featured_image.url }}" alt="{{ investment.project.title }}" class="h-12 w-12 rounded-lg object-cover">
+                                    {% else %}
+                                        <div class="h-12 w-12 rounded-lg bg-gray-200 flex items-center justify-center">
+                                            <i class="fas fa-project-diagram text-gray-400"></i>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">{{ investment.project.title }}</h3>
+                                    <p class="text-sm text-gray-600">Par {{ investment.project.owner.get_full_name }}</p>
+                                    <p class="text-xs text-gray-500">{{ investment.invested_at|date:"d M Y à H:i" }}</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-semibold text-gray-900">{{ investment.amount|floatformat:0 }} FCFA</p>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                                    {% if investment.payment_status == 'completed' %}bg-green-100 text-green-800
+                                    {% elif investment.payment_status == 'pending' %}bg-yellow-100 text-yellow-800
+                                    {% elif investment.payment_status == 'failed' %}bg-red-100 text-red-800
+                                    {% else %}bg-gray-100 text-gray-800{% endif %}">
+                                    {% if investment.payment_status == 'completed' %}Complété
+                                    {% elif investment.payment_status == 'pending' %}En attente
+                                    {% elif investment.payment_status == 'processing' %}En cours
+                                    {% elif investment.payment_status == 'failed' %}Échec
+                                    {% elif investment.payment_status == 'cancelled' %}Annulé
+                                    {% elif investment.payment_status == 'refunded' %}Remboursé
+                                    {% else %}{{ investment.get_payment_status_display }}{% endif %}
+                                </span>
+                            </div>
+                        </div>
+                        {% if investment.message %}
+                        <div class="mt-3 text-sm text-gray-600">
+                            <p><strong>Message:</strong> {{ investment.message }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="text-center py-12">
+                        <i class="fas fa-hand-holding-usd text-gray-400 text-6xl mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Aucun investissement</h3>
+                        <p class="text-gray-600 mb-6">Vous n'avez pas encore investi dans des projets.</p>
+                        <a href="{% url 'projects:list' %}" class="btn-primary">
+                            <i class="fas fa-search mr-2"></i>Découvrir des Projets
+                        </a>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
 
-<script>
-let currentInvestments = [];
 
-// Load investments
-async function loadMyInvestments() {
-    try {
-        document.getElementById('loading-state').classList.remove('hidden');
-        document.getElementById('empty-state').classList.add('hidden');
-        
-        const statusFilter = document.getElementById('status-filter').value;
-        const projectStatusFilter = document.getElementById('project-status-filter').value;
-        const sortFilter = document.getElementById('sort-filter').value;
-        
-        let url = '/api/investments/?investor=me';
-        if (statusFilter) url += `&payment_status=${statusFilter}`;
-        if (projectStatusFilter) url += `&project__status=${projectStatusFilter}`;
-        if (sortFilter) url += `&ordering=${sortFilter}`;
-        
-        const response = await api.request(url);
-        if (response.ok) {
-            currentInvestments = await response.json();
-            renderInvestments(currentInvestments.results || currentInvestments);
-            updateStats(currentInvestments.results || currentInvestments);
-        } else {
-            throw new Error('Erreur lors du chargement');
-        }
-    } catch (error) {
-        console.error('Error loading investments:', error);
-        notifications.show('Erreur lors du chargement des investissements', 'error');
-    } finally {
-        document.getElementById('loading-state').classList.add('hidden');
-    }
-}
 
-function updateStats(investments) {
-    const totalInvested = investments.reduce((sum, inv) => sum + parseFloat(inv.amount || 0), 0);
-    const successfulProjects = new Set(investments.filter(inv => inv.project.status === 'successful').map(inv => inv.project.id)).size;
-    const activeInvestments = investments.filter(inv => inv.project.status === 'active').length;
-    const totalProjects = new Set(investments.map(inv => inv.project.id)).size;
-    const successRate = totalProjects > 0 ? (successfulProjects / totalProjects * 100) : 0;
-
-    document.getElementById('totalInvested').textContent = utils.formatCurrency(totalInvested);
-    document.getElementById('successfulProjects').textContent = successfulProjects;
-    document.getElementById('activeInvestments').textContent = activeInvestments;
-    document.getElementById('successRate').textContent = `${successRate.toFixed(1)}%`;
-}
-
-function renderInvestments(investments) {
-    const container = document.getElementById('investments-container');
-    
-    if (investments.length === 0) {
-        container.innerHTML = '';
-        document.getElementById('empty-state').classList.remove('hidden');
-        return;
-    }
-    
-    document.getElementById('empty-state').classList.add('hidden');
-    
-    container.innerHTML = investments.map(investment => `
-        <div class="p-6 hover:bg-gray-50 transition-colors">
-            <div class="flex items-start space-x-4">
-                <img src="${investment.project.featured_image || '/static/images/default-project.jpg'}" 
-                     alt="${investment.project.title}" class="w-16 h-16 rounded-lg object-cover">
-                
-                <div class="flex-1">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="font-semibold text-lg text-gray-900">
-                                <a href="/projects/${investment.project.id}/" class="hover:text-primary-600">
-                                    ${investment.project.title}
-                                </a>
-                            </h3>
-                            <p class="text-gray-600">${investment.project.category.name}</p>
-                        </div>
-                        <div class="text-right">
-                            <div class="text-lg font-semibold text-gray-900">${utils.formatCurrency(investment.amount)}</div>
-                            <div class="text-sm text-gray-500">${utils.formatDate(investment.invested_at)}</div>
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-3">
-                        <div>
-                            <div class="text-xs text-gray-500">Statut Paiement</div>
-                            <span class="px-2 py-1 text-xs rounded-full ${getPaymentStatusClass(investment.payment_status)}">
-                                ${getPaymentStatusText(investment.payment_status)}
-                            </span>
-                        </div>
-                        <div>
-                            <div class="text-xs text-gray-500">Statut Projet</div>
-                            <span class="px-2 py-1 text-xs rounded-full ${getProjectStatusClass(investment.project.status)}">
-                                ${getProjectStatusText(investment.project.status)}
-                            </span>
-                        </div>
-                        <div>
-                            <div class="text-xs text-gray-500">Progression</div>
-                            <div class="text-sm font-medium">${investment.project.funding_percentage.toFixed(1)}%</div>
-                        </div>
-                        <div>
-                            <div class="text-xs text-gray-500">Méthode</div>
-                            <div class="text-sm">${getPaymentMethodText(investment.payment_method)}</div>
-                        </div>
-                    </div>
-                    
-                    ${investment.message ? `
-                        <div class="bg-gray-50 rounded-lg p-3 mb-3">
-                            <div class="text-xs text-gray-500 mb-1">Votre message:</div>
-                            <div class="text-sm text-gray-700">${investment.message}</div>
-                        </div>
-                    ` : ''}
-                    
-                    <div class="flex items-center justify-between">
-                        <div class="w-full bg-gray-200 rounded-full h-2 mr-4">
-                            <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2 rounded-full transition-all duration-500" 
-                                 style="width: ${Math.min(investment.project.funding_percentage, 100)}%"></div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <a href="/projects/${investment.project.id}/" class="btn-secondary btn-sm">
-                                Voir le Projet
-                            </a>
-                            ${investment.project.status === 'active' ? `
-                                <button onclick="contactOwner('${investment.project.owner.id}')" class="btn-primary btn-sm">
-                                    Contacter
-                                </button>
-                            ` : ''}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `).join('');
-}
-
-// Utility functions
-function getPaymentStatusClass(status) {
-    const classes = {
-        'pending': 'bg-yellow-100 text-yellow-800',
-        'processing': 'bg-blue-100 text-blue-800',
-        'completed': 'bg-green-100 text-green-800',
-        'failed': 'bg-red-100 text-red-800',
-        'cancelled': 'bg-gray-100 text-gray-800',
-        'refunded': 'bg-purple-100 text-purple-800'
-    };
-    return classes[status] || 'bg-gray-100 text-gray-800';
-}
-
-function getPaymentStatusText(status) {
-    const texts = {
-        'pending': 'En attente',
-        'processing': 'En cours',
-        'completed': 'Complété',
-        'failed': 'Échec',
-        'cancelled': 'Annulé',
-        'refunded': 'Remboursé'
-    };
-    return texts[status] || status;
-}
-
-function getProjectStatusClass(status) {
-    const classes = {
-        'active': 'bg-green-100 text-green-800',
-        'successful': 'bg-blue-100 text-blue-800',
-        'failed': 'bg-red-100 text-red-800',
-        'cancelled': 'bg-gray-100 text-gray-800'
-    };
-    return classes[status] || 'bg-gray-100 text-gray-800';
-}
-
-function getProjectStatusText(status) {
-    const texts = {
-        'active': 'Actif',
-        'successful': 'Financé',
-        'failed': 'Échec',
-        'cancelled': 'Annulé'
-    };
-    return texts[status] || status;
-}
-
-function getPaymentMethodText(method) {
-    const methods = {
-        'mobile_money': 'Mobile Money',
-        'bank_transfer': 'Virement',
-        'card': 'Carte',
-        'cash': 'Espèces'
-    };
-    return methods[method] || method;
-}
-
-function contactOwner(ownerId) {
-    window.location.href = `/messaging/new/?user=${ownerId}`;
-}
-
-// Event listeners
-document.getElementById('status-filter').addEventListener('change', loadMyInvestments);
-document.getElementById('project-status-filter').addEventListener('change', loadMyInvestments);
-document.getElementById('sort-filter').addEventListener('change', loadMyInvestments);
-
-// Initialize
-document.addEventListener('DOMContentLoaded', loadMyInvestments);
-</script>
 {% endblock %}

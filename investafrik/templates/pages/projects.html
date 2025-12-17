@@ -3,202 +3,796 @@
 
 {% block title %}Projets - InvestAfrik{% endblock %}
 
+{% block extra_head %}
+<style>
+    .project-card {
+        transition: all 0.3s ease;
+        border: 1px solid #e5e7eb;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(249, 115, 22, 0.15);
+        border-color: #f97316;
+    }
+    
+    .project-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #f97316, #f59e0b);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .project-card:hover::before {
+        opacity: 1;
+    }
+    
+    .project-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .project-cta {
+        margin-top: auto;
+    }
+    
+    .progress-bar {
+        background: linear-gradient(90deg, #f97316, #f59e0b);
+        transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .category-badge {
+        background: linear-gradient(135deg, #f97316, #f59e0b);
+        color: white;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .success-badge {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .urgent-badge {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        color: white;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.8; }
+    }
+    
+    .country-flag {
+        width: 20px;
+        height: 15px;
+        display: inline-block;
+        margin-right: 4px;
+        vertical-align: middle;
+        border-radius: 2px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        background: linear-gradient(135deg, #CE1126, #FCD116);
+    }
+    
+    .search-input:focus {
+        box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+    }
+    
+    .filter-select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0.5rem center;
+        background-repeat: no-repeat;
+        background-size: 1.5em 1.5em;
+        padding-right: 2.5rem;
+    }
+    
+    .filter-select:focus {
+        box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+    }
+    
+    .hero-gradient {
+        background: linear-gradient(135deg, #f97316 0%, #f59e0b 50%, #eab308 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-gradient::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .stat-card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .stat-card:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+    }
+    
+    .project-image-container {
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .project-image-container img {
+        transition: transform 0.6s ease;
+    }
+    
+    .project-card:hover .project-image-container img {
+        transform: scale(1.05);
+    }
+    
+    .default-image {
+        background: linear-gradient(135deg, #f97316 0%, #f59e0b 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+    
+    .default-image i {
+        font-size: 3rem;
+        color: rgba(255, 255, 255, 0.9);
+        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .days-remaining {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .owner-avatar {
+        border: 2px solid #f97316;
+        padding: 2px;
+        background: white;
+    }
+    
+    .btn-primary {
+        background: linear-gradient(135deg, #f97316 0%, #f59e0b 100%);
+        color: white;
+        border: none;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #ea580c 0%, #d97706 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+        color: white;
+    }
+    
+    .btn-secondary {
+        background: transparent;
+        border: 2px solid #f97316;
+        color: #f97316;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-secondary:hover {
+        background: #f97316;
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    .pagination-btn {
+        transition: all 0.3s ease;
+        border: 1px solid #e5e7eb;
+        font-weight: 500;
+    }
+    
+    .pagination-btn:hover {
+        border-color: #f97316;
+        color: #f97316;
+        transform: translateY(-1px);
+    }
+    
+    .active-page {
+        background: linear-gradient(135deg, #f97316, #f59e0b);
+        color: white;
+        border: none;
+        box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
+    }
+    
+    .cta-section {
+        background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .cta-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(249, 115, 22, 0.1) 0%, transparent 70%);
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<!-- Header Section -->
-<section class="bg-gradient-to-r from-primary-500 to-secondary-500 text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Hero Section -->
+<section class="hero-gradient text-white py-20 relative">
+    <div class="absolute inset-0 bg-black opacity-10"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center">
-            <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">
-                Découvrez les projets
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-white to-amber-100">
+                    Projets Innovants
+                </span>
             </h1>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">
-                Explorez des centaines de projets innovants à travers l'Afrique et investissez dans ceux qui vous inspirent.
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto opacity-95 leading-relaxed">
+                Investissez dans l'avenir de l'Afrique. Découvrez des projets porteurs 
+                et participez à leur succès.
             </p>
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto mt-16">
+                <div class="stat-card transform hover:scale-105 transition-transform">
+                    <div class="text-3xl md:text-4xl font-bold mb-1">{{ total_projects|default:250 }}+</div>
+                    <div class="text-sm opacity-90">Projets Actifs</div>
+                </div>
+                <div class="stat-card transform hover:scale-105 transition-transform">
+                    <div class="text-3xl md:text-4xl font-bold mb-1">23</div>
+                    <div class="text-sm opacity-90">Pays Africains</div>
+                </div>
+                <div class="stat-card transform hover:scale-105 transition-transform">
+                    <div class="text-3xl md:text-4xl font-bold mb-1">10</div>
+                    <div class="text-sm opacity-90">Secteurs Clés</div>
+                </div>
+                <div class="stat-card transform hover:scale-105 transition-transform">
+                    <div class="text-3xl md:text-4xl font-bold mb-1">78%</div>
+                    <div class="text-sm opacity-90">Taux de Succès</div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Filters Section -->
-<section class="py-8 bg-white border-b">
+<!-- Filtres -->
+<section class="py-8 bg-gradient-to-b from-white to-gray-50 border-b border-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-wrap gap-4 items-center justify-between">
-            <!-- Search -->
-            <div class="flex-1 min-w-64">
-                <input type="text" placeholder="Rechercher un projet..." 
-                       class="input-field w-full">
+        <div class="flex flex-wrap gap-4 items-center">
+            <!-- Recherche -->
+            <div class="flex-1 min-w-[250px]">
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </span>
+                    <input type="text" placeholder="Rechercher un projet, une catégorie..." 
+                           class="search-input w-full pl-10 pr-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white shadow-sm transition-all">
+                </div>
             </div>
             
-            <!-- Category Filter -->
-            <select class="input-field">
-                <option value="">Toutes les catégories</option>
-                <option value="agriculture">Agriculture & Agrobusiness</option>
-                <option value="tech">Technologies & Innovation</option>
-                <option value="education">Éducation & Formation</option>
-                <option value="health">Santé & Bien-être</option>
+            <!-- Catégorie -->
+            <select class="filter-select px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white shadow-sm transition-all min-w-[180px]">
+                <option value="">📊 Toutes catégories</option>
+                <option value="agriculture">🌾 Agriculture</option>
+                <option value="tech">💻 Technologie</option>
+                <option value="education">🎓 Éducation</option>
+                <option value="health">🏥 Santé</option>
+                <option value="energy">⚡ Énergie</option>
             </select>
             
-            <!-- Country Filter -->
-            <select class="input-field">
-                <option value="">Tous les pays</option>
-                <option value="CM">Cameroun</option>
-                <option value="SN">Sénégal</option>
-                <option value="CI">Côte d'Ivoire</option>
-                <option value="BJ">Bénin</option>
+            <!-- Pays -->
+            <select class="filter-select px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white shadow-sm transition-all min-w-[180px]">
+                <option value="">🌍 Tous pays</option>
+                <option value="CM">🇨🇲 Cameroun</option>
+                <option value="SN">🇸🇳 Sénégal</option>
+                <option value="CI">🇨🇮 Côte d'Ivoire</option>
+                <option value="GH">🇬🇭 Ghana</option>
             </select>
             
-            <!-- Sort -->
-            <select class="input-field">
-                <option value="-created_at">Plus récents</option>
-                <option value="goal_amount">Objectif croissant</option>
-                <option value="-goal_amount">Objectif décroissant</option>
-                <option value="end_date">Fin bientôt</option>
+            <!-- Tri -->
+            <select class="filter-select px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white shadow-sm transition-all min-w-[180px]">
+                <option value="-created_at">🕒 Plus récents</option>
+                <option value="end_date">🔥 Fin bientôt</option>
+                <option value="-goal_amount">💰 Objectif élevé</option>
             </select>
+            
+            <!-- Reset -->
+            <button class="px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-xl transition-colors border border-gray-300 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+                Réinitialiser
+            </button>
         </div>
     </div>
 </section>
 
-<!-- Projects Grid -->
-<section class="py-12">
+<!-- Grille de Projets -->
+<section class="py-12 bg-gradient-to-b from-gray-50 to-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
-            <!-- Project cards will be loaded here via JavaScript -->
-            <div class="text-center col-span-full py-12">
-                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500 mx-auto mb-4"></div>
-                <p class="text-gray-600">Chargement des projets...</p>
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900">
+                    Projets <span class="text-orange-500">Populaires</span>
+                </h2>
+                <p class="text-gray-600 mt-2">
+                    Découvrez les projets qui font bouger l'Afrique
+                </p>
             </div>
+            <div class="flex items-center space-x-2">
+                <span class="text-sm text-gray-500 flex items-center gap-1">
+                    <svg class="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"/>
+                    </svg>
+                    {% if projects %}{{ projects|length }}{% else %}10{% endif %} projets actifs
+                </span>
+            </div>
+        </div>
+        
+        <!-- Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% if projects %}
+                {% for project in projects %}
+                <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl">
+                    <!-- Image -->
+                    <div class="project-image-container">
+                        {% if project.featured_image %}
+                            <img src="{{ project.featured_image.url }}" 
+                                 alt="{{ project.title }}" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'default-image\'><i class=\'fas fa-lightbulb\'></i></div>';">
+                        {% else %}
+                            <div class="default-image">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                        {% endif %}
+                        
+                        <!-- Badges -->
+                        <div class="absolute top-4 left-4">
+                            <span class="category-badge px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">
+                                <i class="fas fa-tag mr-1"></i>
+                                {% if project.category %}{{ project.category.name }}{% else %}Général{% endif %}
+                            </span>
+                        </div>
+                        
+                        <div class="absolute top-4 right-4">
+                            {% widthratio project.current_amount|default:0 project.goal_amount|default:1 100 as percentage %}
+                            {% if percentage >= 100 %}
+                            <span class="success-badge px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">
+                                <i class="fas fa-trophy mr-1"></i>
+                                Financé !
+                            </span>
+                            {% elif project.days_remaining and project.days_remaining <= 7 %}
+                            <span class="urgent-badge px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">
+                                <i class="fas fa-exclamation-circle mr-1"></i>
+                                Derniers jours !
+                            </span>
+                            {% else %}
+                            <div class="days-remaining rounded-full px-3 py-1.5 shadow-lg">
+                                <span class="text-xs font-bold text-gray-700">
+                                    <i class="fas fa-clock text-orange-500 mr-1"></i>
+                                    {{ project.days_remaining|default:"30" }}j
+                                </span>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="project-content p-6">
+                        <!-- Title -->
+                        <div class="mb-4">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2 hover:text-orange-600 transition-colors">
+                                {{ project.title }}
+                            </h3>
+                            <div class="flex items-center text-gray-600 text-sm">
+                                <span class="country-flag"></span>
+                                <span>{{ project.owner.country|default:"SN" }}</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Description -->
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed line-clamp-3">
+                            {{ project.short_description|default:"Découvrez ce projet innovant qui transforme l'Afrique." }}
+                        </p>
+                        
+                        <!-- Owner -->
+                        <div class="flex items-center mb-6 p-3 bg-gray-50 rounded-lg">
+                            {% if project.owner.profile_picture %}
+                            <img src="{{ project.owner.profile_picture.url }}" 
+                                 alt="{{ project.owner.get_full_name }}" 
+                                 class="owner-avatar w-10 h-10 rounded-full mr-3 object-cover"
+                                 onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ project.owner.get_full_name|urlencode }}&background=f97316&color=fff';">
+                            {% else %}
+                            <div class="owner-avatar w-10 h-10 rounded-full mr-3 flex items-center justify-center bg-orange-500">
+                                <span class="text-white text-xs font-bold">
+                                    {{ project.owner.first_name|first|upper }}{{ project.owner.last_name|first|upper }}
+                                </span>
+                            </div>
+                            {% endif %}
+                            <div class="flex-1 min-w-0">
+                                <div class="text-sm font-semibold text-gray-900 truncate">{{ project.owner.get_full_name|default:"Entrepreneur" }}</div>
+                                <div class="text-xs text-gray-500">Porteur de projet</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Progress -->
+                        <div class="mb-6">
+                            <div class="flex justify-between text-sm text-gray-700 mb-3">
+                                <span class="font-semibold">
+                                    <i class="fas fa-chart-line text-orange-500 mr-1"></i>
+                                    Progression
+                                </span>
+                                <span class="font-bold {% if percentage >= 100 %}text-green-600{% else %}text-orange-600{% endif %}">
+                                    {{ percentage }}%
+                                </span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3 mb-2 overflow-hidden">
+                                <div class="progress-bar h-3 rounded-full" style="width: {{ percentage }}%"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-600">
+                                <span>
+                                    <i class="fas fa-coins text-orange-500 mr-1"></i>
+                                    {{ project.current_amount|floatformat:0|default:"0" }} FCFA
+                                </span>
+                                <span class="text-gray-500">
+                                    sur {{ project.goal_amount|floatformat:0|default:"5000000" }} FCFA
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <!-- Stats -->
+                        <div class="grid grid-cols-3 gap-2 mb-6">
+                            <div class="text-center p-2 bg-orange-50 rounded-lg">
+                                <div class="text-sm font-bold text-orange-600">{{ project.investors_count|default:"0" }}</div>
+                                <div class="text-xs text-gray-600">Investisseurs</div>
+                            </div>
+                            <div class="text-center p-2 bg-blue-50 rounded-lg">
+                                <div class="text-sm font-bold text-blue-600">5,000</div>
+                                <div class="text-xs text-gray-600">Min. invest.</div>
+                            </div>
+                            <div class="text-center p-2 bg-green-50 rounded-lg">
+                                <div class="text-sm font-bold text-green-600">15%</div>
+                                <div class="text-xs text-gray-600">ROI estimé</div>
+                            </div>
+                        </div>
+                        
+                        <!-- CTA -->
+                        <div class="project-cta">
+                            <a href="{% url 'projects:detail' project.slug %}" 
+                               class="btn-primary w-full py-4 px-6 rounded-xl text-center transition-all duration-300 block">
+                                {% if percentage >= 100 %}
+                                    <i class="fas fa-star mr-2"></i>
+                                    Voir le succès
+                                {% else %}
+                                    <i class="fas fa-rocket mr-2"></i>
+                                    Investir dans ce projet
+                                {% endif %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <!-- Projets Démo avec même structure -->
+                <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl">
+                    <div class="project-image-container">
+                        <div class="default-image" style="background: linear-gradient(135deg, #10b981, #059669);">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                            <span class="category-badge px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">
+                                <i class="fas fa-leaf mr-1"></i>Agriculture
+                            </span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <div class="days-remaining rounded-full px-3 py-1.5 shadow-lg">
+                                <span class="text-xs font-bold text-gray-700">
+                                    <i class="fas fa-clock text-orange-500 mr-1"></i>25j
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content p-6">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Afro Fashion Hub</h3>
+                            <div class="flex items-center text-gray-600 text-sm">
+                                <span class="country-flag"></span>
+                                <span>SN</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed line-clamp-3">
+                            Marketplace en ligne pour créateurs de mode africaine
+                        </p>
+                        <div class="flex items-center mb-6 p-3 bg-gray-50 rounded-lg">
+                            <div class="owner-avatar w-10 h-10 rounded-full mr-3 flex items-center justify-center bg-green-500">
+                                <span class="text-white text-xs font-bold">AD</span>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="text-sm font-semibold text-gray-900 truncate">Amina Diallo</div>
+                                <div class="text-xs text-gray-500">Porteur de projet</div>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <div class="flex justify-between text-sm text-gray-700 mb-3">
+                                <span class="font-semibold"><i class="fas fa-chart-line text-orange-500 mr-1"></i>Progression</span>
+                                <span class="font-bold text-orange-600">2%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3 mb-2">
+                                <div class="progress-bar h-3 rounded-full" style="width: 2%"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-600">
+                                <span><i class="fas fa-coins text-orange-500 mr-1"></i>45000 FCFA</span>
+                                <span>sur 3000000 FCFA</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 mb-6">
+                            <div class="text-center p-2 bg-orange-50 rounded-lg">
+                                <div class="text-sm font-bold text-orange-600">0</div>
+                                <div class="text-xs text-gray-600">Investisseurs</div>
+                            </div>
+                            <div class="text-center p-2 bg-blue-50 rounded-lg">
+                                <div class="text-sm font-bold text-blue-600">5,000</div>
+                                <div class="text-xs text-gray-600">Min. invest.</div>
+                            </div>
+                            <div class="text-center p-2 bg-green-50 rounded-lg">
+                                <div class="text-sm font-bold text-green-600">15%</div>
+                                <div class="text-xs text-gray-600">ROI estimé</div>
+                            </div>
+                        </div>
+                        <div class="project-cta">
+                            <a href="#" class="btn-primary w-full py-4 px-6 rounded-xl text-center block">
+                                <i class="fas fa-rocket mr-2"></i>Investir dans ce projet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl">
+                    <div class="project-image-container">
+                        <div class="default-image" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                            <span class="category-badge px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">
+                                <i class="fas fa-heartbeat mr-1"></i>Santé
+                            </span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <div class="days-remaining rounded-full px-3 py-1.5 shadow-lg">
+                                <span class="text-xs font-bold text-gray-700">
+                                    <i class="fas fa-clock text-orange-500 mr-1"></i>12j
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content p-6">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Clinique Mobile Connectée</h3>
+                            <div class="flex items-center text-gray-600 text-sm">
+                                <span class="country-flag"></span>
+                                <span>SN</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed line-clamp-3">
+                            Unités médicales mobiles avec télémédecine pour zones rurales
+                        </p>
+                        <div class="flex items-center mb-6 p-3 bg-gray-50 rounded-lg">
+                            <div class="owner-avatar w-10 h-10 rounded-full mr-3 flex items-center justify-center bg-blue-500">
+                                <span class="text-white text-xs font-bold">AD</span>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="text-sm font-semibold text-gray-900 truncate">Amina Diallo</div>
+                                <div class="text-xs text-gray-500">Porteur de projet</div>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <div class="flex justify-between text-sm text-gray-700 mb-3">
+                                <span class="font-semibold"><i class="fas fa-chart-line text-orange-500 mr-1"></i>Progression</span>
+                                <span class="font-bold text-orange-600">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3 mb-2">
+                                <div class="progress-bar h-3 rounded-full" style="width: 0%"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-600">
+                                <span><i class="fas fa-coins text-orange-500 mr-1"></i>90000 FCFA</span>
+                                <span>sur 30000000 FCFA</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 mb-6">
+                            <div class="text-center p-2 bg-orange-50 rounded-lg">
+                                <div class="text-sm font-bold text-orange-600">0</div>
+                                <div class="text-xs text-gray-600">Investisseurs</div>
+                            </div>
+                            <div class="text-center p-2 bg-blue-50 rounded-lg">
+                                <div class="text-sm font-bold text-blue-600">5,000</div>
+                                <div class="text-xs text-gray-600">Min. invest.</div>
+                            </div>
+                            <div class="text-center p-2 bg-green-50 rounded-lg">
+                                <div class="text-sm font-bold text-green-600">15%</div>
+                                <div class="text-xs text-gray-600">ROI estimé</div>
+                            </div>
+                        </div>
+                        <div class="project-cta">
+                            <a href="#" class="btn-primary w-full py-4 px-6 rounded-xl text-center block">
+                                <i class="fas fa-rocket mr-2"></i>Investir dans ce projet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl">
+                    <div class="project-image-container">
+                        <div class="default-image" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9);">
+                            <i class="fas fa-solar-panel"></i>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                            <span class="category-badge px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">
+                                <i class="fas fa-bolt mr-1"></i>Énergie
+                            </span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <div class="days-remaining rounded-full px-3 py-1.5 shadow-lg">
+                                <span class="text-xs font-bold text-gray-700">
+                                    <i class="fas fa-clock text-orange-500 mr-1"></i>45j
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content p-6">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Mini-Réseaux Solaires Intelligents</h3>
+                            <div class="flex items-center text-gray-600 text-sm">
+                                <span class="country-flag"></span>
+                                <span>GH</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed line-clamp-3">
+                            Réseaux électriques autonomes pour communautés isolées
+                        </p>
+                        <div class="flex items-center mb-6 p-3 bg-gray-50 rounded-lg">
+                            <div class="owner-avatar w-10 h-10 rounded-full mr-3 flex items-center justify-center bg-purple-500">
+                                <span class="text-white text-xs font-bold">KA</span>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="text-sm font-semibold text-gray-900 truncate">Kwame Asante</div>
+                                <div class="text-xs text-gray-500">Porteur de projet</div>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <div class="flex justify-between text-sm text-gray-700 mb-3">
+                                <span class="font-semibold"><i class="fas fa-chart-line text-orange-500 mr-1"></i>Progression</span>
+                                <span class="font-bold text-orange-600">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3 mb-2">
+                                <div class="progress-bar h-3 rounded-full" style="width: 0%"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-600">
+                                <span><i class="fas fa-coins text-orange-500 mr-1"></i>135000 FCFA</span>
+                                <span>sur 75000000 FCFA</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 mb-6">
+                            <div class="text-center p-2 bg-orange-50 rounded-lg">
+                                <div class="text-sm font-bold text-orange-600">0</div>
+                                <div class="text-xs text-gray-600">Investisseurs</div>
+                            </div>
+                            <div class="text-center p-2 bg-blue-50 rounded-lg">
+                                <div class="text-sm font-bold text-blue-600">5,000</div>
+                                <div class="text-xs text-gray-600">Min. invest.</div>
+                            </div>
+                            <div class="text-center p-2 bg-green-50 rounded-lg">
+                                <div class="text-sm font-bold text-green-600">15%</div>
+                                <div class="text-xs text-gray-600">ROI estimé</div>
+                            </div>
+                        </div>
+                        <div class="project-cta">
+                            <a href="#" class="btn-primary w-full py-4 px-6 rounded-xl text-center block">
+                                <i class="fas fa-rocket mr-2"></i>Investir dans ce projet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
         </div>
         
         <!-- Pagination -->
-        <div class="mt-12 flex justify-center">
-            <nav class="flex space-x-2">
-                <button class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
-                    Précédent
-                </button>
-                <button class="px-4 py-2 bg-primary-500 text-white rounded-md">1</button>
-                <button class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">2</button>
-                <button class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">3</button>
-                <button class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
-                    Suivant
-                </button>
+        {% if projects.has_other_pages %}
+        <div class="mt-16 flex justify-center">
+            <nav class="inline-flex items-center space-x-2">
+                {% if projects.has_previous %}
+                    <a href="?page={{ projects.previous_page_number }}" 
+                       class="pagination-btn px-5 py-3 rounded-xl text-gray-700">
+                        <i class="fas fa-arrow-left mr-2"></i>Précédent
+                    </a>
+                {% endif %}
+                
+                {% for num in projects.paginator.page_range %}
+                    {% if num == projects.number %}
+                        <span class="active-page px-5 py-3 rounded-xl font-semibold">{{ num }}</span>
+                    {% elif num > projects.number|add:'-3' and num < projects.number|add:'3' %}
+                        <a href="?page={{ num }}" class="pagination-btn px-5 py-3 rounded-xl text-gray-700">{{ num }}</a>
+                    {% endif %}
+                {% endfor %}
+                
+                {% if projects.has_next %}
+                    <a href="?page={{ projects.next_page_number }}" 
+                       class="pagination-btn px-5 py-3 rounded-xl text-gray-700">
+                        Suivant<i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                {% endif %}
             </nav>
         </div>
-    </div>
-</section>
-{% endblock %}
-
-{% block extra_js %}
-<script>
-// Load projects via API
-async function loadProjects() {
-    try {
-        const response = await api.get('/api/projects/');
+        {% endif %}
         
-        if (response.ok) {
-            const data = await response.json();
-            renderProjects(data.results || data);
-        } else {
-            console.error('Failed to load projects:', response.status);
-            showError('Erreur lors du chargement des projets. Veuillez réessayer.');
-        }
-    } catch (error) {
-        console.error('Error loading projects:', error);
-        showError('Impossible de charger les projets. Vérifiez votre connexion.');
-    }
-}
-
-function showError(message) {
-    document.getElementById('projects-grid').innerHTML = `
-        <div class="text-center col-span-full py-12">
-            <div class="max-w-md mx-auto">
-                <i class="fas fa-exclamation-triangle text-4xl text-red-500 mb-4"></i>
-                <p class="text-red-600 mb-4">${message}</p>
-                <button onclick="loadProjects()" class="btn-primary">
-                    <i class="fas fa-redo mr-2"></i>Réessayer
-                </button>
-            </div>
-        </div>
-    `;
-}
-
-function renderProjects(projects) {
-    const grid = document.getElementById('projects-grid');
-    
-    if (!projects || projects.length === 0) {
-        grid.innerHTML = `
-            <div class="text-center col-span-full py-12">
-                <i class="fas fa-search text-4xl text-gray-400 mb-4"></i>
-                <p class="text-gray-600">Aucun projet trouvé.</p>
-            </div>
-        `;
-        return;
-    }
-    
-    grid.innerHTML = projects.map(project => {
-        // Valeurs par défaut pour éviter les erreurs
-        const title = project.title || 'Projet sans titre';
-        const description = project.short_description || 'Aucune description disponible';
-        const categoryName = project.category?.name || 'Non catégorisé';
-        const ownerName = `${project.owner?.first_name || ''} ${project.owner?.last_name || ''}`.trim() || 'Anonyme';
-        const currentAmount = project.current_amount || 0;
-        const goalAmount = project.goal_amount || 1;
-        const fundingPercentage = project.funding_percentage || 0;
-        const daysRemaining = project.days_remaining || 0;
-        const slug = project.slug || project.id;
-        
-        // Image par défaut
-        const featuredImage = project.featured_image || 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=400&h=200&fit=crop&crop=center';
-        const ownerAvatar = project.owner?.profile_picture || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face';
-        
-        return `
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div class="relative">
-                    <img src="${featuredImage}" 
-                         alt="${title}" 
-                         class="w-full h-48 object-cover"
-                         onerror="this.src='https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=400&h=200&fit=crop&crop=center'">
-                    <div class="absolute top-4 left-4">
-                        <span class="bg-primary-600 text-white px-2 py-1 rounded-full text-xs font-medium">
-                            ${categoryName}
-                        </span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h3 class="font-semibold text-lg mb-2 line-clamp-2">${title}</h3>
-                    <p class="text-gray-600 text-sm mb-4 line-clamp-3">${description}</p>
-                    
-                    <div class="flex items-center space-x-2 mb-4">
-                        <img src="${ownerAvatar}" 
-                             alt="${ownerName}" 
-                             class="w-8 h-8 rounded-full object-cover"
-                             onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face'">
-                        <span class="text-sm text-gray-700">${ownerName}</span>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <div class="flex justify-between text-sm text-gray-600 mb-1">
-                            <span>${utils.formatCurrency(currentAmount)}</span>
-                            <span>${fundingPercentage.toFixed(1)}%</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2">
-                            <div class="bg-primary-500 h-2 rounded-full transition-all duration-300" 
-                                 style="width: ${Math.min(fundingPercentage, 100)}%"></div>
-                        </div>
-                        <div class="flex justify-between text-sm text-gray-600 mt-1">
-                            <span>Objectif: ${utils.formatCurrency(goalAmount)}</span>
-                            <span>${daysRemaining} jours restants</span>
-                        </div>
-                    </div>
-                    
-                    <a href="/projects/${slug}/" class="block w-full text-center bg-primary-600 text-white py-2 px-4 rounded-md hover:bg-primary-700 transition-colors duration-200">
-                        Voir le projet
+        <!-- CTA -->
+        <div class="cta-section mt-20 rounded-3xl overflow-hidden">
+            <div class="relative z-10 px-8 py-12 text-center">
+                <h3 class="text-3xl font-bold text-white mb-6">
+                    Prêt à <span class="text-orange-400">transformer</span> votre idée en réalité ?
+                </h3>
+                <p class="text-xl text-gray-200 mb-10 max-w-2xl mx-auto">
+                    Rejoignez notre communauté d'entrepreneurs et concrétisez vos projets.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="{% url 'projects:create' %}" 
+                       class="btn-primary px-8 py-4 rounded-xl text-lg font-semibold inline-flex items-center justify-center">
+                        <i class="fas fa-plus-circle mr-3 text-xl"></i>
+                        Lancer mon projet
+                    </a>
+                    <a href="#" 
+                       class="btn-secondary px-8 py-4 rounded-xl text-lg font-semibold inline-flex items-center justify-center">
+                        <i class="fas fa-book-open mr-3 text-xl"></i>
+                        Guide du créateur
                     </a>
                 </div>
             </div>
-        `;
-    }).join('');
-}
+        </div>
+    </div>
+</section>
 
-// Load projects on page load
-document.addEventListener('DOMContentLoaded', loadProjects);
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Animation progress bars
+    const progressBars = document.querySelectorAll('.progress-bar');
+    progressBars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0%';
+        setTimeout(() => {
+            bar.style.width = width;
+        }, 300);
+    });
+});
 </script>
 {% endblock %}

@@ -20,8 +20,20 @@
             </p>
         </div>
 
+        <!-- Messages d'erreur Django -->
+        {% if messages %}
+            <div class="mb-4">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
         <!-- Formulaire de connexion -->
-        <form class="mt-8 space-y-6" id="loginForm">
+        <form class="mt-8 space-y-6" method="post" id="loginForm">
+            {% csrf_token %}
             <div class="rounded-md shadow-sm space-y-4">
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
@@ -62,6 +74,13 @@
                     </span>
                 </button>
             </div>
+            
+            <!-- Option pour utiliser la connexion Django traditionnelle -->
+            <div class="text-center">
+                <button type="button" onclick="useTraditionalLogin()" class="text-sm text-gray-600 hover:text-gray-800">
+                    Problème de connexion ? Essayez la méthode alternative
+                </button>
+            </div>
 
             <!-- Connexion sociale (optionnel) -->
             <div class="mt-6">
@@ -100,7 +119,15 @@
 
 {% block extra_js %}
 <script>
-document.getElementById('loginForm').addEventListener('submit', async function(e) {
+let useApiLogin = true;
+
+function useTraditionalLogin() {
+    useApiLogin = false;
+    document.getElementById('loginForm').removeEventListener('submit', handleApiLogin);
+    alert('Connexion traditionnelle activée. Cliquez sur "Se connecter" pour continuer.');
+}
+
+function handleApiLogin(e) {
     e.preventDefault();
     
     const loginBtn = document.getElementById('loginBtn');
@@ -118,38 +145,62 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         password: formData.get('password')
     };
     
-    try {
-        const response = await api.post('/api/auth/login/', data);
-        
-        const result = await response.json();
-        
-        if (response.ok) {
-            // Store tokens
-            localStorage.setItem('access_token', result.tokens.access);
-            localStorage.setItem('refresh_token', result.tokens.refresh);
-            
-            // Show success message
-            notifications.show('Connexion réussie ! Redirection...', 'success');
-            
-            // Redirect based on user type
-            setTimeout(() => {
-                if (result.user.user_type === 'porteur') {
-                    window.location.href = '/auth/dashboard/porteur/';
-                } else {
-                    window.location.href = '/auth/dashboard/investisseur/';
+    api.post('/api/auth/login/', data)
+        .then(response => response.json())
+        .then(result => {
+            if (result.tokens) {
+                // Store tokens
+                localStorage.setItem('access_token', result.tokens.access);
+                localStorage.setItem('refresh_token', result.tokens.refresh);
+                
+                // Show success message
+                if (typeof notifications !== 'undefined') {
+                    notifications.show('Connexion réussie ! Redirection...', 'success');
                 }
-            }, 1500);
-        } else {
-            notifications.show(result.error || 'Erreur de connexion', 'error');
+                
+                // Redirect based on user type
+                setTimeout(() => {
+                    if (result.user.user_type === 'porteur') {
+                        window.location.href = '/auth/dashboard/porteur/';
+                    } else if (result.user.user_type === 'investisseur') {
+                        window.location.href = '/auth/dashboard/investisseur/';
+                    } else {
+                        window.location.href = '/auth/dashboard/';
+                    }
+                }, 1000);
+            } else {
+                throw new Error(result.error || 'Erreur de connexion');
+            }
+        })
+        .catch(error => {
+            console.error('Erreur de connexion:', error);
+            if (typeof notifications !== 'undefined') {
+                notifications.show('Erreur de connexion. Utilisation de la méthode alternative...', 'warning');
+            }
+            // Fallback to traditional form submission
+            useApiLogin = false;
+            setTimeout(() => {
+                document.getElementById('loginForm').submit();
+            }, 1000);
+        })
+        .finally(() => {
+            // Reset button state
+            loginBtn.disabled = false;
+            loginText.textContent = 'Se connecter';
+            loginSpinner.classList.add('hidden');
+        });
+}
+
+// Initialize form handler
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('loginForm');
+    
+    form.addEventListener('submit', function(e) {
+        if (useApiLogin) {
+            handleApiLogin.call(this, e);
         }
-    } catch (error) {
-        notifications.show('Erreur de connexion. Veuillez réessayer.', 'error');
-    } finally {
-        // Reset button state
-        loginBtn.disabled = false;
-        loginText.textContent = 'Se connecter';
-        loginSpinner.classList.add('hidden');
-    }
+        // If useApiLogin is false, let the form submit normally
+    });
 });
 </script>
 {% endblock %}
